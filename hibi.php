@@ -34,13 +34,13 @@
 
           <img src="assets/img/hibilogo.png">
          <ul class="list-group">
-      <li class="list-group-item">TOP</li>
-      <li class="list-group-item">今の日々</li>
-      <li class="list-group-item">過去の日々</li>
-      <li class="list-group-item">私の日々</li>
-      <li class="list-group-item">みんなお題</li>
-      <li class="list-group-item">サインイン</li>
-      <li class="list-group-item">サイインアップ</li>
+      <li><a href="" class="list-group-item">TOP</a></li>
+      <li><a href="" class="list-group-item">今日の日々</a></li>
+      <li><a href="" class="list-group-item">過去の日々</a></li>
+      <li><a href="" class="list-group-item">私の日々</a></li>
+      <li><a href="" class="list-group-item">みんなのお題</a></li>
+      <li><a href="signin.php" class="list-group-item">サインイン</a></li>
+      <li><a href="signout.php" class="list-group-item">サインアップ</a></li>
       </ul>
 
   </div>
