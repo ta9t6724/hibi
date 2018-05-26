@@ -45,24 +45,29 @@
 
   </div>
 
-  <div class="col-xs-6 col-lg-4"></div>
-    <div class="container">
-      <div class="col-xs-6 col-lg-4"></div>
-    <div class="row">
-        <div class="col-xs-6 col-lg-4"></div>
+   <div class="col-xs-6 col-lg-4"></div>
+     <div class="container">
+     <div class="col-xs-6 col-lg-4"></div>
+       <div class="row">
+         <div class="col-xs-6 col-lg-4"></div>
         <div class="col-xs-6 col-lg-4"></div>
         <div class="col-xs-12 col-lg-4"></div>
-    </div>
-</div>
+       </div>
+　　　　</div>
+　　　　<div class="row">
+        <div class="col-xs-6 col-lg-4"></div>
           <h2>毎日をちょっとだけ楽しく</h2><br>
           <p>ネクシード生がセブ留学の「日々」を写真と言葉に<br>
           大切な「日々」の思い出をカタチにできるサービスです。<br></p>
         </div>
+        <div class="row">
+        <div class="col-xs-6 col-lg-4"></div>
         <form method="POST" action=""> 
         <input type="text" name="b-name1"><br> 
         <input type="submit"> 
         </form>
         <br>
+        
 
         <h3>今週のお題</h3>
 
