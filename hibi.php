@@ -3,15 +3,16 @@
 <meta charset="utf-8">
 <head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>日々</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-	<!-- ①CSS部分　-->
-	<!-- <?php require('partial/css_link.php');?> -->
-	<!-- XAMMPに起こる現象回避策　スーパーリロード　cmd＋shift＋R　-->
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- ①CSS部分　-->
+  <!-- <?php require('partial/css_link.php');?> -->
+  <!-- XAMMPに起こる現象回避策　スーパーリロード　cmd＋shift＋R　-->
 
 </head>
 <body>
@@ -29,31 +30,44 @@
         <div class="col-md-2">
          <img class="d-block img-fluid" src="assets/img/top.jpg">
 
-        <div class="col-lg-3">
+        <div class="col-xs-6 col-lg-4"></div>
 
           <img src="assets/img/hibilogo.png">
          <ul class="list-group">
-      <li class="list-group-item">TOP</li>
-      <li class="list-group-item">今の日々</li>
-      <li class="list-group-item">過去の日々</li>
-      <li class="list-group-item">私の日々</li>
-      <li class="list-group-item">みんなお題</li>
-      <li class="list-group-item">サインイン</li>
-      <li class="list-group-item">サイインアップ</li>
+      <li><a href="" class="list-group-item">TOP</a></li>
+      <li><a href="" class="list-group-item">今日の日々</a></li>
+      <li><a href="" class="list-group-item">過去の日々</a></li>
+      <li><a href="" class="list-group-item">私の日々</a></li>
+      <li><a href="" class="list-group-item">みんなのお題</a></li>
+      <li><a href="signin.php" class="list-group-item">サインイン</a></li>
+      <li><a href="signout.php" class="list-group-item">サインアップ</a></li>
       </ul>
 
   </div>
 
-  <div class="col-lg-12">
+   <div class="col-xs-6 col-lg-4"></div>
+     <div class="container">
+     <div class="col-xs-6 col-lg-4"></div>
+       <div class="row">
+         <div class="col-xs-6 col-lg-4"></div>
+        <div class="col-xs-6 col-lg-4"></div>
+        <div class="col-xs-12 col-lg-4"></div>
+       </div>
+　　　　</div>
+　　　　<div class="row">
+        <div class="col-xs-6 col-lg-4"></div>
           <h2>毎日をちょっとだけ楽しく</h2><br>
           <p>ネクシード生がセブ留学の「日々」を写真と言葉に<br>
           大切な「日々」の思い出をカタチにできるサービスです。<br></p>
         </div>
+        <div class="row">
+        <div class="col-xs-6 col-lg-4"></div>
         <form method="POST" action=""> 
         <input type="text" name="b-name1"><br> 
         <input type="submit"> 
         </form>
         <br>
+        
 
         <h3>今週のお題</h3>
 
