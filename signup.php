@@ -16,9 +16,14 @@
         サインアップ</h2>
         <form method="POST" action="check.php" enctype="multipart/form-data">
           <div class="form-group">
-            <label for="nickname">ニックネーム</label><br>
-            <input type="nickname" name="input_nickname" class="form-control" id="nickname" placeholder="">
-            <p class="text-danger">ニックネームを入力してください</p>
+            <label for="name">名前</label><br>
+            <input type="name" name="input_nickname" class="form-control" id="nickname" placeholder="">
+            <p class="text-danger">名前を入力してください</p>
+          </div>
+          <div class="form-group">
+            <label for="account_name">アカウント名</label><br>
+            <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="">
+            <p class="text-danger"> アカウント名を入力してください</p>
           </div>
           <div class="form-group">
             <label for="password">パスワード</label>
@@ -30,8 +35,8 @@
             <?php } ?>
           </div>
           <div class="form-group">
-            <label for="password">卒業日</label><br>
-            <input type="date" name="example1">
+            <label for="graduation_date">卒業日</label><br>
+            <input type="graduation_date" name="example1">
             <p class="text-danger">卒業日を入力してください</p>
           </div>
           <div class="form-group">
