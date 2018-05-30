@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>日々</title>
-  <link rel="stylesheet" type="text/css" href="./assets/css/check_php.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 <body  style="background-color:ivory" style="margin-top: 60px">
@@ -18,7 +20,11 @@
           </div>
           <div class="col-xs-8">
             <div>
-              <span>ニックネーム</span>
+              <span>名前</span>
+              <p class="lead"></p>
+            </div>
+            <div>
+              <span>アカウント名</span>
               <p class="lead"></p>
             </div>
             <div>
@@ -36,7 +42,7 @@
               <a href="signup.php?action=rewrite" class="btn btn-default">&laquo;&nbsp;戻る</a> 
               <!-- ⑤ -->
               <input type="hidden" name="action" value="submit">
-              
+
               <a href="./signin.php" class="btn2">日々を投稿する</a>
               
 
