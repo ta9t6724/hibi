@@ -40,6 +40,7 @@
             <p class="text-danger">卒業日を入力してください</p>
           </div>
           <input type="submit" class="btn2" value="サインアップ">
+          <a href="./signin.php" class="btn2">サインイン</a>
         </form>
       </div>
     </div>
