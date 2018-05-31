@@ -16,7 +16,6 @@
         <div class="row">
           <div class="col-xs-4">
             <!-- ① -->
-            <img src="../user_profile_img/<?php echo htmlspecialchars($img_name); ?>" class="img-responsive img-thumbnail">
           </div>
           <div class="col-xs-8">
             <div>

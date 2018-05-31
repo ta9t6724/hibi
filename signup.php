@@ -14,7 +14,7 @@
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
         <h2 class="text-center content_header">日々<br><br>
         サインアップ</h2>
-        <form method="POST" action="check.php" enctype="multipart/form-data">
+        <form method="POST" action="signup.php" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">名前</label><br>
             <input type="name" name="input_nickname" class="form-control" id="nickname" placeholder="">
@@ -35,19 +35,9 @@
             <?php } ?>
           </div>
           <div class="form-group">
-            <label for="graduation_date">卒業日</label><br>
-            <input type="graduation_date" name="example1">
+            <label for="date">卒業日</label><br>
+            <input type="date" name="example1">
             <p class="text-danger">卒業日を入力してください</p>
-          </div>
-          <div class="form-group">
-            <label for="img_name">プロフィール画像</label>
-            <input type="file" name="input_img_name" id="img_name" accept="image/*">
-            <?php if(isset($errors['img_name'])&& $errors['img_name']=='blank'){ ?>
-            <p class="text-danger">画像を選択してください</p>
-            <?php } ?>
-            <?php if(isset($errors['img_name'])&& $errors['img_name']=='type'){ ?>
-            <p class="text-danger">拡張子が「jpg」「jpeg」「png」「gif」の画像を選択してください</p>
-            <?php } ?>
           </div>
           <input type="submit" class="btn2" value="サインアップ">
         </form>

@@ -28,16 +28,6 @@
             <p class="text-danger">パスワードは4~16文字で入力してくださいね</p>
             <?php } ?>
           </div>
-          <div class="form-group">
-            <label for="img_name">日々を投稿する</label>
-            <input type="file" name="input_img_name" id="img_name" accept="image/*">
-            <?php if(isset($errors['img_name'])&& $errors['img_name']=='blank'){ ?>
-            <p class="text-danger">画像を選択してください</p>
-            <?php } ?>
-            <?php if(isset($errors['img_name'])&& $errors['img_name']=='type'){ ?>
-            <p class="text-danger">拡張子が「jpg」「jpeg」「png」「gif」の画像を選択してください</p>
-            <?php } ?>
-          </div>
           <input type="submit" class="btn btn-info" value="サインイン">
         </form>
       </div>
