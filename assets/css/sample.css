@@ -1,0 +1,31 @@
+.sidebar1 {
+    background-color: #FFFFFC;
+    padding: 0px;
+    min-height: 100%;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+}
+
+.logo {
+    max-height: 130px;
+}
+.logo>img {
+    margin-top: 30px;
+    width: 80%;
+}
+.list {
+    color: #333;
+    list-style: none;
+    padding-left: 0px;
+    margin-top: 80px;
+    font-size: 120%;
+}
+
+.list> li {
+    padding: 10px 0px 10px 0px;
+}
+
+.main-content{
+    text-align: center;
+}
