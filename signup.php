@@ -36,7 +36,7 @@
           </div>
           <div class="form-group">
             <label for="date">卒業日</label><br>
-            <input type="date" name="example1">
+            <input type="date" name="input_graduation_date">
             <p class="text-danger">卒業日を入力してください</p>
           </div>
           <input type="submit" class="btn2" value="サインアップ">
