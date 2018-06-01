@@ -1,7 +1,19 @@
 <?php
     session_start();
 
+    $name = "";
+    $account_name = "";
+    $graduation_date = "";
     $errors = array();
+
+    if (isset($_GET["action"]) && $_GET["action"] == "rewrite") {
+        $_POST['input_name'] = $_SESSION['register']['name'];
+        $_POST['input_account_name'] = $_SESSION['register']['account_name'];
+        $_POST['input_password'] = $_SESSION['register']['password'];
+        $_POST['input_graduation_date'] = $_SESSION['register']['graduation_date'];
+
+        $errors["rewrite"] = true;
+    }
 
     if (!empty($_POST)) {
         $name = $_POST["input_name"];
@@ -19,7 +31,7 @@
 
         // アカウント名の空チェック
         // 文字数チェック
-        // 半角英数記号のみかのチェック
+        // 半角英数字のみかのチェック
         // 重複チェック
         if ($account_name == "") {
             $errors["account_name"] = "blank";
@@ -51,7 +63,7 @@
         // パスワードの空チェック
         if ($password == "") {
             $errors["password"] = "blank";
-        }elseif ($count_password < 4 || 6 < $count_password) {
+        }elseif ($count_password < 4 || 8 < $count_password) {
             $errors["password"] = "length";
         }
 
@@ -92,14 +104,14 @@
         <form method="POST" action="signup.php" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">名前</label><br>
-            <input type="name" name="input_name" class="form-control" id="name" placeholder="">
+            <input type="name" name="input_name" class="form-control" id="name" placeholder="" value="<?php echo htmlspecialchars($name); ?>">
             <?php if (isset($errors["name"]) && $errors["name"] == "blank") { ?>
             <p class="text-danger">名前を入力してください</p>
             <?php } ?>
           </div>
           <div class="form-group">
             <label for="account_name">アカウント名</label><br>
-            <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="">
+            <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="" value="<?php echo htmlspecialchars($account_name); ?>">
             <?php if (isset($errors["account_name"]) && $errors["account_name"] == "blank") { ?>
               <p class="text-danger"> アカウント名を入力してください</p>
             <?php } ?>
@@ -115,17 +127,20 @@
           </div>
           <div class="form-group">
             <label for="password">パスワード</label>
-            <input type="password" name="input_password" class="form-control" id="password" placeholder="４〜６文字のパスワード">
+            <input type="password" name="input_password" class="form-control" id="password" placeholder="４〜８文字のパスワード">
             <?php if(isset($errors['password']) && $errors['password'] =='blank') { ?>
               <p class="text-danger">パスワードを入力してください</p>
             <?php } ?>
             <?php if(isset($errors['password']) && $errors['password'] == 'length') { ?>
-              <p class="text-danger">パスワードは４〜６文字で入力してください</p>
+              <p class="text-danger">パスワードは４〜８文字で入力してください</p>
+            <?php } ?>
+            <?php if (!empty($errors)) { ?>
+            <p class="text-danger">パスワードを再度入力してください</p>
             <?php } ?>
           </div>
           <div class="form-group">
             <label for="date">卒業日</label><br>
-            <input type="date" name="input_graduation_date">
+            <input type="date" name="input_graduation_date" value="<?php echo htmlspecialchars($graduation_date); ?>">
             <?php if (isset($errors["graduation_date"]) && $errors["graduation_date"] == "blank") { ?>
               <p class="text-danger">卒業日を選択してください</p>
             <?php } ?>
