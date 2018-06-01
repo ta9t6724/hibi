@@ -1,11 +1,25 @@
+<?php  
+    session_start();
+
+    if (!isset($_SESSION["register"])) {
+        header("Location: signup.php");
+        exit();
+    }
+?>
+<?php
+    $name = $_SESSION['register']['name'];
+    $account_name = $_SESSION['register']['account_name'];
+    $password = $_SESSION['register']['password'];
+    $graduation_date = $_SESSION['register']['graduation_date'];
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
   <title>日々</title>
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
 
 </head>
 <body  style="background-color:ivory" style="margin-top: 60px">
@@ -20,11 +34,11 @@
           <div class="col-xs-8">
             <div>
               <span>名前</span>
-              <p class="lead"></p>
+              <p class="lead"><?php echo htmlspecialchars($name); ?></p>
             </div>
             <div>
               <span>アカウント名</span>
-              <p class="lead"></p>
+              <p class="lead"><?php echo htmlspecialchars($account_name); ?></p>
             </div>
             <div>
               <span>パスワード</span>
@@ -33,7 +47,7 @@
             </div>
             <div>
               <span>卒業日</span>
-              <p class="lead"></p>
+              <p class="lead"><?php echo htmlspecialchars($graduation_date); ?></p>
             </div>
             <!-- ③ -->
             <form method="POST" action="">
@@ -42,7 +56,7 @@
               <!-- ⑤ -->
               <input type="hidden" name="action" value="submit">
 
-              <a href="./signin.php" class="btn2">日々を投稿する</a>
+              <a href="signin.php" class="btn2">日々を投稿する</a>
               
 
             </form>
