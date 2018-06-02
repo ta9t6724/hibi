@@ -124,7 +124,7 @@
             <?php if (isset($errors["account_name"]) && $errors["account_name"] == "duplicate") { ?>
               <p class="text-danger">すでに登録されているアカウント名です</p>
             <?php } ?>
-          </div>
+          </div> 
           <div class="form-group">
             <label for="password">パスワード</label>
             <input type="password" name="input_password" class="form-control" id="password" placeholder="４〜８文字のパスワード">

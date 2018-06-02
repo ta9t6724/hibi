@@ -6,7 +6,7 @@
     if (!isset($_SESSION["register"])) {
         header("Location: signup.php");
         exit();
-    }
+    } 
 ?>
 <?php
     $name = $_SESSION['register']['name'];
