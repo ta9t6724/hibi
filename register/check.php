@@ -1,6 +1,8 @@
 <?php  
     session_start();
 
+    require("../dbconnect.php");
+
     if (!isset($_SESSION["register"])) {
         header("Location: signup.php");
         exit();
@@ -12,6 +14,17 @@
     $password = $_SESSION['register']['password'];
     $graduation_date = $_SESSION['register']['graduation_date'];
 
+    // 登録ボタンが押された時のみ以下処理実行
+    if (!empty($_POST)) {
+        $sql = "INSERT INTO `users` SET `name`=?, `account_name`=?, `password`=?, `graduation_date`=?, `created`=NOW()";
+        $data = array($name, $account_name, password_hash($password, PASSWORD_DEFAULT), $graduation_date);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+        unset($_SESSION["register"]);
+        header("Location: private.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -29,7 +42,6 @@
         <h2 class="text-center content_header">あなたの日々の情報確認</h2>
         <div class="row">
           <div class="col-xs-4">
-            <!-- ① -->
           </div>
           <div class="col-xs-8">
             <div>
@@ -42,23 +54,16 @@
             </div>
             <div>
               <span>パスワード</span>
-              <!-- ② -->
               <p class="lead">●●●●●●●●</p>
             </div>
             <div>
               <span>卒業日</span>
               <p class="lead"><?php echo htmlspecialchars($graduation_date); ?></p>
             </div>
-            <!-- ③ -->
-            <form method="POST" action="">
-              <!-- ④ -->
-              <a href="signup.php?action=rewrite" class="btn btn-default">&laquo;&nbsp;戻る</a> 
-              <!-- ⑤ -->
+            <form method="POST" action="check.php">
+              <a href="signup.php?action=rewrite" class="btn btn-default">&laquo;&nbsp;戻る</a> | 
               <input type="hidden" name="action" value="submit">
-
-              <a href="signin.php" class="btn2">日々を投稿する</a>
-              
-
+              <input type="submit" class="btn btn-primary" value="ユーザー登録">
             </form>
           </div>
         </div>
