@@ -65,7 +65,7 @@
             $errors["password"] = "blank";
         }elseif ($count_password < 4 || 8 < $count_password) {
             $errors["password"] = "length";
-        }
+        } 
 
         // 卒業日の空チェック
         if ($graduation_date == "") {
