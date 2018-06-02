@@ -134,7 +134,7 @@
             <?php if(isset($errors['password']) && $errors['password'] == 'length') { ?>
               <p class="text-danger">パスワードは４〜８文字で入力してください</p>
             <?php } ?>
-            <?php if (!empty($errors)) { ?>
+            <?php if (!empty($errors["rewrite"])) { ?>
             <p class="text-danger">パスワードを再度入力してください</p>
             <?php } ?>
           </div>
@@ -145,8 +145,8 @@
               <p class="text-danger">卒業日を選択してください</p>
             <?php } ?>
           </div>
-          <input type="submit" class="btn2" value="サインアップ">
-          <a href="./signin.php" class="btn2">サインイン</a>
+          <input type="submit" class="btn btn-default" value="確認">
+          <a href="signin.php" class="btn2">サインイン</a>
         </form>
       </div>
     </div>
