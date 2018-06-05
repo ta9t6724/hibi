@@ -1,3 +1,47 @@
+<?php 
+  session_start();
+  require('../dbconnect.php');
+
+    // 初期化
+  $errors = array();
+
+  if (!empty($_POST)) {
+    $account_name = $_POST['input_account_name'];
+    $password = $_POST['input_password'];
+    if ($account_name != '' && $password != '') {
+      // データベースとの照合処理
+      $sql = 'SELECT * FROM `users` WHERE `account_name`=?';
+      $data = array($account_name);
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute($data);
+      $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+      // メールアドレスでの本人確認
+
+      if ($record == false) {
+      $errors['signin'] = 'failed';
+      } else {
+          if (password_verify($password,$record['password'])){
+          //認証成功
+          //SESSION変数にIDを保存
+          $_SESSION['id'] = $record['id'];
+
+          //timeline.phpに移動
+          header("Location: ../private.php");
+          exit();
+
+        } else {
+            //認証失敗
+            $errors['signin'] = 'failed';
+        }
+      }
+    }else{
+      $errors['signin'] = 'blank';
+    }
+  }
+ ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,7 +57,7 @@
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
         <h2 class="text-center content_header">日々<br><br>
         サインイン</h2>
-        <form method="POST" action="private.php" enctype="multipart/form-data">
+        <form method="POST" action="signin.php" enctype="multipart/form-data">
           <div class="form-group">
             <label for="account_name">アカウント名</label><br>
             <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="">

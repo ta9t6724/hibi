@@ -1,4 +1,14 @@
 <?php
+
+  if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'rewrite') {
+        $_POST['input_name'] = $_SESSION['register']['name'];
+        $_POST['input_account_name'] = $_SESSION['register']['account_name'];
+        $_POST['input_password'] = $_SESSION['register']['password'];
+        $_POST['input_graduation_date'] = $_SESSION['register']['graduation_date'];
+
+        $errors['rewrite'] = true;
+  }
+
     session_start();
 
     $errors = array();
@@ -62,10 +72,10 @@
 
         // エラーがなかった時の処理
         if (empty($errors)) {
-            $_SESSION["register"]["name"] = $_POST["input_name"];
-            $_SESSION["register"]["account_name"] = $_POST["input_account_name"];
-            $_SESSION["register"]["password"] = $_POST["input_password"];
-            $_SESSION["register"]["graduation_date"] = $_POST["input_graduation_date"];
+            $_SESSION['register']['name'] = $_POST["input_name"];
+            $_SESSION['register']['account_name'] = $_POST["input_account_name"];
+            $_SESSION['register']['password'] = $_POST["input_password"];
+            $_SESSION['register']['graduation_date'] = $_POST["input_graduation_date"];
 
             header("Location:check.php");
             exit();
@@ -92,14 +102,14 @@
         <form method="POST" action="signup.php" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">名前</label><br>
-            <input type="name" name="input_name" class="form-control" id="name" placeholder="">
+            <input type="name" name="input_name" class="form-control" id="name" placeholder="" value="<?php echo htmlspecialchars($name); ?>">
             <?php if (isset($errors["name"]) && $errors["name"] == "blank") { ?>
             <p class="text-danger">名前を入力してください</p>
             <?php } ?>
           </div>
           <div class="form-group">
             <label for="account_name">アカウント名</label><br>
-            <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="">
+            <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="" value="<?php echo htmlspecialchars($account_name); ?>">
             <?php if (isset($errors["account_name"]) && $errors["account_name"] == "blank") { ?>
               <p class="text-danger"> アカウント名を入力してください</p>
             <?php } ?>
@@ -125,7 +135,7 @@
           </div>
           <div class="form-group">
             <label for="date">卒業日</label><br>
-            <input type="date" name="input_graduation_date">
+            <input type="date" name="input_graduation_date" id="graduation_date" value="<?php echo htmlspecialchars($graduation_date); ?>">
             <?php if (isset($errors["graduation_date"]) && $errors["graduation_date"] == "blank") { ?>
               <p class="text-danger">卒業日を選択してください</p>
             <?php } ?>

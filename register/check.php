@@ -1,3 +1,34 @@
+<?php 
+
+  session_start();
+  require('../dbconnect.php');
+
+  if (!isset($_SESSION['register'])) {
+    header('Location: signup.php');
+    exit();
+  }
+
+  // ①出力テスト
+    $name = $_SESSION['register']['name'];
+    $account_name = $_SESSION['register']['account_name'];
+    $password = $_SESSION['register']['password'];
+    $graduation_date = $_SESSION['register']['graduation_date'];
+
+     // 登録ボタンが押された時のみ処理するif文
+    if (!empty($_POST)) {
+        $sql = 'INSERT INTO `users` SET `name`=?, `account_name`=?, `password`=?, `graduation_date`=?, `signin_flag`=0 `created`=NOW()';
+        $data = array($name, $account_name, password_hash($password, PASSWORD_DEFAULT), $graduation_date);
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute($data);
+
+        // unset()で入れるの中身を削除する
+        // unset()文は指定した変数もしくは配列を破棄することができる
+        unset($_SESSION['register']);
+        header('Location: signin.php');
+        exit();
+    }
+ ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,11 +51,11 @@
           <div class="col-xs-8">
             <div>
               <span>名前</span>
-              <p class="lead"></p>
+              <p class="lead"><?php echo htmlspecialchars($name); ?></p>
             </div>
             <div>
               <span>アカウント名</span>
-              <p class="lead"></p>
+              <p class="lead"><?php echo htmlspecialchars($account_name); ?></p>
             </div>
             <div>
               <span>パスワード</span>
@@ -33,7 +64,7 @@
             </div>
             <div>
               <span>卒業日</span>
-              <p class="lead"></p>
+              <p class="lead"><?php echo htmlspecialchars($graduation_date); ?></p>
             </div>
             <!-- ③ -->
             <form method="POST" action="">
