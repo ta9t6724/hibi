@@ -13,7 +13,7 @@
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
         <h2 class="text-center content_header">日々<br><br>
         サインイン</h2>
-        <form method="POST" action="private.php" enctype="multipart/form-data">
+        <form method="POST" action="../private.php" enctype="multipart/form-data">
           <div class="form-group">
             <label for="account_name">アカウント名</label><br>
             <input type="account_name" name="input_account_name" class="form-control" id="account_name" placeholder="">
