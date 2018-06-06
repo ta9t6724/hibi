@@ -27,10 +27,11 @@
             <br>
           <div class="left-navigation">
              <ul class="list">
-              <li><a href="" >はじめに</a></li>
-              <li><a href="cur_student.php" >ネクシード生の日々</a></li>
-              <li><a href="alumnus" >卒業生の日々</a></li>
-              <li><a href="view.php" >今週のお題</a></li>
+              <li><a href="view.php" >はじめに</a></li>
+              <li><a href="signin.php" >サインイン</a></li>
+              <li><a href="cur_student.php">ネクシード生の日々</a></li>
+              <li><a href="alumnus.php" >卒業生の日々</a></li>
+              <li><a href="theme.php" >今週のお題</a></li>
               <li><a href="my_page.php" >マイページ</a></li>
             </ul>
           </div>
@@ -44,7 +45,7 @@
           </div>
           <div class="row concept">
             <div class="col-md-12">
-              <h1 class="hibi now">NexSeedの日々をのぞいてみよう</h1>
+              <h1 class="h1">NexSeed生の日々をのぞいてみよう</h1> 
             </div>
           </div>
           <div class="row">
@@ -59,7 +60,7 @@
               </h5>
               <div class="row">
               <div class="col-md-3" >
-                  <img src="assets/img/LRG_DSC05296.jpg"  style="border: solid 3px;margin: 10px;width: 100%;">
+                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
@@ -73,7 +74,7 @@
                 </div>
               </div>
             </li>
-                  <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic" style="border: solid 3px;margin: 10px;width: 100%>
+                  <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic">
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
                 </div>
