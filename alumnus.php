@@ -61,7 +61,7 @@
               </h5>
               <div class="row">
               <div class="col-md-3" >
-                  <img src="assets/img/LRG_DSC05296.jpg"  style="border: solid 3px;margin: 10px;width: 110%;">
+                  <img src="assets/img/LRG_DSC05296.jpg"  style="border: solid 3px;margin: 10px;width: 100%;">
                   <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
@@ -75,7 +75,7 @@
                 </div>
               </div>
             </li>
-                  <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic">
+                  <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic" style="border: solid 3px;margin: 10px;width: 100%>
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
                 </div>
