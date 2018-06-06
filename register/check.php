@@ -22,7 +22,7 @@
         $stmt->execute($data);
 
         unset($_SESSION["register"]);
-        header("Location: private.php");
+        header("Location: ../private.php");
         exit();
     }
 ?>

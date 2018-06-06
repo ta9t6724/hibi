@@ -34,7 +34,7 @@
                 if (password_verify($password,$record['password'])){
                       $_SESSION['id'] = $record['id'];
 
-                      header("Location: private.php");
+                      header("Location: ../private.php");
                       exit();
                 }
                 else{

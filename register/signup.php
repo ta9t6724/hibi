@@ -68,8 +68,13 @@
         } 
 
         // 卒業日の空チェック
+        // すでに卒業済みの場合は登録不可
         if ($graduation_date == "") {
             $errors["graduation_date"] = "blank";
+        }elseif (strtotime($graduation_date) < strtotime(date("Y/m/d"))) {
+
+          //var_dump($graduation_date,)
+            $errors["graduation_date"] = "date";
         }
 
         // エラーがなかった時の処理
@@ -143,6 +148,9 @@
             <input type="date" name="input_graduation_date" value="<?php echo htmlspecialchars($graduation_date); ?>">
             <?php if (isset($errors["graduation_date"]) && $errors["graduation_date"] == "blank") { ?>
               <p class="text-danger">卒業日を選択してください</p>
+            <?php } ?>
+            <?php if (isset($errors["graduation_date"]) && $errors["graduation_date"] == "date") { ?>
+              <p class="text-danger">すでに卒業済みの場合は登録できません</p>
             <?php } ?>
           </div>
           <input type="submit" class="btn btn-default" value="確認">
