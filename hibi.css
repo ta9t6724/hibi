@@ -1,5 +1,11 @@
+body {
+font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+
+
 .sidebar1 {
-    background-color: #FFFFFC;
+    background-color: #fff;
     padding: 0px;
     min-height: 100%;
     text-align: center;
@@ -36,6 +42,40 @@ text-align:center;
     background-image: url(img/hibi.jpg);
     background-size: cover;
     background-position: center center;
+    /*background: rgba(255, 255, 255, 0.3);*/
+    /*opacity: 2.0;*/
+
+}
+
+.top::before{
+    /*透過したくろを重ねるイメージ*/
+    background-color: rgba(0,0,0,0.2);
+    /*自由に位置を規定*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+}
+
+.top a{
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    /*以下装飾*/
+    margin: 0;
+    font-size: 20px;
+    border: solid white 4px;
+    padding: 7px;
+    color: white;
+    text-decoration: none;
+}
+
+.top a:hover{
+    background: rgba(255, 255, 255, 0.3);
 
 }
 
@@ -70,8 +110,8 @@ text-align:center;
     /*height: 200px;*/
     /*width: 90%;*/
     /*height: 60%;*/
-    margin: 30px 0;
-    height: 230px;
+    margin: auto;
+    height: 150px;
     vertical-align: middle;
     /*padding: auto;*/
     h
