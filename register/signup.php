@@ -1,17 +1,19 @@
 <?php
+    session_start();
 
-  if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'rewrite') {
+    $name = "";
+    $account_name = "";
+    $graduation_date = "";
+    $errors = array();
+
+    if (isset($_GET["action"]) && $_GET["action"] == "rewrite") {
         $_POST['input_name'] = $_SESSION['register']['name'];
         $_POST['input_account_name'] = $_SESSION['register']['account_name'];
         $_POST['input_password'] = $_SESSION['register']['password'];
         $_POST['input_graduation_date'] = $_SESSION['register']['graduation_date'];
 
-        $errors['rewrite'] = true;
-  }
-
-    session_start();
-
-    $errors = array();
+        $errors["rewrite"] = true;
+    }
 
     if (!empty($_POST)) {
         $name = $_POST["input_name"];
@@ -29,7 +31,7 @@
 
         // アカウント名の空チェック
         // 文字数チェック
-        // 半角英数記号のみかのチェック
+        // 半角英数字のみかのチェック
         // 重複チェック
         if ($account_name == "") {
             $errors["account_name"] = "blank";
@@ -61,21 +63,26 @@
         // パスワードの空チェック
         if ($password == "") {
             $errors["password"] = "blank";
-        }elseif ($count_password < 4 || 6 < $count_password) {
+        }elseif ($count_password < 4 || 8 < $count_password) {
             $errors["password"] = "length";
-        }
+        } 
 
         // 卒業日の空チェック
+        // すでに卒業済みの場合は登録不可
         if ($graduation_date == "") {
             $errors["graduation_date"] = "blank";
+        }elseif (strtotime($graduation_date) < strtotime(date("Y/m/d"))) {
+
+          //var_dump($graduation_date,)
+            $errors["graduation_date"] = "date";
         }
 
         // エラーがなかった時の処理
         if (empty($errors)) {
-            $_SESSION['register']['name'] = $_POST["input_name"];
-            $_SESSION['register']['account_name'] = $_POST["input_account_name"];
-            $_SESSION['register']['password'] = $_POST["input_password"];
-            $_SESSION['register']['graduation_date'] = $_POST["input_graduation_date"];
+            $_SESSION["register"]["name"] = $_POST["input_name"];
+            $_SESSION["register"]["account_name"] = $_POST["input_account_name"];
+            $_SESSION["register"]["password"] = $_POST["input_password"];
+            $_SESSION["register"]["graduation_date"] = $_POST["input_graduation_date"];
 
             header("Location:check.php");
             exit();
@@ -122,26 +129,32 @@
             <?php if (isset($errors["account_name"]) && $errors["account_name"] == "duplicate") { ?>
               <p class="text-danger">すでに登録されているアカウント名です</p>
             <?php } ?>
-          </div>
+          </div> 
           <div class="form-group">
             <label for="password">パスワード</label>
-            <input type="password" name="input_password" class="form-control" id="password" placeholder="４〜６文字のパスワード">
+            <input type="password" name="input_password" class="form-control" id="password" placeholder="４〜８文字のパスワード">
             <?php if(isset($errors['password']) && $errors['password'] =='blank') { ?>
               <p class="text-danger">パスワードを入力してください</p>
             <?php } ?>
             <?php if(isset($errors['password']) && $errors['password'] == 'length') { ?>
-              <p class="text-danger">パスワードは４〜６文字で入力してください</p>
+              <p class="text-danger">パスワードは４〜８文字で入力してください</p>
+            <?php } ?>
+            <?php if (!empty($errors["rewrite"])) { ?>
+            <p class="text-danger">パスワードを再度入力してください</p>
             <?php } ?>
           </div>
           <div class="form-group">
             <label for="date">卒業日</label><br>
-            <input type="date" name="input_graduation_date" id="graduation_date" value="<?php echo htmlspecialchars($graduation_date); ?>">
+            <input type="date" name="input_graduation_date" value="<?php echo htmlspecialchars($graduation_date); ?>">
             <?php if (isset($errors["graduation_date"]) && $errors["graduation_date"] == "blank") { ?>
               <p class="text-danger">卒業日を選択してください</p>
             <?php } ?>
+            <?php if (isset($errors["graduation_date"]) && $errors["graduation_date"] == "date") { ?>
+              <p class="text-danger">すでに卒業済みの場合は登録できません</p>
+            <?php } ?>
           </div>
-          <input type="submit" class="btn2" value="サインアップ">
-          <a href="./signin.php" class="btn2">サインイン</a>
+          <input type="submit" class="btn btn-default" value="確認">
+          <a href="signin.php" class="btn2">サインイン</a>
         </form>
       </div>
     </div>
