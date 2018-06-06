@@ -1,0 +1,67 @@
+.sidebar1 {
+    background-color: #FFFFFC;
+    padding: 0px;
+    min-height: 100%;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+}
+
+.logo {
+    max-height: 130px;
+}
+.logo>img {
+    margin-top: 30px;
+    width: 80%;
+}
+.list {
+    color: #333;
+    list-style: none;
+    padding-left: 0px;
+    margin-top: 80px;
+    font-size: 120%;
+}
+
+.list> li {
+    padding: 10px 0px 10px 0px;
+}
+
+.main-content{
+    text-align: center;
+}
+
+.h1 {
+border-bottom: solid 3px black;
+/*線の種類（実線） 太さ 色*/
+}
+/*.contents-hibi_pic ul li .contents-hibi-inner{
+      border:1px solid  #17693c;
+      margin: 0 15px 0;
+      padding: 30px;
+        }*/
+
+
+.hibi_pic {
+    border: 2px solid ;
+    margin: 0 15px 0;
+   
+}
+
+
+
+
+@charset "utf-8";
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
