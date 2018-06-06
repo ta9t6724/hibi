@@ -44,127 +44,130 @@
           </div>
           <div class="row concept">
             <div class="col-md-12">
-              <h1 class="hibi now">の日々</h1>
-              <p>ネクシード卒業生の日々の一覧ページ</p>
-              <!-- <p class="hibi subconcept">大切な「日々」の思い出をカタチにできるサービスです。</p> -->
+              <h1 class="hibi now">NexSeedの日々をのぞいてみよう</h1>
             </div>
           </div>
           <div class="row">
             <!-- <div class="col-md-offset-1 col-md-10"> -->
-              <div class="col-md-1"></div>
               <div class="col-md-10 ">
               <div class="row">
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-1"></div>
             <div class="col-md-10 today_hibi">
               </h5>
               <div class="row">
-                <div class="col-xs-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+              <div class="col-md-3" >
+                  <img src="assets/img/LRG_DSC05296.jpg"  style="border: solid 3px;margin: 10px;width: 100%;">
                   <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
-                <div class="col-xs-3">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+                <div class="col-md-3">
+                  <li class="post-load-index">
+              <div class="contents-list-inner">
+                
+                <div class="text contents-list-text">
+                  <p class="text-ellipsis multiline">
+                  </p>
+                </div>
+              </div>
+            </li>
+                  <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic" style="border: solid 3px;margin: 10px;width: 100%>
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
                   <p>emily888</p>
                   <p>今日のナイトマーケット</p>
                 </div>
-                <div class="row">
-                <div class="col-xs-3">
+                <!-- <div class="row"> -->
+                <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>amibanana1</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
-              </div>
-            </div>
-          </div>
+              </div>  <!-- rowの -->
           <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 topic_hibi">
-              <div class="row">
-                <div class="col-md-4">
-                  <img src="assets/img/LRG_DSC04965.jpg" class="hibi_pic">
-                  <P>yosimerge6</P>
-                  <p>今日の夕食はローカルフード</p>
-                </div>
-                <div class="col-md-4">
-                  <img src="assets/img/IMG_4622.jpg" class="hibi_pic">
-                  <p>risa27</p>
-                  <p>シュリンプ美味すぎ</p>
-                </div>
-                <div class="col-md-4">
-                  <img src="assets/img/lechon.jpg" class="hibi_pic">
-                  <p>takutaku7</p>
-                  <p>セブのレッチョン最高すぎる説</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 today_hibi">
-              </h5>
-              <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>amibanana1</p>
+                  <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>risachi55</p>
+                  <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>taichin6</p>
+                  <p>emily888</p>
                   <p>今日のナイトマーケット</p>
+                </div>
+                <!-- <div class="row"> -->
+                <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+                  <p>amibanana1</p>
+                  <p>俺のHTML最高っしょ</p>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 topic_hibi">
-              <div class="row">
-                <div class="col-md-4">
-                  <img src="assets/img/LRG_DSC04965.jpg" class="hibi_pic">
-                  <p>zakky9</p>
-                  <p>今日の夕食はローカルフード</p>
-                </div>
-                <div class="col-md-4">
-                  <img src="assets/img/IMG_4622.jpg" class="hibi_pic">
-                  <p>koni6</p>
-                  <p>シュリンプ美味すぎ</p>
-                </div>
-                <div class="col-md-4">
-                  <img src="assets/img/lechon.jpg" class="hibi_pic">
-                  <p>masumihole6</p>
-                  <p>セブのレッチョン最高すぎる説</p>
-                </div>
-               </div>
             </div>
-          </div>
-
-           <div aria-label="Page navigation">
-          <ul class="pager">
+            <div class="row">
+                <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+                  <p>toshiki123</p>
+                  <p>俺のHTML最高っしょ</p>
+                </div>
+                <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+                  <p>kodai333</p>
+                  <p>朝のパンって美味しいな〜</p>
+                </div>
+               <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+                  <p>emily888</p>
+                  <p>今日のナイトマーケット</p>
+                </div>
+                <!-- <div class="row"> -->
+                <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+                  <p>amibanana1</p>
+                  <p>俺のHTML最高っしょ</p>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+                  <p>toshiki123</p>
+                  <p>俺のHTML最高っしょ</p>
+                 </div>
+                 <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+                  <p>kodai333</p>
+                  <p>朝のパンって美味しいな〜</p>
+                 </div>
+                <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+                  <p>emily888</p>
+                  <p>今日のナイトマーケット</p>
+                 </div>
+                <!-- <div class="row"> -->
+                 <div class="col-md-3" id="imgbox">
+                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+                  <p>amibanana1</p>
+                  <p>俺のHTML最高っしょ</p>
+                 </div>
+                </div>
+                <div aria-label="Page navigation">
+               <ul class="pager">
 
       
-            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Newer</a></li>
+            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前の日々</a></li>
           
 
-
-            
-            <li class="next disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="next disabled"><a href="#"><span aria-hidden="true">&rarr;</span>次の日々</a></li>
           
           </ul>
         </div>

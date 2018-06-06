@@ -44,9 +44,7 @@
           </div>
           <div class="row concept">
             <div class="col-md-12">
-              <h1 class="hibi now">過去の日々</h1>
-              <p>ネクシード卒業生の日々の一覧ページ</p>
-              <!-- <p class="hibi subconcept">大切な「日々」の思い出をカタチにできるサービスです。</p> -->
+              <h1 class="hibi now">卒業生の日々をのぞいてみよう</h1>
             </div>
           </div>
           <div class="row">
@@ -62,8 +60,7 @@
               <div class="row">
               <div class="col-md-3" >
                   <img src="assets/img/LRG_DSC05296.jpg"  style="border: solid 3px;margin: 10px;width: 100%;">
-                  <p>toshiki123</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>杉山としき</p>
                 </div>
                 <div class="col-md-3">
                   <li class="post-load-index">
@@ -76,42 +73,35 @@
               </div>
             </li>
                   <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic" style="border: solid 3px;margin: 10px;width: 100%>
-                  <p>kodai333</p>
-                  <p>朝のパンって美味しいな〜</p>
+                  <p>西瓜こーだい</p>
                 </div>
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>emily888</p>
-                  <p>今日のナイトマーケット</p>
+                  <p>青柳エミリー</p>
                 </div>
                 <!-- <div class="row"> -->
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>amibanana1</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>赤坂あみ</p>
                 </div>
               </div>  <!-- rowの -->
-          <div class="row">
+            <div class="row">
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>toshiki123</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>天野たいち</p>
                 </div>
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>kodai333</p>
-                  <p>朝のパンって美味しいな〜</p>
+                  <p>井出よしたか</p>
                 </div>
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>emily888</p>
-                  <p>今日のナイトマーケット</p>
+                  <p>カルディーノ・リサ</p>
                 </div>
                 <!-- <div class="row"> -->
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>amibanana1</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>タデラ・タクト</p>
                 </div>
               </div>
             </div>
@@ -119,57 +109,49 @@
             <div class="row">
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>toshiki123</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>天野リサち</p>
                 </div>
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>kodai333</p>
-                  <p>朝のパンって美味しいな〜</p>
+                  <p>石田スミレ</p>
                 </div>
                <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>emily888</p>
-                  <p>今日のナイトマーケット</p>
+                  <p>池田池ちゃん</p>
                 </div>
                 <!-- <div class="row"> -->
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>amibanana1</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>山田仁</p>
                 </div>
                 </div>
                 <div class="row">
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>toshiki123</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>前山あんこ</p>
                  </div>
                  <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>kodai333</p>
-                  <p>朝のパンって美味しいな〜</p>
+                  <p>神田さやか</p>
                  </div>
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>emily888</p>
-                  <p>今日のナイトマーケット</p>
+                  <p>松田聖子</p>
                  </div>
                 <!-- <div class="row"> -->
                  <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>amibanana1</p>
-                  <p>俺のHTML最高っしょ</p>
+                  <p>石田壱成</p>
                  </div>
                 </div>
                 <div aria-label="Page navigation">
                <ul class="pager">
 
       
-            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Newer</a></li>
+            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 前の日々</a></li>
           
 
-            <li class="next disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
+            <li class="next disabled"><a href="#"><span aria-hidden="true">&rarr;</span>次の日々</a></li>
           
           </ul>
         </div>
