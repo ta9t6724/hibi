@@ -58,7 +58,7 @@
           <?php echo $feed["created"]; ?><br>
           <textarea name="feed" class="form-control"><?php echo $feed["feed"]; ?></textarea>
           <input type="submit" value="更新" class="btn btn-warning btn-xs">
-          <input type="submit" value="削除" class="btn btn btn-xs">
+          <input type="submit" value="削除" class="btn btn-warning btn-xs">
         </form>
       </div>
 

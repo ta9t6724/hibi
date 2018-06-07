@@ -34,7 +34,7 @@
 
         <div class="col-md-10 main-content">
           <div class="row">
-            <h1 class="h1">卒業生の日々をのぞいてみよう</h1>
+            <h1 class="center-block">卒業生の日々をのぞいてみよう</h1>
           </div>
           <div class="row">
             <div class="col-md-3">
@@ -90,42 +90,7 @@
                   <p>山田仁</p>
                 </div>
           </div>
-          <div class="row">
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>天野リサち</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>石田スミレ</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>池田池ちゃん</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>山田仁</p>
-                </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>天野リサち</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>石田スミレ</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>池田池ちゃん</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>山田仁</p>
-                </div>
-          </div>
+          
 
           <div aria-label="Page navigation">
             <ul class="pager">
