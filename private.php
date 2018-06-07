@@ -126,7 +126,7 @@
     
 
 
-    <title>Hello, world!</title>
+    <title>日々</title>
   </head>
   <body>
 <!--     <?php 
@@ -212,7 +212,7 @@
                 <!-- </textarea> -->
                   <div class="btn btn-group btn-group-toggle week_topic" data-toggle="buttons" style="margin-bottom: 20px;">
                       <label class="btn btn-secondary active">
-                            <input type="radio" name="category" id="category1" autocomplete="off" value="1"> 食
+                            <input type="radio" name="category" id="category1" autocomplete="off" value="1" checked> 食
                       </label>
                       <label class="btn btn-secondary">
                             <input type="radio" name="category" id="category2" autocomplete="off" value="2"> 道

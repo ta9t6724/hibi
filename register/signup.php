@@ -104,8 +104,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
-        <h2 class="text-center content_header">日々<br><br>
-        サインアップ</h2>
+        <img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;">
+        <h2 class="text-center content_header">サインアップ</h2>
         <form method="POST" action="signup.php" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name">名前</label><br>
@@ -154,7 +154,7 @@
             <?php } ?>
           </div>
           <input type="submit" class="btn btn-default" value="確認">
-          <a href="signin.php" class="btn2">サインイン</a>
+          <a href="signin.php" class="btn btn-secondary" style="float:right;">すでに登録済みの方はこちら</a>
         </form>
       </div>
     </div>
