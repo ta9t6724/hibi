@@ -62,7 +62,7 @@
         <img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;">
         <h2 class="text-center content_header">サインイン</h2>
 
-        <form method="POST" action="../private.php" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data">
 
           <div class="form-group">
             <label for="account_name">アカウント名</label><br>
