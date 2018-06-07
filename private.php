@@ -92,7 +92,7 @@
       }
     }
 
-    $sql = 'SELECT * FROM `poems` WHERE `user_id`=?';
+    $sql = 'SELECT * FROM `poems` WHERE `user_id`=? ORDER BY `id` DESC';
     $data = array($signin_user['id']);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -122,7 +122,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="private.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css">
     
 
 
@@ -245,7 +245,7 @@
               <div class="row">
                 <div class="col-md-9"></div>
                 <div class="col-md-3">
-                <a href="#"><p class="hibi_delate">過去の投稿を削除する→</p></a>
+                <a href="edit.php"><p class="hibi_delate">過去の投稿を削除する→</p></a>
                 </div>
               </div>
             </div>
@@ -292,8 +292,7 @@
              </form>
             </div>
             <div class="col-md-1"></div>
-          </div>
-
+           </div>
           <!-- <div class="row"> -->
           <?php foreach($poems as $poem){ ?>
             <div class="row">
