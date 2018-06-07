@@ -33,7 +33,7 @@
             date_default_timezone_set('Asia/Manila');
             $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
             $submit_file_name = $date_str . $file_name['name'];
-            move_uploaded_file($_FILES['input_image']['tmp_name'], 'img/' . $submit_file_name);
+            move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
         }
         $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`= 0, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
         $data = array($signin_user['id'], $comment, $submit_file_name, $category);
@@ -60,7 +60,7 @@
             date_default_timezone_set('Asia/Manila');
             $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
             $submit_file_name = $date_str . $file_name['name'];
-            move_uploaded_file($_FILES['input_image']['tmp_name'], 'img/' . $submit_file_name);
+            move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
         }
         $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`=?, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
         $data = array($signin_user['id'], $topic, $comment, $submit_file_name, $category);
@@ -92,7 +92,7 @@
       }
     }
 
-    $sql = 'SELECT * FROM `poems` WHERE `user_id`=?';
+    $sql = 'SELECT * FROM `poems` WHERE `user_id`=? ORDER BY `id` DESC';
     $data = array($signin_user['id']);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -122,7 +122,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="private.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css">
     
 
 
@@ -140,13 +140,13 @@
       <div class="row">
         <div class="col-md-2 sidebar1">
           <div class="logo">
-            <img src="img/hibi3.png" class="hibilogo" alt="Logo">
+            <img src="assets/img/hibi3.png" class="hibilogo" alt="Logo">
           </div>
             <br>
           <div class="left-navigation">
             <ul class="list">
                 <a href="viwe.php"><li>はじめに</li></a>
-                <a href="signin.php"><li>サインイン</li></a>
+                <a href="register/signin.php"><li>サインイン</li></a>
                 <a href="cur_student.php"><li>ネクシード生の日々</li></a>
                 <a href="alumnus.php"><li>卒業生の日々</li></a>
                 <a href="theme.php"><li>今週のお題</li></a>
@@ -200,7 +200,7 @@
               <form method="POST" action="" enctype="multipart/form-data">
                <div class="uploadButton">
                  <p>ファイルを選択</p>
-                  <input type="file" name="input_image" accept="img/*" onchange="uv.style.display='inline-block'; uv.value = this.value;" />
+                  <input type="file" name="input_image" accept="assets/img/*" onchange="uv.style.display='inline-block'; uv.value = this.value;" />
                   <input type="text" id="uv" class="uploadValue" disabled />
                </div>
                  </div>
@@ -212,24 +212,24 @@
                 <!-- </textarea> -->
                   <div class="btn btn-group btn-group-toggle week_topic" data-toggle="buttons" style="margin-bottom: 20px;">
                       <label class="btn btn-secondary active">
-                            <input type="radio" name="category" id="category1" autocomplete="off" value="0" checked> 食
+                            <input type="radio" name="category" id="category1" autocomplete="off" value="1"> 食
                       </label>
                       <label class="btn btn-secondary">
-                            <input type="radio" name="category" id="category2" autocomplete="off" value="1"> 道
+                            <input type="radio" name="category" id="category2" autocomplete="off" value="2"> 道
                       </label>
                       <label class="btn btn-secondary">
-                            <input type="radio" name="category" id="category3" autocomplete="off" value=="2"> 人
+                            <input type="radio" name="category" id="category3" autocomplete="off" value=="3"> 人
                       </label>
                       <label class="btn btn-secondary">
-                            <input type="radio" name="category" id="category4" autocomplete="off" value="3"> お題
+                            <input type="radio" name="category" id="category4" autocomplete="off" value="4"> お題
                       </label>
                   </div>
                   <div class="week_topic">
-                      <input type="radio" name="topic" value="0"> バナナ 
-                      <input type="radio" name="topic" value="1"> 昼飯 
-                      <input type="radio" name="topic" value="2"> ネクシード生 
-                      <input type="radio" name="topic" value="3"> 鼻毛 
-                      <input type="radio" name="topic" value="4"> 朝飯 
+                      <input type="radio" name="topic" value="1"> バナナ 
+                      <input type="radio" name="topic" value="2"> 昼飯 
+                      <input type="radio" name="topic" value="3"> ネクシード生 
+                      <input type="radio" name="topic" value="4"> 鼻毛 
+                      <input type="radio" name="topic" value="5"> 朝飯 
                   </div>
                 </div>
               </div>
@@ -245,7 +245,7 @@
               <div class="row">
                 <div class="col-md-9"></div>
                 <div class="col-md-3">
-                <a href="#"><p class="hibi_delate">過去の投稿を削除する→</p></a>
+                <a href="edit.php"><p class="hibi_delate">過去の投稿を削除する→</p></a>
                 </div>
               </div>
             </div>
@@ -292,8 +292,7 @@
              </form>
             </div>
             <div class="col-md-1"></div>
-          </div>
-
+           </div>
           <!-- <div class="row"> -->
           <?php foreach($poems as $poem){ ?>
             <div class="row">
