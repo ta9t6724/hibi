@@ -31,7 +31,7 @@
               <li><a href="cur_student.php" >ネクシード生の日々</a></li>
               <li><a href="alumnus" >卒業生の日々</a></li>
               <li><a href="view.php" >今週のお題</a></li>
-              <li><a href="my_page.php" >マイページ</a></li>
+              <li><a href="private.php" >マイページ</a></li>
             </ul>
           </div>
         </div>
@@ -58,6 +58,7 @@
           <?php echo $feed["created"]; ?><br>
           <textarea name="feed" class="form-control"><?php echo $feed["feed"]; ?></textarea>
           <input type="submit" value="更新" class="btn btn-warning btn-xs">
+          <input type="submit" value="削除" class="btn btn btn-xs">
         </form>
       </div>
 

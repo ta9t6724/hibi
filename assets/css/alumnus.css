@@ -43,7 +43,9 @@ border-bottom: solid 3px black;
 
 .hibi_pic {
     border: 2px solid ;
-    margin: 0 15px 0;
+     margin: 25px;
+    width: 250px;
+    height: 250px; 
    
 }
 
