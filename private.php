@@ -4,16 +4,18 @@
 
     // サインインしているユーザーの情報を取得
     require('dbconnect.php');
-    $sql = 'SELECT * FROM `users` WHERE `id`=?';
-    $data = array($_SESSION['id']);
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute($data);
-    $signin_user = $stmt->fetch(PDO::FETCH_ASSOC);
+    require('function.php');
+
+    check_signin($_SESSION['id']);
+
+    $signin_user = get_signin_user($dbh, $_SESSION['id']);
+
 
     $photo = '';
     $comment = '';
     $category = '';
     $errors = array();
+
 
      // 「投稿する」ボタンが押された時のみ処理するif文
      // fileを選択するときは$_FILES
@@ -71,7 +73,8 @@
         // unset()文は指定した変数もしくは配列を破棄することができる
         header('Location: private.php');
         exit();
-    }else{
+    }else if(isset($_POST['input_comment']) && $_POST['input_comment'] == ''){
+      // $_POST['input_poem'] = '';
       $errors['failed'] = 'failed';
     }
 
@@ -87,9 +90,10 @@
 
         header('Location: private.php');
 
-      }else{
-        $errors['feed'] = 'blank';
       }
+    }else if(isset($_POST['input_poem']) && $_POST['input_poem'] == ''){
+        // $_POST['input_comment'] = '';
+        $errors['feed'] = 'blank';
     }
 
     $sql = 'SELECT * FROM `poems` WHERE `user_id`=? ORDER BY `id` DESC';
@@ -151,6 +155,7 @@
                 <a href="alumnus.php"><li>卒業生の日々</li></a>
                 <a href="theme.php"><li>今週のお題</li></a>
                 <a href="private.php"><li>マイページ</li></a>
+
                 <!-- <li>マイページ</li> -->
             </ul>
           </div>
@@ -169,12 +174,19 @@
             </div>
             
           </div>
-          <div class="row">
-            <div class="col-md-12">
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
               <a href="#" class="cross_line">
-              マイページへ
+              マイページ
               </a>
             </div>
+            <div class="col-md-5">
+              <a href="signout.php" class="cross_line">
+              サインアウト
+              </a>
+            </div>
+            <div class="col-md-1"></div>
           </div>
           <div class="row">
             <div class="col-md-1"></div>
@@ -211,20 +223,20 @@
                 <!-- <textarea class="box1 hibi_text_upload" rows="2" placeholder="ここにテキストを入力してね" style="font-size: 15px;" > -->
                 <!-- </textarea> -->
                   <div class="btn btn-group btn-group-toggle week_topic" data-toggle="buttons" style="margin-bottom: 20px;">
-                      <label class="btn btn-secondary active">
+                      <label class="btn btn-secondary active topic_hide">
                             <input type="radio" name="category" id="category1" autocomplete="off" value="1" checked> 食
                       </label>
-                      <label class="btn btn-secondary">
+                      <label class="btn btn-secondary topic_hide">
                             <input type="radio" name="category" id="category2" autocomplete="off" value="2"> 道
                       </label>
-                      <label class="btn btn-secondary">
+                      <label class="btn btn-secondary topic_hide">
                             <input type="radio" name="category" id="category3" autocomplete="off" value=="3"> 人
                       </label>
-                      <label class="btn btn-secondary">
+                      <label class="btn btn-secondary topic_show">
                             <input type="radio" name="category" id="category4" autocomplete="off" value="4"> お題
                       </label>
                   </div>
-                  <div class="week_topic">
+                  <div class="week_topic" id='topic'>
                       <input type="radio" name="topic" value="1"> バナナ 
                       <input type="radio" name="topic" value="2"> 昼飯 
                       <input type="radio" name="topic" value="3"> ネクシード生 
@@ -284,7 +296,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <input type="submit" class="square_btn" value="投稿する">
-                  <?php if ($errors['feed'] == 'blank') { ?>
+                  <?php if (isset($errors['feed']) && $errors['feed'] == 'blank') { ?>
                     <p class="text-danger">文字を入力してください</p>
                   <?php } ?>
                 </div>
@@ -323,5 +335,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="assets/js/common.js"></script>
   </body>
 </html>

@@ -15,7 +15,7 @@
     
 
 
-    <title>Hello, world!</title>
+    <title>日々</title>
   </head>
   <body>
     <div class="container-fluid">
@@ -32,7 +32,7 @@
               <li><a href="cur_student.php">ネクシード生の日々</a></li>
               <li><a href="alumnus.php" >卒業生の日々</a></li>
               <li><a href="theme.php" >今週のお題</a></li>
-              <li><a href="my_page.php" >マイページ</a></li>
+              <li><a href="private.php" >マイページ</a></li>
             </ul>
           </div>
         </div>
