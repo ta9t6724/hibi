@@ -6,11 +6,13 @@
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
+    $cur_pic = array();
     while (true) {
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($rec == false) {
             break;
         }
+      $cur_pic[] = $rec;
     }
 
     // ページネーション処理
@@ -50,6 +52,10 @@
     // データを取得する開始番号を計算
     $start = ($page -1)*$page_row_number;
     // ページネーション処理終了
+
+    echo "<pre>";
+    var_dump($cur_pic);
+    echo "</pre>";
 ?>
 
 <!doctype html>
