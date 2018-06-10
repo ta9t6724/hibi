@@ -10,7 +10,7 @@
  
  
     // signin.phpへ移動
-    header("Location: signin.php");
+    header("Location: register/signin.php");
     exit();
  
 ?>
