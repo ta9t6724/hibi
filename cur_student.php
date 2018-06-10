@@ -1,3 +1,57 @@
+<?php  
+    
+    require("dbconnect.php");
+
+    $sql = "SELECT `f`.`picture`,`f`.`created`,`u`.`account_name` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id`=`u`.`id` WHERE 1  ORDER BY `f`.`created` DESC LIMIT 1";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+
+    while (true) {
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($rec == false) {
+            break;
+        }
+    }
+
+    // ページネーション処理
+    $page = ''; //ページ番号が入る変数
+    $page_row_number = 16; //1ページあたりに表示するデータの数
+
+    if (isset($_GET['page'])){
+      $page = $_GET['page'];
+    }else{
+      //get送信されてるページ数がない場合、1ページめとみなす
+      $page = 1;
+    }
+
+    if ($page < 0) {
+        $page = 1;
+    }
+
+    // max:カンマ区切りで羅列された数字の中から最大の数を返す
+    $page = max($page,1);
+
+    // データの件数から、最大ページ数を計算する
+    $sql_count = "SELECT COUNT(*) AS `cnt` FROM `feeds`";
+
+    //SQL実行
+    $stmt_count = $dbh->prepare($sql_count);
+    $stmt_count->execute();
+    $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
+    //ページ数計算
+    // ceil 小数点の切り上げができる関数 2.1 -> 3に変換できる
+    $all_page_number = ceil($record_cnt['cnt'] / $page_row_number);
+    
+
+    // min:カンマ区切りの数字の中から最小の数値を取得する関数
+    $page = min($page,$all_page_number);
+
+    // データを取得する開始番号を計算
+    $start = ($page -1)*$page_row_number;
+    // ページネーション処理終了
+?>
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -28,7 +82,7 @@
              <ul class="list">
               <li><a href="view.php" >はじめに</a></li>
               <li><a href="signin.php" >サインイン</a></li>
-              <li><a href="cur_student.php">ネクシード生の日々</a></li>
+              <li><a href="private.php">ネクシード生の日々</a></li>
               <li><a href="alumnus.php" >卒業生の日々</a></li>
               <li><a href="theme.php" >今週のお題</a></li>
               <li><a href="my_page.php" >マイページ</a></li>
@@ -163,6 +217,7 @@
                 </div>
                 <div aria-label="Page navigation">
                <ul class="pager">
+
 
       
             <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前の日々</a></li>
