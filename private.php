@@ -2,15 +2,16 @@
 
     session_start();
 
-    // サインインしているユーザーの情報を取得
     require('dbconnect.php');
     require('function.php');
 
+    // ログインチェック
     check_signin($_SESSION['id']);
 
+    // サインインしているユーザーの情報を取得
     $signin_user = get_signin_user($dbh, $_SESSION['id']);
 
-
+    // 日々のINSERT処理
     $photo = '';
     $comment = '';
     $category = '';
@@ -23,7 +24,7 @@
         $photo = $_FILES['input_image'];
         $comment = $_POST['input_comment'];
         $category = $_POST['category'];
-        $topic = $_POST['topic'];
+        // $topic = $_POST['topic'];
 
         $file_name = ''; // ①
         if (!isset($_REQUEST['action'])) { // ②
@@ -46,38 +47,41 @@
         // unset()文は指定した変数もしくは配列を破棄することができる
         header('Location: private.php');
         exit();
-    }else if (!empty($_POST['input_comment']) && !empty($_FILES['input_image']) && !empty($_POST['topic']) && ($_POST['category'] == 3)) {
-        $photo = $_FILES['input_image'];
-        $comment = $_POST['input_comment'];
-        $category = $_POST['category'];
-        $topic = $_POST['topic'];
+      }
+    // else if (!empty($_POST['input_comment']) && !empty($_FILES['input_image']) && !empty($_POST['topic']) && ($_POST['category'] == 3)) {
+    //     $photo = $_FILES['input_image'];
+    //     $comment = $_POST['input_comment'];
+    //     $category = $_POST['category'];
+    //     $topic = $_POST['topic'];
 
-        $file_name = ''; // ①
-        if (!isset($_REQUEST['action'])) { // ②
-        $file_name = $_FILES['input_image'];
-        }
-        // エラーがなかった時の処理
-        if (empty($errors)) {
+    //     $file_name = ''; // ①
+    //     if (!isset($_REQUEST['action'])) { // ②
+    //     $file_name = $_FILES['input_image'];
+    //     }
+    //     // エラーがなかった時の処理
+    //     if (empty($errors)) {
 
-            date_default_timezone_set('Asia/Manila');
-            $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
-            $submit_file_name = $date_str . $file_name['name'];
-            move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
-        }
-        $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`=?, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
-        $data = array($signin_user['id'], $topic, $comment, $submit_file_name, $category);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
+    //         date_default_timezone_set('Asia/Manila');
+    //         $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
+    //         $submit_file_name = $date_str . $file_name['name'];
+    //         move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
+    //     }
+    //     $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`=?, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
+    //     $data = array($signin_user['id'], $topic, $comment, $submit_file_name, $category);
+    //     $stmt = $dbh->prepare($sql);
+    //     $stmt->execute($data);
 
-        // unset()で入れるの中身を削除する
-        // unset()文は指定した変数もしくは配列を破棄することができる
-        header('Location: private.php');
-        exit();
-    }else if(isset($_POST['input_comment']) && $_POST['input_comment'] == ''){
+    //     // unset()で入れるの中身を削除する
+    //     // unset()文は指定した変数もしくは配列を破棄することができる
+    //     header('Location: private.php');
+    //     exit();
+    else if(isset($_POST['input_comment']) && $_POST['input_comment'] == ''){
       // $_POST['input_poem'] = '';
       $errors['failed'] = 'failed';
     }
+    // 日々のINSERT処理終了
 
+    // poemのINSERT処理
     if (!empty($_POST['input_poem'])) {
 
       $poem = $_POST['input_poem'];
@@ -95,8 +99,11 @@
         // $_POST['input_comment'] = '';
         $errors['feed'] = 'blank';
     }
+    // poemのINSERT処理終了
 
-        $page = ''; //ページ番号が入る変数
+
+    // ページネーション
+    $page = ''; //ページ番号が入る変数
     $page_row_number = 5; //1ページあたりに表示するデータの数
 
     if (isset($_GET['page'])){
@@ -117,14 +124,6 @@
     $feed_cnt = $count_stmt->fetch(PDO::FETCH_ASSOC);
     // ceil: 切り上げ
     $max_page = ceil($feed_cnt['cnt'] / $page_row_number);
-    // $record["feed_cnt"] = $feed_cnt["cnt"];
-    // if($record['feed_cnt'] % 5 == 0){
-    //  $max_page = $record['feed_cnt']/5;
-    // }else{
-    //  $page_result = $record['feed_cnt']/5;
-    // floor: 切り捨て
-    //  $max_page = floor($page_result) + 1;
-    // }
 
     // 第一引数と第二引数を比較し、第二引数の方が小さければ、第二引数の値を返す
     $page = min($page, $max_page);
@@ -132,6 +131,7 @@
     // データを取得する開始番号を計算
     $start = ($page -1)*$page_row_number;
 
+    // poemのSELECT処理
     $sql = "SELECT * FROM `poems` WHERE `user_id`=? ORDER BY `id` DESC LIMIT $start, $page_row_number";
     $data = array($signin_user['id']);
     $stmt = $dbh->prepare($sql);
@@ -139,15 +139,60 @@
 
     // 表示用の配列を初期化
     $poems = array();
-    // $arr = array();
 
+    // poemのfetch処理
     while (true) {
-        $record = $stmt->fetch(PDO::FETCH_ASSOC); //  ここより上でfetchしてない？
+        $record = $stmt->fetch(PDO::FETCH_ASSOC); 
         if ($record == false) {
             break;
         }
         $poems[] = $record;
     }
+    // poemのfetch処理終了
+
+    // お題の取得処理
+    // 今日の日付の取得
+    $day = date('j');
+    // str型からint型へ変換
+    $today = intval($day);
+    // それぞれのお題の取得
+    if (1 <= $today && $today <= 7) {
+      $sql = 'SELECT * FROM `themes` WHERE `id`= 1';
+      $data = array();
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute($data);
+
+      $theme = $stmt->fetch(PDO::FETCH_ASSOC);
+    }elseif (8 <= $today && $today <= 14) {
+      $sql = 'SELECT * FROM `themes` WHERE `id`= 2';
+      $data = array();
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute($data);
+
+      $theme = $stmt->fetch(PDO::FETCH_ASSOC);
+    }elseif (15 <= $today && $today <= 21) {
+      $sql = 'SELECT * FROM `themes` WHERE `id`= 3';
+      $data = array();
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute($data);
+
+      $theme = $stmt->fetch(PDO::FETCH_ASSOC);
+    }elseif (22 <= $today && $today <= 28) {
+      $sql = 'SELECT * FROM `themes` WHERE `id`= 4';
+      $data = array();
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute($data);
+
+      $theme = $stmt->fetch(PDO::FETCH_ASSOC);
+    }elseif (29 <= $today && $today <= 31) {
+      $sql = 'SELECT * FROM `themes` WHERE `id`= 5';
+      $data = array();
+      $stmt = $dbh->prepare($sql);
+      $stmt->execute($data);
+
+      $theme = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    // お題の取得処理終了
 
 
  ?>
@@ -201,15 +246,12 @@
         <div class="col-md-10 main-content">
           <div class="row">
             <div class="col-md-1">
-              
             </div>
             <div class="col-md-10">
               <h1 class="hibi_titile">日々を投稿しよう！</h1>
             </div>
             <div class="col-md-1">
-              
             </div>
-            
           </div>
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-md-1"></div>
@@ -274,11 +316,12 @@
                       </label>
                   </div>
                   <div class="week_topic" id='topic'>
-                      <input type="radio" name="topic" value="1"> バナナ 
+                    <p style="font-weight:bold;">今週のテーマ：<?php echo $theme['title']; ?></p>
+<!--                       <input type="radio" name="topic" value="1"> バナナ 
                       <input type="radio" name="topic" value="2"> 昼飯 
                       <input type="radio" name="topic" value="3"> ネクシード生 
                       <input type="radio" name="topic" value="4"> 鼻毛 
-                      <input type="radio" name="topic" value="5"> 朝飯 
+                      <input type="radio" name="topic" value="5"> 朝飯 --> 
                   </div>
                 </div>
               </div>
