@@ -96,7 +96,43 @@
         $errors['feed'] = 'blank';
     }
 
-    $sql = 'SELECT * FROM `poems` WHERE `user_id`=? ORDER BY `id` DESC';
+        $page = ''; //ページ番号が入る変数
+    $page_row_number = 5; //1ページあたりに表示するデータの数
+
+    if (isset($_GET['page'])){
+      $page = $_GET['page'];
+    }else{
+      // GET送信されてるページ数がない場合、1ページ目とみなす
+      $page = 1;
+    }
+
+    // max: カンマ区切りで羅列された数字の中から最大の数を返す
+    // 第一引数に入っている値を見て、第二引数と比較。もし第二引数の方が大きければ第二引数の値を返す
+    $page = max($page, 1);
+
+    $count_sql = 'SELECT COUNT(*) AS `cnt` FROM `poems`';
+    $count_data = array();
+    $count_stmt = $dbh->prepare($count_sql);
+    $count_stmt->execute($count_data);
+    $feed_cnt = $count_stmt->fetch(PDO::FETCH_ASSOC);
+    // ceil: 切り上げ
+    $max_page = ceil($feed_cnt['cnt'] / $page_row_number);
+    // $record["feed_cnt"] = $feed_cnt["cnt"];
+    // if($record['feed_cnt'] % 5 == 0){
+    //  $max_page = $record['feed_cnt']/5;
+    // }else{
+    //  $page_result = $record['feed_cnt']/5;
+    // floor: 切り捨て
+    //  $max_page = floor($page_result) + 1;
+    // }
+
+    // 第一引数と第二引数を比較し、第二引数の方が小さければ、第二引数の値を返す
+    $page = min($page, $max_page);
+
+    // データを取得する開始番号を計算
+    $start = ($page -1)*$page_row_number;
+
+    $sql = "SELECT * FROM `poems` WHERE `user_id`=? ORDER BY `id` DESC LIMIT $start, $page_row_number";
     $data = array($signin_user['id']);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -126,8 +162,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/private.css">
-    
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+
 
 
     <title>日々</title>
@@ -326,6 +363,20 @@
             </div>
           <?php } ?>
           <!-- </div> -->
+          <div aria-label="Page navigation">
+           <ul class="pager">
+              <?php if ($page == 1){ ?>
+                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+             <?php }else{ ?>
+                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> Newer</a></li>
+             <?php } ?>
+              <?php if ($page == $max_page){ ?>
+                <li class="next disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
+              <?php }else{ ?>
+                <li class="next"><a href="private.php?page=<?php echo $page + 1; ?>">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+              <?php } ?>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
