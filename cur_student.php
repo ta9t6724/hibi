@@ -1,5 +1,6 @@
 <?php  
     
+    
     require("dbconnect.php");
 
     $sql = "SELECT `f`.`picture`,`f`.`created`,`u`.`account_name` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id`=`u`.`id` WHERE 1  ORDER BY `f`.`created` DESC LIMIT 1";
@@ -91,7 +92,7 @@
               <li><a href="private.php">ネクシード生の日々</a></li>
               <li><a href="alumnus.php" >卒業生の日々</a></li>
               <li><a href="theme.php" >今週のお題</a></li>
-              <li><a href="private.php" >マイページ</a></li>
+              <li><a href="my_page.php" >マイページ</a></li>
             </ul>
           </div><!--left-navigation-->
         </div><!--sidebar1-->

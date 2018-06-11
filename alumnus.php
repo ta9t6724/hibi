@@ -37,11 +37,19 @@
           </div>
         </div>
         <div class="col-md-2"></div>
-
         <div class="col-md-10 main-content">
           <div class="row">
-            <h1 class="center-block">卒業生の日々をのぞいてみよう</h1>
+            <div class="col-md-12 ">
+            </div>
           </div>
+
+        <div class="col-md-2"></div>
+         <div class="col-md-12 main-content">
+          <div class="row">
+          </div>
+          <h1 class="h1" align="center" align="center">NexSeed卒業生の日々をのぞいてみよう</h1><br><br>
+
+        
           <div class="row">
             <div class="col-md-3">
               <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">

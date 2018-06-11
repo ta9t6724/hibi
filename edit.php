@@ -54,10 +54,6 @@
         <div class="col-xs-4 col-xs-offset-4">
         <form class="form-group" method="post">
           <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" width="60">
-          <?php echo $feed["name"]; ?><br>
-          <?php echo $feed["created"]; ?><br>
-          <textarea name="feed" class="form-control" cols="40" rows="8"><?php echo $feed["feed"]; ?></textarea>
-          <input type="submit" value="更新" class="btn btn-warning btn-lg">
           <input type="submit" value="削除" class="btn btn-warning btn-lg">
         </form>
       </div>
