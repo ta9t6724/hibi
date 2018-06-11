@@ -39,29 +39,63 @@
         <div class="col-md-10 main-content">
           <div class="row">
             <div class="col-md-12 ">
-
             </div>
           </div>
+
           <div class="row concept">
             <div class="col-md-12">
-              <h1 class="h1">編集</h1>
+              <h1 class="h1">編集画面</h1>
             </div>
           </div>
           
-        <div class="container">
-        <div class="row">
-      <!-- ここにコンテンツ -->
-        <div class="col-xs-4 col-xs-offset-4">
-        <form class="form-group" method="post">
-          <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" width="60">
-          <?php echo $feed["name"]; ?><br>
-          <?php echo $feed["created"]; ?><br>
-          <textarea name="feed" class="form-control" cols="40" rows="8"><?php echo $feed["feed"]; ?></textarea>
-          <input type="submit" value="更新" class="btn btn-warning btn-lg">
-          <input type="submit" value="削除" class="btn btn-warning btn-lg">
-        </form>
-      </div>
 
+          <div class="row">
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            </div>
+
+             <div class="row">
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="btn btn-warning btn-lg">
+            </div>
+
+            </div>
+        
+        
     </div>
 
   </div>
