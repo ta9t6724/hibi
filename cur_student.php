@@ -2,18 +2,20 @@
     
     require("dbconnect.php");
 
-    $sql = "SELECT `f`.`picture`,`f`.`created`,`u`.`account_name` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id`=`u`.`id` WHERE 1  ORDER BY `f`.`created` DESC LIMIT 1";
+    $sql = "SELECT `u`.`account_name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` > CURRENT_DATE()";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
-    $cur_pic = array();
     while (true) {
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($rec == false) {
             break;
         }
-      $cur_pic[] = $rec;
+      $cur_students[] = $rec;
     }
+    echo "<pre>";
+    var_dump($cur_students);
+    echo "</pre>";
 
     // ページネーション処理
     $page = ''; //ページ番号が入る変数
@@ -53,9 +55,6 @@
     $start = ($page -1)*$page_row_number;
     // ページネーション処理終了
 
-    echo "<pre>";
-    var_dump($cur_pic);
-    echo "</pre>";
 ?>
 
 <!doctype html>
@@ -115,14 +114,18 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-10 today_hibi">
+          <div class="row" >
+            <div class="col-md-10 today_hibi" >
               </h5>
-              <div class="row">
-              <div class="col-md-3" >
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>toshiki123</p>
-                  <p>俺のHTML最高っしょ</p>
+              <?php foreach ($cur_students as $cur_student) { ?>
+                  <div class="row">
+                    <div class="col-md-3" >
+                      <img src="assets/img/<?php echo $cur_student["picture"] ?>" class="hibi_pic" style="width: 250px; height: auto;">
+                      <p><?php echo $cur_student["account_name"]; ?></p>
+                    </div>
+                  </div>
+              <?php } ?>
+              
                 </div>
                 <div class="col-md-3">
                   <li class="post-load-index">
@@ -134,40 +137,40 @@
                 </div>
               </div>
             </li>
-                  <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic">
+                  <!-- <img src="assets/img/LRG_DSC05227.jpg" class="contents-hibi_pic">
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
-                </div>
-                <div class="col-md-3" id="imgbox">
+                </div> -->
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
                   <p>emily888</p>
                   <p>今日のナイトマーケット</p>
-                </div>
+                </div> -->
                 <!-- <div class="row"> -->
-                <div class="col-md-3" id="imgbox">
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>amibanana1</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
-              </div>  <!-- rowの -->
-          <div class="row">
-                <div class="col-md-3" id="imgbox">
+              </div>  <! rowの -->
+          <!-- <div class="row"> -->
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
-                </div>
-                <div class="col-md-3" id="imgbox">
+                </div> -->
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
-                </div>
-                <div class="col-md-3" id="imgbox">
+                </div> -->
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
                   <p>emily888</p>
                   <p>今日のナイトマーケット</p>
-                </div>
+                </div> -->
                 <!-- <div class="row"> -->
-                <div class="col-md-3" id="imgbox">
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>amibanana1</p>
                   <p>俺のHTML最高っしょ</p>
@@ -175,36 +178,36 @@
               </div>
             </div>
             </div>
-            <div class="row">
-                <div class="col-md-3" id="imgbox">
+            <div class="row"> -->
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
-                </div>
-                <div class="col-md-3" id="imgbox">
+                </div> -->
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
-                </div>
-               <div class="col-md-3" id="imgbox">
+                </div> -->
+               <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
                   <p>emily888</p>
                   <p>今日のナイトマーケット</p>
-                </div>
+                </div> -->
                 <!-- <div class="row"> -->
-                <div class="col-md-3" id="imgbox">
+                <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>amibanana1</p>
                   <p>俺のHTML最高っしょ</p>
                 </div>
-                </div>
-                <div class="row">
+                </div> -->
+                <!-- <div class="row">
                 <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>toshiki123</p>
                   <p>俺のHTML最高っしょ</p>
-                 </div>
-                 <div class="col-md-3" id="imgbox">
+                 </div> -->
+                 <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
                   <p>kodai333</p>
                   <p>朝のパンって美味しいな〜</p>
@@ -213,13 +216,13 @@
                   <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
                   <p>emily888</p>
                   <p>今日のナイトマーケット</p>
-                 </div>
+                 </div> -->
                 <!-- <div class="row"> -->
-                 <div class="col-md-3" id="imgbox">
+                 <!-- <div class="col-md-3" id="imgbox">
                   <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
                   <p>amibanana1</p>
                   <p>俺のHTML最高っしょ</p>
-                 </div>
+                 </div> -->
                 </div>
                 <div aria-label="Page navigation">
                <ul class="pager">
@@ -243,3 +246,4 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   </body>
 </html>
+
