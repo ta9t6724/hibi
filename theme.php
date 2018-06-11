@@ -1,3 +1,101 @@
+<?php 
+
+session_start();
+require('dbconnect.php');
+require('function.php');
+// ログインチェック
+check_signin($_SESSION['id']);
+// サインインしているユーザーの情報を取得
+$signin_user = get_signin_user($dbh, $_SESSION['id']);
+
+$sql = 'SELECT `f`.*,`t`.* FROM `themes` AS `t` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`theme_id`=`t`.`id` WHERE `t`.`id` = 1 ORDER BY `f`.`id` DESC';
+$data = array();
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+$themes_1 = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($rec == false) {
+        break;
+    }
+    $themes_1[] = $rec;
+}
+$sql = 'SELECT `f`.*,`t`.* FROM `themes` AS `t` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`theme_id`=`t`.`id` WHERE `t`.`id` = 2 ORDER BY `f`.`id` DESC';
+$data = array();
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+$themes_2 = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($rec == false) {
+        break;
+    }
+    $themes_2[] = $rec;
+}
+$sql = 'SELECT `f`.*,`t`.* FROM `themes` AS `t` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`theme_id`=`t`.`id` WHERE `t`.`id` = 3 ORDER BY `f`.`id` DESC';
+$data = array();
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+$themes_3 = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($rec == false) {
+        break;
+    }
+    $themes_3[] = $rec;
+}
+$sql = 'SELECT `f`.*,`t`.* FROM `themes` AS `t` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`theme_id`=`t`.`id` WHERE `t`.`id` = 4 ORDER BY `f`.`id` DESC';
+$data = array();
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+$themes_4 = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($rec == false) {
+        break;
+    }
+    $themes_4[] = $rec;
+}
+$sql = 'SELECT `f`.*,`t`.* FROM `themes` AS `t` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`theme_id`=`t`.`id` WHERE `t`.`id` = 5 ORDER BY `f`.`id` DESC';
+$data = array();
+$stmt = $dbh->prepare($sql);
+$stmt->execute($data);
+
+$themes_5 = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($rec == false) {
+        break;
+    }
+    $themes_5[] = $rec;
+}
+
+// echo "<pre>";
+// var_dump($themes_1);
+// echo "</pre>";
+
+// echo "<pre>";
+// var_dump($themes_2);
+// echo "</pre>";
+
+// echo "<pre>";
+// var_dump($themes_3);
+// echo "</pre>";
+
+// echo "<pre>";
+// var_dump($themes_4);
+// echo "</pre>";
+
+// echo "<pre>";
+// var_dump($themes_5);
+// echo "</pre>";
+
+ ?>
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -15,27 +113,12 @@
     
 
 
-    <title>Hello, world!</title>
+    <title>今週のお題</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 sidebar1">
-          <div class="logo">
-            <img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
-          </div>
-            <br>
-          <div class="left-navigation">
-             <ul class="list">
-              <li><a href="" >はじめに</a></li>
-              <li><a href="signin.php" >サインイン</a></li>
-              <li><a href="cur_student.php">ネクシード生の日々</a></li>
-              <li><a href="alumnus.php" >卒業生の日々</a></li>
-              <li><a href="theme.php" >今週のお題</a></li>
-              <li><a href="private.php" >マイページ</a></li>
-            </ul>
-          </div>
-        </div>
+       <?php include("navbar.html"); ?>
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
           <div class="row">
@@ -46,59 +129,52 @@
         <div class="col-md-10 main-content">
           <div class="row">
           </div>
-          <h1 class="h1" align="center" align="center">みんなのお題</h1>
-           
-           <h2 align="left" align="left">＃今日のバナナ</h2>
-          <div class="row">
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-            </div>
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-            </div>
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-            </div>
-            </div>
-     
-            <h2 h2 align="left" align="left">＃今日の朝食</h2>
-             <div class="row">
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-            </div>
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-            </div>
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-            </div>
-            </div>
-           
-            <h2 h2 align="left" align="left">＃今日の朝食</h2>
-             <div class="row">
-             <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-             </div>
-             <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-            </div>
-            <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-            </div>
-            </div>
+          <h1 class="hibi_title h1" align="center" align="center">みんなのお題</h1>
 
-            <h2 h2 align="left" align="left">＃今日の朝食</h2>
-             <div class="row">
-             <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-            </div>
+           <h2 align="left" align="left">＃<?php echo $themes_1[0]['title']?></h2>
+          <div class="row">
+          <?php foreach($themes_1 as $themes_1){ ?>
             <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+              <img src="assets/img/<?php echo $theme_1["picture"]; ?>" class="hibi_pic">
             </div>
+          <?php } ?>
+          </div>
+
+           <h2 align="left" align="left">＃<?php echo $themes_2[0]['title']?></h2>
+          <div class="row">
+          <?php foreach($themes_2 as $themes_2){ ?>
             <div class="col-md-4">
-              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+              <img src="assets/img/<?php echo $theme_2["picture"]; ?>" class="hibi_pic">
             </div>
+          <?php } ?>
+          </div>
+
+           <h2 align="left" align="left">＃<?php echo $themes_3[0]['title']?></h2>
+          <div class="row">
+          <?php foreach($themes_3 as $themes_3){ ?>
+            <div class="col-md-4">
+              <img src="assets/img/<?php echo $theme_3["picture"]; ?>" class="hibi_pic">
             </div>
+          <?php } ?>
+          </div>
+
+           <h2 align="left" align="left">＃<?php echo $themes_4[0]['title']?></h2>
+          <div class="row">
+          <?php foreach($themes_4 as $themes_4){ ?>
+            <div class="col-md-4">
+              <img src="assets/img/<?php echo $theme_4["picture"]; ?>" class="hibi_pic">
+            </div>
+          <?php } ?>
+          </div>
+           <h2 align="left" align="left">＃<?php echo $themes_5[0]['title']?></h2>
+          <div class="row">
+          <?php foreach($themes_5 as $themes_5){ ?>
+            <div class="col-md-4">
+              <img src="assets/img/<?php echo $theme_5["picture"]; ?>" class="hibi_pic">
+            </div>
+          <?php } ?>
+          </div>
+
 
           <div aria-label="Page navigation">
             <ul class="pager">
