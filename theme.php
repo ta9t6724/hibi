@@ -40,101 +40,73 @@
         <div class="col-md-10 main-content">
           <div class="row">
             <div class="col-md-12 ">
+            </div>
+          </div>
 
-            </div>
-          </div>
-          <div class="row concept">
-            <div class="col-md-12">
-            <h1 class="h1">みんなのお題</h1>
-            </div>
-          </div>
+        <div class="col-md-12 main-content">
           <div class="row">
-            <!-- <div class="col-md-offset-1 col-md-10"> -->
-              <div class="col-md-10 ">
-              <div class="row">
-              </div>
-            </div>
           </div>
+          <h1 class="h1" align="center" align="center">みんなのお題</h1><br><br>
+           
+           <h2 align="left" align="left">＃今日のバナナ</h2>
           <div class="row">
-            <div class="col-md-10 today_hibi">
-              <div class="row">
-              <div class="col-md-3" >
-                <h2>#今週のバナナ</h2>
-                
-                  <div class="row">
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                </div>
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                </div>
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                </div>
-                </div>
-              </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
             </div>
             </div>
+     
+            <h2 h2 align="left" align="left">＃今日の朝食</h2>
+             <div class="row">
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
             </div>
-
-                <div class="row">
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                </div>
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                </div>
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                </div>
-                </div>
-              </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
             </div>
             </div>
-            <div class="row">
-            <div class="col-md-10 today_hibi">
-              <div class="row">
-              <div class="col-md-3" >
-                <h1>#今週の朝食</h1>
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                </div>
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                </div>
-               <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                </div>
-                <div class="row">
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                </div>
-                <div class="row">
-                <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                 </div>
-                 <div class="col-md-4" id="imgbox">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                 </div>
-                </div>
+           
+            <h2 h2 align="left" align="left">＃今日の朝食</h2>
+             <div class="row">
+             <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+             </div>
+             <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+            </div>
+            </div>
 
-                <div aria-label="Page navigation">
-               <ul class="pager">
+            <h2 h2 align="left" align="left">＃今日の朝食</h2>
+             <div class="row">
+             <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            </div>
+            <div class="col-md-4">
+              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+            </div>
+            </div>
 
-      
-            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Newer</a></li>
-          
-
-            <li class="next disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
-          
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-          
-
-
+          <div aria-label="Page navigation">
+            <ul class="pager">
+              <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 前の日々</a></li>
+              <li class="next disabled"><a href="#"><span aria-hidden="true">&rarr;</span>次の日々</a></li>
+            </ul>
+          </div>
+        
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

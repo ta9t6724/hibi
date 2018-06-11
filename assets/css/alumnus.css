@@ -43,10 +43,49 @@ border-bottom: solid 3px black;
 
 .hibi_pic {
     border: 2px solid ;
-    margin: 0 15px 0;
+     margin: 25px;
+    width: 250px;
+    height: 250px; 
    
 }
 
+a.cp_btn {
+display: inline-block;
+position: relative;
+width: 160px;
+padding: 0.8em;
+text-align: center;
+border-top: 2px solid #FBC02D;
+border-bottom: 2px solid #FBC02D;
+text-decoration: none;
+font-weight: bold;
+color: #FBC02D;
+}
+a.cp_btn:before, a.cp_btn:after {
+content: '';
+position: absolute;
+top: -7px;
+width: 2px;
+height: calc(100% + 14px);
+background-color: #FBC02D;
+transition: .3s;
+}
+a.cp_btn:before {
+left: 7px;
+}
+a.cp_btn:after {
+right: 7px;
+}
+a.cp_btn:hover:before{
+top: 0px;
+left:0;
+height: 100%;
+}
+a.cp_btn:hover:after{
+top: 0px;
+right: 0;
+height: 100%;
+}
 
 
 
