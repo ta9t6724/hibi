@@ -11,31 +11,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
-    <title>Hello, world!</title>
+    <title>在校生の日々</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 sidebar1">
-          <div class="logo">
-            <img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
-          </div>
-            <br>
-          <div class="left-navigation">
-             <ul class="list">
-              <li><a href="" >はじめに</a></li>
-              <li><a href="cur_student.php" >ネクシード生の日々</a></li>
-              <li><a href="alumnus" >卒業生の日々</a></li>
-              <li><a href="view.php" >今週のお題</a></li>
-              <li><a href="private.php" >マイページ</a></li>
-            </ul>
-          </div>
-        </div>
+       <?php include("navbar.html"); ?>
         <div class="col-md-2"></div>
 
         <div class="col-md-10 main-content">
           <div class="row">
-            <h1 class="center-block">卒業生の日々をのぞいてみよう</h1>
+            <h1 class="center-block hibi_title" style="border-bottom: 1px solid black;">卒業生の日々をのぞいてみよう</h1>
           </div>
           <div class="row">
             <div class="col-md-3">

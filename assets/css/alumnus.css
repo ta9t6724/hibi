@@ -1,5 +1,10 @@
+body {
+font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+
 .sidebar1 {
-    background-color: #FFFFFC;
+    background-color: #fff;
     padding: 0px;
     min-height: 100%;
     text-align: center;
@@ -23,15 +28,22 @@
 }
 
 .list> li {
-    padding: 10px 0px 10px 0px;
+    padding: 5px 0px 5px 2px;
 }
 
 .main-content{
     text-align: center;
 }
 
+.hibi_titile{
+    margin: 40px 0;
+    border-bottom: 1px solid black;
+    padding-bottom: 30px;
+}
+
 .h1 {
-border-bottom: solid 3px black;
+  border-bottom: 1px solid black;
+
 /*線の種類（実線） 太さ 色*/
 }
 /*.contents-hibi_pic ul li .contents-hibi-inner{
