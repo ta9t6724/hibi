@@ -57,7 +57,6 @@
     var_dump($cur_pic);
     echo "</pre>";
 ?>
-
 <!doctype html>
 <html lang="ja">
   <head>
@@ -88,10 +87,10 @@
              <ul class="list">
               <li><a href="view.php" >はじめに</a></li>
               <li><a href="signin.php" >サインイン</a></li>
-              <li><a href="private.php">ネクシード生の日々</a></li>
+              <li><a href="cur_student.php">ネクシード生の日々</a></li>
               <li><a href="alumnus.php" >卒業生の日々</a></li>
               <li><a href="theme.php" >今週のお題</a></li>
-              <li><a href="my_page.php" >マイページ</a></li>
+              <li><a href="private.php" >マイページ</a></li>
             </ul>
           </div><!--left-navigation-->
         </div><!--sidebar1-->
@@ -223,7 +222,6 @@
                 </div>
                 <div aria-label="Page navigation">
                <ul class="pager">
-
 
       
             <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前の日々</a></li>

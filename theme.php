@@ -43,10 +43,10 @@
             </div>
           </div>
 
-        <div class="col-md-12 main-content">
+        <div class="col-md-10 main-content">
           <div class="row">
           </div>
-          <h1 class="h1" align="center" align="center">みんなのお題</h1><br><br>
+          <h1 class="h1" align="center" align="center">みんなのお題</h1>
            
            <h2 align="left" align="left">＃今日のバナナ</h2>
           <div class="row">
