@@ -1,6 +1,5 @@
 <?php  
     
-    
     require("dbconnect.php");
 
     $sql = "SELECT `f`.`picture`,`f`.`created`,`u`.`account_name` FROM `feeds` AS `f` LEFT JOIN `users` AS `u` ON `f`.`user_id`=`u`.`id` WHERE 1  ORDER BY `f`.`created` DESC LIMIT 1";
