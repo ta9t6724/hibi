@@ -61,7 +61,7 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
    
 }
 
-a.cp_btn {
+.cp_btn {
 display: inline-block;
 position: relative;
 width: 160px;
@@ -73,7 +73,7 @@ text-decoration: none;
 font-weight: bold;
 color: #FBC02D;
 }
-a.cp_btn:before, a.cp_btn:after {
+.cp_btn:before, .cp_btn:after {
 content: '';
 position: absolute;
 top: -7px;
@@ -82,22 +82,24 @@ height: calc(100% + 14px);
 background-color: #FBC02D;
 transition: .3s;
 }
-a.cp_btn:before {
+.cp_btn:before {
 left: 7px;
 }
-a.cp_btn:after {
+.cp_btn:after {
 right: 7px;
 }
-a.cp_btn:hover:before{
+.cp_btn:hover:before{
 top: 0px;
 left:0;
 height: 100%;
 }
-a.cp_btn:hover:after{
+.cp_btn:hover:after{
 top: 0px;
 right: 0;
 height: 100%;
 }
+
+
 
 
 

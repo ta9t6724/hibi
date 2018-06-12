@@ -1,3 +1,4 @@
+
 <?php
 
     require("dbconnect.php");
@@ -56,16 +57,16 @@
     // ページネーション処理終了
 
 ?>
+
 <!doctype html>
 <html lang="ja">
   <head>
 
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
@@ -128,6 +129,82 @@
 
             <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前の日々</a></li>
 
+            <div class="row">
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            </div>
+
+
+            <div class="row">
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            </div>
+
+
+            <div class="row">
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            <div class="col-md-3">
+            <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+            <p>toshiki123</p>
+            <p>俺のHTML最高っしょ</p>
+            </div>
+            </div>
+
+
+            <div aria-label="Page navigation">
+            <ul class="pager">
+
+            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前の日々</a></li>
             <li class="next disabled"><a href="#"><span aria-hidden="true">&rarr;</span>次の日々</a></li>
           </ul>
         </div>

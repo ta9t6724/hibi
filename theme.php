@@ -98,14 +98,25 @@ while (1) {
 
 <!doctype html>
 <html lang="ja">
-  <head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
 
-    <!-- Bootstrap CSS -->
 
+<title>Hello, world!</title>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2 sidebar1">
+<div class="logo">
+<img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
+</div>
+<br>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
 <!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
@@ -133,7 +144,7 @@ while (1) {
           </div>
           <h1 class="hibi_title h1" align="center" align="center">みんなのお題</h1>
 
-           <h2 align="left" align="left">＃<?php echo $themes_1[0]['title']?></h2>
+          <h2 align="left" align="left">＃<?php echo $themes_1[0]['title']?></h2>
           <div class="row">
           <?php foreach($themes_1 as $themes_1){ ?>
             <div class="col-md-4">

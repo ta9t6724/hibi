@@ -14,57 +14,90 @@
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     
 
+<title>Hello, world!</title>
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2 sidebar1">
+<div class="logo">
+<img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
+</div>
+<br>
+<div class="left-navigation">
+<ul class="list">
+<li><a href="" >はじめに</a></li>
+<li><a href="cur_student.php" >ネクシード生の日々</a></li>
+<li><a href="alumnus" >卒業生の日々</a></li>
+<li><a href="view.php" >今週のお題</a></li>
+<li><a href="private.php" >マイページ</a></li>
+</ul>
+</div>
+</div>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-2 sidebar1">
-          <div class="logo">
-            <img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
-          </div>
-            <br>
-          <div class="left-navigation">
-             <ul class="list">
-              <li><a href="" >はじめに</a></li>
-              <li><a href="cur_student.php" >ネクシード生の日々</a></li>
-              <li><a href="alumnus" >卒業生の日々</a></li>
-              <li><a href="view.php" >今週のお題</a></li>
-              <li><a href="private.php" >マイページ</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-10 main-content">
-          <div class="row">
-            <div class="col-md-12 ">
+     <div class="col-md-2"></div>
+     <div class="col-md-10 main-content">
+     <div class="row">
+     <div class="col-md-12 ">
+     </div>
+     </div>
 
-            </div>
-          </div>
           <div class="row concept">
-            <div class="col-md-12">
-              <h1 class="h1">編集</h1>
-            </div>
+          <div class="col-md-12">
+          <h1 class="h1">編集画面</h1><br><br>
+          </div>
           </div>
           
-        <div class="container">
-        <div class="row">
-      <!-- ここにコンテンツ -->
-        <div class="col-xs-4 col-xs-offset-4">
-        <form class="form-group" method="post">
-          <img src="user_profile_img/<?php echo $feed["img_name"]; ?>" width="60">
-          <?php echo $feed["name"]; ?><br>
-          <?php echo $feed["created"]; ?><br>
-          <textarea name="feed" class="form-control" cols="40" rows="8"><?php echo $feed["feed"]; ?></textarea>
-          <input type="submit" value="更新" class="btn btn-warning btn-lg">
-          <input type="submit" value="削除" class="btn btn-warning btn-lg">
-        </form>
+
+           <div class="row">
+           <div class="col-md-3">
+           <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="cp_btn btn-lg">
+           </div>
+
+           <div class="col-md-3">
+           <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="cp_btn btn-lg">
+           </div>
+
+           <div class="col-md-3">
+           <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+           <input type="submit" value="削除" class="cp_btn btn-lg">
+           </div>
+
+          <div class="col-md-3">
+          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+          <input type="submit" value="削除" class="cp_btn btn-lg">
+          </div>
+
+          </div>
+
+          <div class="row">
+          <div class="col-md-3">
+          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+          <input type="submit" value="削除" class="cp_btn btn-lg">
+          </div>
+
+          <div class="col-md-3">
+          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+          <input type="submit" value="削除" class="cp_btn btn-lg">
+          </div>
+
+          <div class="col-md-3">
+          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+          <input type="submit" value="削除" class="cp_btn btn-lg">
+          </div>
+
+          <div class="col-md-3">
+          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
+          <input type="submit" value="削除" class="cp_btn btn-lg">
+          </div>
+          </div>
+
+            <div aria-label="Page navigation">
+          <ul class="pager">
       </div>
-
-    </div>
-
-  </div>
+     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
