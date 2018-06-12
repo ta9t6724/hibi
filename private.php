@@ -66,67 +66,42 @@
     $category = '';
     $errors = array();
 
+    if(!empty($_POST['hibi'])){
+       if (!empty($_POST['input_comment']) && (isset($_FILES['input_image']['name']) && !empty($_FILES['input_image']['name']))) {
+           $photo = $_FILES['input_image'];
+           $comment = $_POST['input_comment'];
+           $category = $_POST['category'];
 
-     // 「投稿する」ボタンが押された時のみ処理するif文
-     // fileを選択するときは$_FILES
-    if (!empty($_POST['input_comment']) && !empty($_FILES['input_image']) && ($_POST['category'] == 0 || $_POST['category'] == 1 || $_POST['category'] == 2)) {
-        $photo = $_FILES['input_image'];
-        $comment = $_POST['input_comment'];
-        $category = $_POST['category'];
-        // $topic = $_POST['topic'];
+           $input_theme_id = -1;
+            if ($_POST['category'] != 4){
+               $input_theme_id = 0;
+            }else{
+             $input_theme_id = $theme_id;
+            }
+               $file_name = ''; // ①
+               if (!isset($_REQUEST['action'])) { // ②
+               $file_name = $_FILES['input_image'];
+               }
+               // エラーがなかった時の処理
+               if (empty($errors)) {
 
-        $file_name = ''; // ①
-        if (!isset($_REQUEST['action'])) { // ②
-        $file_name = $_FILES['input_image'];
-        }
-        // エラーがなかった時の処理
-        if (empty($errors)) {
+                   date_default_timezone_set('Asia/Manila');
+                   $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
+                   $submit_file_name = $date_str . $file_name['name'];
+                   move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
+               }
+               $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`= ?, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
+               $data = array($signin_user['id'], $input_theme_id, $comment, $submit_file_name, $category);
+               $stmt = $dbh->prepare($sql);
+               $stmt->execute($data);
 
-            date_default_timezone_set('Asia/Manila');
-            $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
-            $submit_file_name = $date_str . $file_name['name'];
-            move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
-        }
-        $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`= 0, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
-        $data = array($signin_user['id'], $comment, $submit_file_name, $category);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
-
-        // unset()で入れるの中身を削除する
-        // unset()文は指定した変数もしくは配列を破棄することができる
-        header('Location: private.php');
-        exit();
-      }
-    else if (!empty($_POST['input_comment']) && !empty($_FILES['input_image']) && $_POST['category'] == 4) {
-        $photo = $_FILES['input_image'];
-        $comment = $_POST['input_comment'];
-        $category = $_POST['category'];
-
-        $file_name = ''; // ①
-        if (!isset($_REQUEST['action'])) { // ②
-        $file_name = $_FILES['input_image'];
-        }
-        // エラーがなかった時の処理
-        if (empty($errors)) {
-
-            date_default_timezone_set('Asia/Manila');
-            $date_str = date('YmdHis'); // YmdHisを指定することで取得フォーマットを指定
-            $submit_file_name = $date_str . $file_name['name'];
-            move_uploaded_file($_FILES['input_image']['tmp_name'], 'assets/img/' . $submit_file_name);
-        }
-        $sql = 'INSERT INTO `feeds` SET `user_id`=?, `theme_id`=?, `comment`=?, `picture`=?, `category`=?, `created`=NOW()';
-        $data = array($signin_user['id'], $theme_id, $comment, $submit_file_name, $category);
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute($data);
-
-        // unset()で入れるの中身を削除する
-        // unset()文は指定した変数もしくは配列を破棄することができる
-        header('Location: private.php');
-        exit();
-        }
-        else if(isset($_POST['input_comment']) && $_POST['input_comment'] == ''){
-          // $_POST['input_poem'] = '';
-          $errors['failed'] = 'failed';
+               // unset()で入れるの中身を削除する
+               // unset()文は指定した変数もしくは配列を破棄することができる
+               header('Location: private.php');
+               exit();
+       }else{
+           $errors['failed'] = 'failed';
+       }
     }
     // 日々のINSERT処理終了
 
@@ -213,49 +188,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
-<link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
 
 
 
 <title>日々</title>
   </head>
   <body>
-<!--     <?php 
-    echo $_SESSION['id'];
-    echo "<pre>";
-    var_dump($signin_user);
-    var_dump($_POST);
-    echo "</pre>";
-    ?> -->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 sidebar1">
+        <?php include("navbar.php"); ?>
+        <!-- ここを消してinclude -->
+<!--         <div class="col-md-2 sidebar1">
           <div class="logo">
             <img src="assets/img/hibi3.png" class="hibilogo" alt="Logo">
           </div>
             <br>
           <div class="left-navigation">
-            <ul class="list">
-                <a href="viwe.php"><li>はじめに</li></a>
-                <a href="register/signin.php"><li>サインイン</li></a>
-                <a href="cur_student.php"><li>ネクシード生の日々</li></a>
-                <a href="alumnus.php"><li>卒業生の日々</li></a>
-                <a href="theme.php"><li>今週のお題</li></a>
-                <a href="private.php"><li>マイページ</li></a>
-
-                <!-- <li>マイページ</li> -->
+            <ul class="list" style="margin-left: 10px;">
+                <li><a href="viwe.php" class="btn btn-outline-dark list-group-item" style="margin-top: 15px;">はじめに</a></li>
+                <li><a href="register/signin.php" class="btn btn-outline-dark list-group-item">サインイン</a></li>
+                <li><a href="cur_student.php" class="btn btn-outline-dark list-group-item">在校生の日々</a></li>
+                <li><a href="alumnus.php" class="btn btn-outline-dark list-group-item">卒業生の日々</a></li>
+                <li><a href="theme.php" class="btn btn-outline-dark list-group-item">今週のお題</a></li>
+                <li><a href="private.php" class="btn btn-outline-dark list-group-item">マイページ</a></li>
             </ul>
           </div>
-        </div>
+        </div>  -->
+        <!-- ここまでサイドバー
+         -->
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
           <div class="row">
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
-              <h1 class="hibi_titile">日々を投稿しよう！</h1>
+              <h1 class="hibi_titile"><?php echo $signin_user["account_name"] ?>さんの日々を投稿しよう！</h1>
             </div>
             <div class="col-md-1">
             </div>
@@ -334,7 +306,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <input type="submit" class="square_btn" value="投稿する">
+                  <input type="submit" class="square_btn" value="投稿する" name="hibi">
                   <?php if (!empty($errors["failed"])) { ?>
                     <p class="text-danger">投稿に失敗しました</p>
                   <?php } ?>
@@ -418,10 +390,10 @@
               <?php if ($page == 1){ ?>
                  <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
              <?php }else{ ?>
-                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> Newer</a></li>
+                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
              <?php } ?>
               <?php if ($page == $max_page){ ?>
-                <li class="next disabled"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="next disabled"><a href="#">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
               <?php }else{ ?>
                 <li class="next"><a href="private.php?page=<?php echo $page + 1; ?>">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
               <?php } ?>
