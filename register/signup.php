@@ -99,6 +99,8 @@
   <title>日々</title>
   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
+  <link href="../assets/img/hibilogo.ico" rel="shortcut icon">
+
 </head>
 <body style="background-color:ivory" style="margin-top: 60px">
   <div class="container">
