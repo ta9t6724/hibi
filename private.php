@@ -192,8 +192,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+
 
 
     <title>日々</title>
@@ -201,7 +203,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <?php include("navbar.html"); ?>
+        <?php include("navbar.php"); ?>
         <!-- ここを消してinclude -->
 <!--         <div class="col-md-2 sidebar1">
           <div class="logo">
