@@ -229,7 +229,7 @@
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
-              <h1 class="hibi_titile">日々を投稿しよう！</h1>
+              <h1 class="hibi_titile"><?php echo $signin_user["account_name"] ?>さんの日々を投稿しよう！</h1>
             </div>
             <div class="col-md-1">
             </div>
