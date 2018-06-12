@@ -72,6 +72,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
     <title>在校生の日々</title>
   </head>

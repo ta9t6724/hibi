@@ -39,7 +39,7 @@ text-align:center;
 
 .top{
     height: 500px;
-    background-image: url(img/hibi.jpg);
+    background-image: url(../img/hibi.jpg);
     background-size: cover;
     background-position: center center;
     /*background: rgba(255, 255, 255, 0.3);*/
@@ -86,6 +86,10 @@ text-align:center;
 .mainconcept{
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.mainconcept h1{
+    font-weight: bold;
 }
 
 .subconcept{

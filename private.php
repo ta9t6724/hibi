@@ -195,6 +195,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
 
 
@@ -229,7 +230,7 @@
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
-              <h1 class="hibi_titile"><?php echo $signin_user["account_name"] ?>さんの日々を投稿しよう！</h1>
+              <h1 class="hibi_titile"><?php echo $signin_user["name"] ?>さんの日々を投稿しよう！</h1>
             </div>
             <div class="col-md-1">
             </div>

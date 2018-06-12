@@ -10,43 +10,29 @@
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
-    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="hibi.css">
-    
-
-
-    <title>Hello, world!</title>
+<!--      <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">    
+ -->    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css">
+    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
+    <title>日々</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2 sidebar1">
-          <div class="logo">
-            <img src="img/hibi3.png" class="hibilogo" alt="Logo">
-          </div>
-            <br>
-          <div class="left-navigation">
-            <ul class="list">
-                <li>はじめに</li>
-                <li>サインイン</li>
-                <li>ネクシード生の日々</li>
-                <li>卒業生の日々</li>
-                <li>今週のお題</li>
-            </ul>
-          </div>
-        </div>
+       <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
           <div class="row">
             <div class="col-md-12 top">
-              <a href="#"><i class="hibi_button"></i>日々を投稿する</a>
+              <a href="private.php" style="font-weight: bold;"><i class="hibi_button"></i>日々を投稿する</a>
             </div>
           </div>
           <div class="row concept">
             <div class="col-md-12">
-              <h1 class="hibi mainconcept">毎日をちょっとだけ楽しく</h1>
+              <h1 class="hibi mainconcept" style="font-weight: bold;">毎日をちょっとだけ楽しく</h1>
               <p>ネクシード生がセブ留学の「日々」を写真と言葉に</p>
-              <p class="hibi subconcept">大切な「日々」の思い出をカタチにできるサービスです。</p>
+              <p class="hibi subconcept">大切な「日々」の思い出を<span style="font-weight: bold;">カタチ</span>にできるサービスです。</p>
             </div>
           </div>
           <div class="row">
@@ -61,13 +47,13 @@
                 
                 <div class="col-md-6">
                 <!-- <p>写真が入る</p> -->
-                <img src="img/hibi.jpg" class="hibi explain_pic">
+                <img src="assets/img/hibi.jpg" class="hibi explain_pic">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <!-- <p>写真が入る</p> -->
-                  <img src="img/hibi.jpg" class="hibi explain_pic">
+                  <img src="assets/img/hibi.jpg" class="hibi explain_pic">
 
                 </div>
                 <div class="col-md-6 hibi explain_text">
@@ -84,13 +70,13 @@
               </h5>
               <div class="row">
                 <div class="col-md-4">
-                  <img src="img/kim.jpg" class="hibi_pic">
+                  <img src="assets/img/kim.jpg" class="hibi_pic">
                 </div>
                 <div class="col-md-4">
-                  <img src="img/kim.jpg" class="hibi_pic">
+                  <img src="assets/img/kim.jpg" class="hibi_pic">
                 </div>
                 <div class="col-md-4">
-                  <img src="img/kim.jpg" class="hibi_pic">
+                  <img src="assets/img/kim.jpg" class="hibi_pic">
                 </div>
               </div>
             </div>
@@ -103,13 +89,13 @@
               </h5>
               <div class="row">
                 <div class="col-md-4">
-                  <img src="img/kim.jpg" class="hibi_pic">
+                  <img src="assets/img/kim.jpg" class="hibi_pic">
                 </div>
                 <div class="col-md-4">
-                  <img src="img/kim.jpg" class="hibi_pic">
+                  <img src="assets/img/kim.jpg" class="hibi_pic">
                 </div>
                 <div class="col-md-4">
-                  <img src="img/kim.jpg" class="hibi_pic">
+                  <img src="assets/img/kim.jpg" class="hibi_pic">
                 </div>
               </div>
             </div>
