@@ -2,7 +2,7 @@
     
     require("dbconnect.php");
 
-    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` > CURRENT_DATE()";
+    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` < CURRENT_DATE()";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
@@ -11,11 +11,11 @@
         if ($rec == false) {
             break;
         }
-      $cur_students[] = $rec;
+      $alumnus[] = $rec;
     }
-    echo "<pre>";
-    var_dump($cur_students);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($cur_students);
+    // echo "</pre>";
 
     // ページネーション処理
     $page = ''; //ページ番号が入る変数
@@ -36,7 +36,7 @@
     $page = max($page,1);
 
     // データの件数から、最大ページ数を計算する
-    $sql_count = "SELECT COUNT(*) AS `cnt` FROM `feeds`";
+    $sql_count = "SELECT COUNT(*) AS `cnt` FROM `users` WHERE `graduation_date` < CURRENT_DATE()";
 
     //SQL実行
     $stmt_count = $dbh->prepare($sql_count);
@@ -86,65 +86,25 @@
             <h1 class="h1 hibi_title" style="text-align: center;">卒業生の日々をのぞいてみよう</h1>
           </div>
           <div class="row">
-            <div class="col-md-3">
-              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-              <p>天野たいち</p>
+            <?php foreach($alumnus as $alumnu){ ?>
+            <div class="col-md-4">
+              <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/<?php echo $alumnu["picture"]; ?>" class="hibi_pic"></a>
+              <p style="text-align: center;"><?php echo $alumnu["name"]; ?></p>
             </div>
-            <div class="col-md-3">
-              <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-              <p>井出よしたか</p>
-            </div>
-            <div class="col-md-3">
-              <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-              <p>カルディーノ・リサ</p>
-            </div>
-            <div class="col-md-3">
-              <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-              <p>タデラ・タクト</p>
-            </div>
+            <?php } ?>
           </div>
-          <div class="row">
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>天野リサち</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>石田スミレ</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>池田池ちゃん</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>山田仁</p>
-                </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>天野リサち</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05227.jpg" class="hibi_pic">
-                  <p>石田スミレ</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05046.jpg" class="hibi_pic">
-                  <p>池田池ちゃん</p>
-                </div>
-            <div class="col-md-3">
-                  <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-                  <p>山田仁</p>
-                </div>
-          </div>
-          
-
           <div aria-label="Page navigation">
-            <ul class="pager">
-              <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 前の日々</a></li>
-              <li class="next disabled"><a href="#"><span aria-hidden="true">&rarr;</span>次の日々</a></li>
+           <ul class="pager">
+              <?php if ($page == 1){ ?>
+                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+             <?php }else{ ?>
+                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+             <?php } ?>
+              <?php if ($page == $all_page_number){ ?>
+                <li class="next disabled"><a href="#">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+              <?php }else{ ?>
+                <li class="next"><a href="alumnus.php?page=<?php echo $page + 1; ?>">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+              <?php } ?>
             </ul>
           </div>
         </div>
