@@ -1,4 +1,61 @@
+<?php  
+    
+    require("dbconnect.php");
 
+    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` > CURRENT_DATE()";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+
+    while (true) {
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($rec == false) {
+            break;
+        }
+      $cur_students[] = $rec;
+    }
+    echo "<pre>";
+    var_dump($cur_students);
+    echo "</pre>";
+
+    // ページネーション処理
+    $page = ''; //ページ番号が入る変数
+    $page_row_number = 16; //1ページあたりに表示するデータの数
+
+    if (isset($_GET['page'])){
+      $page = $_GET['page'];
+    }else{
+      //get送信されてるページ数がない場合、1ページめとみなす
+      $page = 1;
+    }
+
+    if ($page < 0) {
+        $page = 1;
+    }
+
+    // max:カンマ区切りで羅列された数字の中から最大の数を返す
+    $page = max($page,1);
+
+    // データの件数から、最大ページ数を計算する
+    $sql_count = "SELECT COUNT(*) AS `cnt` FROM `feeds`";
+
+    //SQL実行
+    $stmt_count = $dbh->prepare($sql_count);
+    $stmt_count->execute();
+    $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
+    //ページ数計算
+    // ceil 小数点の切り上げができる関数 2.1 -> 3に変換できる
+    $all_page_number = ceil($record_cnt['cnt'] / $page_row_number);
+    
+
+    // min:カンマ区切りの数字の中から最小の数値を取得する関数
+    $page = min($page,$all_page_number);
+
+    // データを取得する開始番号を計算
+    $start = ($page -1)*$page_row_number;
+    // ページネーション処理終了
+
+?>
 <!doctype html>
 <html lang="ja">
   <head>
@@ -9,19 +66,24 @@
     <!-- Bootstrap CSS -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+ -->
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+
     <title>在校生の日々</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-       <?php include("navbar.html"); ?>
+       <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
 
         <div class="col-md-10 main-content">
           <div class="row">
-            <h1 class="center-block hibi_title" style="border-bottom: 1px solid black;">卒業生の日々をのぞいてみよう</h1>
+            <h1 class="h1 hibi_title" style="text-align: center;">卒業生の日々をのぞいてみよう</h1>
           </div>
           <div class="row">
             <div class="col-md-3">
