@@ -1,3 +1,31 @@
+<?php 
+    session_start();
+
+    require('dbconnect.php');
+    require('function.php');
+
+    // ログインチェック
+    check_signin($_SESSION['id']);
+
+    // サインインしているユーザーの情報を取得
+    $signin_user = get_signin_user($dbh, $_SESSION['id']);
+
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`= ?";
+    $data = array($signin_user['id']);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    $feeds = array();
+
+    while (true) {
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($rec == false) {
+            break;
+        }
+      $feeds[] = $rec;
+    }
+ ?>
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -10,30 +38,16 @@
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     
 
-<title>Hello, world!</title>
+<title>編集画面</title>
 </head>
 <body>
 <div class="container-fluid">
 <div class="row">
-<div class="col-md-2 sidebar1">
-<div class="logo">
-<img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
-</div>
-<br>
-<div class="left-navigation">
-<ul class="list">
-<li><a href="" >はじめに</a></li>
-<li><a href="cur_student.php" >ネクシード生の日々</a></li>
-<li><a href="alumnus" >卒業生の日々</a></li>
-<li><a href="view.php" >今週のお題</a></li>
-<li><a href="private.php" >マイページ</a></li>
-</ul>
-</div>
-</div>
+  <?php include("navbar.php"); ?>
+
 
      <div class="col-md-2"></div>
      <div class="col-md-10 main-content">
@@ -49,53 +63,15 @@
           </div>
           
 
-           <div class="row">
-           <div class="col-md-3">
-           <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-           <input type="submit" value="削除" class="cp_btn btn-lg">
+        <div class="row">
+         <?php foreach($feeds as $feed){ ?>
+           <div class="col-md-4">
+           <img src="assets/img/<?php $feed['picture'] ?>" class="hibi_pic">
+           <a onclick="return confirm('削除してよろしいですか？')" href="delete.php?feed_id=<?php echo $feed["id"] ?>" class="btn btn-danger" style="float: right;">削除</a>
            </div>
+         <?php } ?>
+        </div>
 
-           <div class="col-md-3">
-           <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-           <input type="submit" value="削除" class="cp_btn btn-lg">
-           </div>
-
-           <div class="col-md-3">
-           <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-           <input type="submit" value="削除" class="cp_btn btn-lg">
-           </div>
-
-          <div class="col-md-3">
-          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-          <input type="submit" value="削除" class="cp_btn btn-lg">
-          </div>
-
-          </div>
-
-          <div class="row">
-          <div class="col-md-3">
-          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-          <input type="submit" value="削除" class="cp_btn btn-lg">
-          </div>
-
-          <div class="col-md-3">
-          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-          <input type="submit" value="削除" class="cp_btn btn-lg">
-          </div>
-
-          <div class="col-md-3">
-          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-          <input type="submit" value="削除" class="cp_btn btn-lg">
-          </div>
-
-          <div class="col-md-3">
-          <img src="assets/img/LRG_DSC05296.jpg" class="hibi_pic">
-          <input type="submit" value="削除" class="cp_btn btn-lg">
-          </div>
-          </div>
-
-            <div aria-label="Page navigation">
-          <ul class="pager">
       </div>
      </div>
 

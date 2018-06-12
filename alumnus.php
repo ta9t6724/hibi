@@ -6,6 +6,8 @@
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
+    $alumnus = array();
+
     while (true) {
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($rec == false) {
