@@ -108,17 +108,19 @@ while (1) {
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+ -->
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
-    
-
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
 
     <title>今週のお題</title>
   </head>
   <body>
     <div class="container-fluid">
       <div class="row">
-       <?php include("navbar.html"); ?>
+       <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
           <div class="row">
@@ -175,14 +177,6 @@ while (1) {
           <?php } ?>
           </div>
 
-
-          <div aria-label="Page navigation">
-            <ul class="pager">
-              <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 前の日々</a></li>
-              <li class="next disabled"><a href="#"><span aria-hidden="true">&rarr;</span>次の日々</a></li>
-            </ul>
-          </div>
-        
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
