@@ -58,15 +58,12 @@
 ?>
 <!doctype html>
 <html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
-<title>Hello, world!</title>
-</head>
+    <!-- Bootstrap CSS -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
@@ -85,14 +82,10 @@
        <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
 
-
-          <div class="col-md-2"></div>
-          <div class="col-md-10 main-content">
+        <div class="col-md-10 main-content">
           <div class="row">
+            <h1 class="h1 hibi_title" style="text-align: center;">卒業生の日々をのぞいてみよう</h1>
           </div>
-          <h1 class="h1" align="center" align="center">卒業生の日々をのぞいてみよう</h1>
-
-
           <div class="row">
             <?php foreach($alumnus as $alumnu){ ?>
             <div class="col-md-4">
