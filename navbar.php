@@ -10,7 +10,7 @@
                 <li><a href="cur_student.php" class="btn btn-outline-dark list-group-item">在校生の日々</a></li>
                 <li><a href="alumnus.php" class="btn btn-outline-dark list-group-item">卒業生の日々</a></li>
                 <li><a href="theme.php" class="btn btn-outline-dark list-group-item">今週のお題</a></li>
-                <li><a href="private.php" class="btn btn-outline-dark list-group-item">マイページ</a></li>
+                <li><a href="private.php" class="btn btn-outline-dark list-group-item">プライベート</a></li>
             </ul>
           </div>
         </div>

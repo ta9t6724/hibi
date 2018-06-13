@@ -21,7 +21,7 @@
 
     // ページネーション処理
     $page = ''; //ページ番号が入る変数
-    $page_row_number = 16; //1ページあたりに表示するデータの数
+    $page_row_number = 12; //1ページあたりに表示するデータの数
 
     if (isset($_GET['page'])){
       $page = $_GET['page'];
@@ -99,14 +99,14 @@
           <div aria-label="Page navigation">
            <ul class="pager">
               <?php if ($page == 1){ ?>
-                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次へ</a></li>
              <?php }else{ ?>
-                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次へ</a></li>
              <?php } ?>
               <?php if ($page == $all_page_number){ ?>
-                <li class="next disabled"><a href="#">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="next disabled"><a href="#">前へ <span aria-hidden="true">&rarr;</span></a></li>
               <?php }else{ ?>
-                <li class="next"><a href="alumnus.php?page=<?php echo $page + 1; ?>">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="next"><a href="alumnus.php?page=<?php echo $page + 1; ?>">前へ <span aria-hidden="true">&rarr;</span></a></li>
               <?php } ?>
             </ul>
           </div>

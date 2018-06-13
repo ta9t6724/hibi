@@ -10,7 +10,7 @@
     // サインインしているユーザーの情報を取得
     $signin_user = get_signin_user($dbh, $_SESSION['id']);
 
-    $sql = "SELECT * FROM `feeds` WHERE `user_id`= ?";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`= ? ORDER BY 'created' DESC";
     $data = array($signin_user['id']);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
