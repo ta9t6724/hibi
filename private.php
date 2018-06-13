@@ -238,7 +238,7 @@
           <div class="row" style="margin-bottom: 20px;">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-              <a href="#" class="cross_line">
+              <a href="my_page.php?user_id=<?php echo $signin_user["id"]; ?>" class="cross_line">
               マイページ
               </a>
             </div>
