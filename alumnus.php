@@ -1,5 +1,5 @@
-<?php  
-    
+<?php
+
     require("dbconnect.php");
 
     $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` < CURRENT_DATE()";
@@ -71,12 +71,13 @@
 <!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
  -->
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
     <link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
-    <title>在校生の日々</title>
+    <title>卒業生の日々</title>
   </head>
   <body>
     <div class="container-fluid">
@@ -86,15 +87,21 @@
 
         <div class="col-md-10 main-content">
           <div class="row">
-            <h1 class="h1 hibi_title" style="text-align: center;">卒業生の日々をのぞいてみよう</h1>
+            <h1 class="h1 hibi_title" style="text-align: center; font-weight: bold;">卒業生の日々をのぞいてみよう</h1>
           </div>
           <div class="row">
             <?php foreach($alumnus as $alumnu){ ?>
-            <div class="col-md-4">
-              <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/<?php echo $alumnu["picture"]; ?>" class="hibi_pic"></a>
-              <p style="text-align: center;"><?php echo $alumnu["name"]; ?></p>
-            </div>
+              <?php if(!empty($alumnus[0]['picture'])){ ?>
+                <div class="hibi_flame">
+                  <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/<?php echo $alumnu["picture"]; ?>" class="hibi_pic"></a>
+                  <p class="hibi_username"><?php echo $alumnu["name"]; ?></p>
+                </div>
+            <?php }else{ ?>
+              <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/hibilog.png" class="hibi_pic"></a>
+              <p class="hibi_username"><?php echo $alumnu["name"]; ?></p>
             <?php } ?>
+          <?php } ?>
+
           </div>
           <div aria-label="Page navigation">
            <ul class="pager">

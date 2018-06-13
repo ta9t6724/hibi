@@ -40,6 +40,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
+        <a href="../view.php"><img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;"></a>
         <h2 class="text-center content_header">あなたの日々の情報確認</h2>
         <div class="row">
           <div class="col-xs-4">

@@ -61,7 +61,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
-        <img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;">
+        <a href="../view.php"><img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;"></a>
         <h2 class="text-center content_header">サインイン</h2>
         <form method="POST" action="signin.php" enctype="multipart/form-data">
           <div class="form-group">
