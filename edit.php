@@ -10,7 +10,7 @@
     // サインインしているユーザーの情報を取得
     $signin_user = get_signin_user($dbh, $_SESSION['id']);
 
-    $sql = "SELECT * FROM `feeds` WHERE `user_id`= ? ORDER BY 'created' DESC";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`= ? ORDER BY `created` DESC";
     $data = array($signin_user['id']);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -39,7 +39,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
-    
+    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+
 
 <title>編集画面</title>
 </head>
@@ -66,8 +67,8 @@
         <div class="row">
          <?php foreach($feeds as $feed){ ?>
            <div class="col-md-4">
-           <img src="assets/img/<?php $feed['picture'] ?>" class="hibi_pic">
-           <a onclick="return confirm('削除してよろしいですか？')" href="delete.php?feed_id=<?php echo $feed["id"] ?>" class="btn btn-danger" style="float: right;">削除</a>
+              <img src="assets/img/<?php echo $feed['picture'] ?>" class="hibi_pic">
+              <a onclick="return confirm('削除してよろしいですか？')" href="delete.php?feed_id=<?php echo $feed["id"] ?>" class="btn btn-danger" >削除</a>
            </div>
          <?php } ?>
         </div>

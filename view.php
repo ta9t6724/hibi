@@ -2,13 +2,6 @@
     session_start();
 
     require('dbconnect.php');
-    require('function.php');
-
-    // ログインチェック
-    check_signin($_SESSION['id']);
-
-    // サインインしているユーザーの情報を取得
-    $signin_user = get_signin_user($dbh, $_SESSION['id']);
 
     // お題の取得処理
     // 今日の日付の取得
@@ -65,7 +58,7 @@
     // お題の取得処理終了
 
     // お題でない画像の取得
-    $sql = "SELECT * FROM `feeds` WHERE `category`!= 4 ORDER BY 'id' ASC";
+    $sql = "SELECT * FROM `feeds` WHERE `category`!= 4 ORDER BY `id` DESC LIMIT 3";
     $data = array();
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -81,7 +74,7 @@
     }
 
     // お題の画像の取得
-    $sql = "SELECT * FROM `feeds` WHERE `category`= 4 AND `theme_id` = ? ORDER BY 'id' ASC";
+    $sql = "SELECT * FROM `feeds` WHERE `category`= 4 AND `theme_id` = ? ORDER BY `id` DESC LIMIT 3";
     $data = array($theme_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -177,9 +170,9 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 today_hibi">
-              <h5 class="today_hibi_title">
-              今週の「日々」
-              </h5>
+              <h3 class="today_hibi_title">
+              みんなの「日々」
+              </h3>
               <div class="row">
                 <?php foreach($feeds as $feed){ ?>
                   <div class="col-md-4">
@@ -192,10 +185,10 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 topic_hibi">
-              <h5>
+              <h3>
               今週のお題
-              </h5>
-              <p style="font-weight: bold;">「<?php echo $theme['title']; ?>」</p>
+              </h3>
+              <h5 style="font-weight: bold;">「<?php echo $theme['title']; ?>」</h5>
               <div class="row">
                 <?php foreach($theme_feeds as $theme_feed){ ?>
                   <div class="col-md-4">
