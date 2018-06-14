@@ -137,21 +137,24 @@
       $page = 1;
     }
 
-    if ($page < 0) {
-        $page = 1;
-    }
-
     // max: カンマ区切りで羅列された数字の中から最大の数を返す
     // 第一引数に入っている値を見て、第二引数と比較。もし第二引数の方が大きければ第二引数の値を返す
     $page = max($page, 1);
 
-    $count_sql = 'SELECT COUNT(*) AS `cnt` FROM `poems`';
-    $count_data = array();
+    $count_sql = 'SELECT COUNT(*) AS `cnt` FROM `poems` WHERE `user_id`=?';
+    $count_data = array($signin_user['id']);
     $count_stmt = $dbh->prepare($count_sql);
     $count_stmt->execute($count_data);
     $feed_cnt = $count_stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($feed_cnt['cnt'] <= 0) {
+      $feed_cnt['cnt'] = 1;
+      $errors['poem'] = 'blank';
+    }
+
     // ceil: 切り上げ
     $max_page = ceil($feed_cnt['cnt'] / $page_row_number);
+
 
     // 第一引数と第二引数を比較し、第二引数の方が小さければ、第二引数の値を返す
     $page = min($page, $max_page);
@@ -178,8 +181,6 @@
     }
     // poemのfetch処理終了
 
-
-
  ?>
 
 <!doctype html>
@@ -195,6 +196,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
     <link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
 
@@ -368,6 +370,10 @@
             <div class="col-md-1"></div>
            </div>
           <!-- <div class="row"> -->
+        <h3 class="hibi_titile" style="font-weight: bold;">過去のポエム</h3>
+        <?php if (isset($errors["poem"])) { ?>
+          <p>まだポエムが投稿されていません</p>
+        <?php }else{ ?>
           <?php foreach($poems as $poem){ ?>
             <div class="row">
               <div class="col-md-1"></div>
@@ -387,6 +393,7 @@
               <div class="col-md-1"></div>
             </div>
           <?php } ?>
+        <?php } ?>
           <!-- </div> -->
           <div aria-label="Page navigation">
            <ul class="pager">
@@ -405,6 +412,8 @@
         </div>
       </div>
     </div>
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

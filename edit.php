@@ -40,6 +40,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
+
 
 
 <title>編集画面</title>
@@ -68,13 +71,15 @@
          <?php foreach($feeds as $feed){ ?>
            <div class="col-md-4">
               <img src="assets/img/<?php echo $feed['picture'] ?>" class="hibi_pic">
-              <a onclick="return confirm('削除してよろしいですか？')" href="delete.php?feed_id=<?php echo $feed["id"] ?>" class="btn btn-danger" >削除</a>
+              <a onclick="return confirm('削除してよろしいですか？')" href="delete.php?feed_id=<?php echo $feed["id"] ?>" class="btn btn-danger" style="margin: 10px 0px 10px 0px;">削除</a>
            </div>
          <?php } ?>
         </div>
 
       </div>
      </div>
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

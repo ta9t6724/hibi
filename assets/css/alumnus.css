@@ -42,6 +42,7 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
 }
 
 .h1 {
+  margin: 30px 200px 30px 200px;
   border-bottom: 1px solid black;
 
 /*線の種類（実線） 太さ 色*/
@@ -63,7 +64,7 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
 
  .hibi_flame{
     border: 1px solid black;
-    margin: 10px 10px;
+    margin: 15px 15px 15px 15px;
     padding: 20px 0 10px 0;
     width: 295px;
     height: 350px;

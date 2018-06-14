@@ -1,0 +1,19 @@
+.footer{
+	margin-top: 20px;
+	background-color: #DBDFE2;
+	color: black;
+	height: 200px;
+	text-align: center;
+}
+
+.footer img{
+	padding-top: 30px;
+	display: block;
+	margin: auto;
+	max-width: 100px;
+	max-height: auto;
+}
+
+.footer p{
+	margin-top: 10px;
+}

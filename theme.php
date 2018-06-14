@@ -93,6 +93,7 @@ while (1) {
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
     <link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
     <title>今週のお題</title>
@@ -186,6 +187,8 @@ while (1) {
                 </div>
             <?php } ?>
           </div>
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
 
     <!-- Optional JavaScript -->
