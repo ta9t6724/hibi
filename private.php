@@ -201,7 +201,7 @@
 
 
 
-    <title>日々</title>
+    <title>プライベートページ</title>
   </head>
   <body>
     <div class="container-fluid">
@@ -398,14 +398,14 @@
           <div aria-label="Page navigation">
            <ul class="pager">
               <?php if ($page == 1){ ?>
-                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次へ</a></li>
              <?php }else{ ?>
-                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次の5件</a></li>
+                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次へ</a></li>
              <?php } ?>
               <?php if ($page == $max_page){ ?>
-                <li class="next disabled"><a href="#">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="next disabled"><a href="#">前へ <span aria-hidden="true">&rarr;</span></a></li>
               <?php }else{ ?>
-                <li class="next"><a href="private.php?page=<?php echo $page + 1; ?>">前の5件 <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="next"><a href="private.php?page=<?php echo $page + 1; ?>">前へ <span aria-hidden="true">&rarr;</span></a></li>
               <?php } ?>
             </ul>
           </div>

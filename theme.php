@@ -104,10 +104,10 @@ while (1) {
        <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
-          <div class="row">
+<!--           <div class="row">
             <div class="col-md-12 ">
             </div>
-          </div>
+          </div> -->
 
         <div class="col-md-10 main-content">
           <div class="row"></div>
@@ -187,6 +187,11 @@ while (1) {
                 </div>
             <?php } ?>
           </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- footer -->
     <?php include("footer.php"); ?>
 
