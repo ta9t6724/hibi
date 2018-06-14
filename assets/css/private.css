@@ -186,15 +186,15 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
     padding: 0.3em 1em;
     text-decoration: none;
     color: white;
-    background-color: #333;
-    border: solid 1px #333;
+    background-color: #545b62;
+    border: solid 1px #545b62;
     border-radius: 3px;
     transition: .4s;
     margin-top: 40px;
 }
 
 .square_btn:hover {
-    background: #111;
+    background: black;
     color: white;
 }
 

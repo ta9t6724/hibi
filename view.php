@@ -119,6 +119,7 @@
  -->    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
     <link href="assets/img/hibilogo.ico" rel="shortcut icon">
     <title>日々</title>
   </head>
@@ -201,6 +202,10 @@
         </div>
       </div>
     </div>
+
+    <!-- footer -->
+    <?php include("footer.php"); ?>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

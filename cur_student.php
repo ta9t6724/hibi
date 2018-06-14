@@ -53,9 +53,6 @@
         }
       $cur_students[] = $rec;
     }
-    // echo "<pre>";
-    // var_dump($cur_students);
-    // echo "</pre>";
 
 ?>
 
@@ -70,11 +67,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
     <link href="assets/img/hibilogo.ico" rel="shortcut icon">
-    <link href="assets/css/hibi.css" rel="stylesheet">
 
     <title>在校生の日々</title>
   </head>
@@ -84,16 +82,27 @@
         <!-- サイドバーのコード読み込み -->
         <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
+
         <div class="col-md-10 main-content">
           <div class="row"></div>
-          <h1 class="h1 hibi_title" style="text-align: center;">在校生の日々をのぞいてみよう</h1>
-          <div class="row">
+          <h1 class="h1 hibi_title" style="text-align: center; font-weight: bold;">在校生の日々をのぞいてみよう</h1>
+          <div class="col-md-12" style="display: block; margin: auto;">
+          <div style="width: 1000px; display: flex; flex-wrap: wrap;">
             <?php foreach ($cur_students as $cur_student) { ?>
-              <div class="col-md-3">
-                <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/<?php echo $cur_student["picture"]; ?>" class="hibi_pic" style="width: 250px; height: auto; margin: 60px 0 20px 0;"></a>
-                <p style="text-align: center;"><?php echo $cur_student["account_name"]; ?></p>
-              </div>
+              <?php if(!empty($cur_student['picture'])){ ?>
+                <div class="hibi_flame">
+                  <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/<?php echo $cur_student["picture"]; ?>" class="hibi_pic"></a>
+                  <p class="hibi_username"><?php echo $cur_student["account_name"]; ?></p>
+                </div>
+              <?php }else{ ?>
+                <div class="hibi_flame">
+                  <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/hibilog.png" class="hibi_pic"></a>
+                  <p class="hibi_username"><?php echo $cur_student["account_name"]; ?></p>
+                </div>
+              <?php } ?>
             <?php } ?>
+
+          </div>
           </div>
           <div aria-label="Page navigation">
             <ul class="pager">
@@ -113,6 +122,8 @@
         </div>
       </div>
     </div>
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
