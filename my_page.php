@@ -12,8 +12,44 @@
 
     $user_id = $_GET['user_id'];
 
-    // お題でない画像の取得
-    $sql = "SELECT * FROM `feeds` WHERE `user_id`= ? ORDER BY 'id' ASC";
+    // ページネーション
+    $page = ''; //ページ番号が入る変数
+    $page_row_number = 12; //1ページあたりに表示するデータの数
+
+    if (isset($_GET['page'])){
+      $page = $_GET['page'];
+    }else{
+      // GET送信されてるページ数がない場合、1ページ目とみなす
+      $page = 1;
+    }
+
+    // max: カンマ区切りで羅列された数字の中から最大の数を返す
+    // 第一引数に入っている値を見て、第二引数と比較。もし第二引数の方が大きければ第二引数の値を返す
+    $page = max($page, 1);
+
+    $count_sql = 'SELECT COUNT(*) AS `cnt` FROM `feeds` WHERE `user_id`=?';
+    $count_data = array($user_id);
+    $count_stmt = $dbh->prepare($count_sql);
+    $count_stmt->execute($count_data);
+    $feed_cnt = $count_stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($feed_cnt['cnt'] <= 0) {
+      $feed_cnt['cnt'] = 1;
+      $errors['poem'] = 'blank';
+    }
+
+    // ceil: 切り上げ
+    $all_page_number = ceil($feed_cnt['cnt'] / $page_row_number);
+
+
+    // 第一引数と第二引数を比較し、第二引数の方が小さければ、第二引数の値を返す
+    $page = min($page, $all_page_number);
+
+    // データを取得する開始番号を計算
+    $start = ($page -1)*$page_row_number;
+
+    // 画像の取得
+    $sql = "SELECT `f`.*,`u`.* FROM `users` AS `u` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`user_id`=`u`.`id` WHERE `u`.`id` = ? ORDER BY `f`.`id` DESC LIMIT $start, $page_row_number";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -29,7 +65,7 @@
     }
 
     // ポエムの取得
-    $sql = "SELECT * FROM `poems` WHERE `user_id` = ? ORDER BY 'id' ASC LIMIT 1";
+    $sql = "SELECT * FROM `poems` WHERE `user_id` = ? ORDER BY `id` DESC LIMIT 1";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -44,17 +80,8 @@
       $poems[] = $rec;
     }
 
-
-    echo "<pre>";
-    var_dump($feeds);
-    echo "</pre>";
-
-    echo "<pre>";
-    var_dump($poems);
-    echo "</pre>";
-
-
  ?>
+
 
 
 <!doctype html>
@@ -69,12 +96,19 @@
 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
-<!--      <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">    
- -->    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/my_page.css">
     <link href="assets/img/hibilogo.ico" rel="shortcut icon">
-    <title>日々</title>
+
+
+
+    <title>マイページ</title>
   </head>
   <body>
     <div class="container-fluid">
@@ -83,89 +117,63 @@
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
           <div class="row">
-            <div class="col-md-12 top">
-              <a href="private.php" style="font-weight: bold;"><i class="hibi_button"></i>日々を投稿する</a>
-            </div>
-          </div>
-          <div class="row concept">
-            <div class="col-md-12">
-              <h1 class="hibi mainconcept" style="font-weight: bold;">毎日をちょっとだけ楽しく</h1>
-              <p>ネクシード生がセブ留学の「日々」を写真と言葉に</p>
-              <p class="hibi subconcept">大切な「日々」の思い出を<span style="font-weight: bold;">カタチ</span>にできるサービスです。</p>
-            </div>
-          </div>
-          <div class="row">
-            <!-- <div class="col-md-offset-1 col-md-10"> -->
-              <div class="col-md-1"></div>
-              <div class="col-md-10 explain">
-              <div class="row">
-                
-                <div class="col-md-6 hibi explain_text">
-                <p>言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉Z</p>
+            <div class="col-md-1"></div>
+            <div class="col-md-10 mypage">
+              <div class="row mypage-top">
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                  <?php if(!empty($feeds[0]['picture'])){ ?>
+                    <img class="mypage-top-pic" src="assets/img/<?php echo $feeds[0]['picture']; ?>">
+                  <?php }else{ ?>
+                    <img src="assets/img/hibilog.png" class="mypage-top-pic">
+                  <?php } ?>
                 </div>
-                
-                <div class="col-md-6">
-                <!-- <p>写真が入る</p> -->
-                <img src="assets/img/hibi.jpg" class="hibi explain_pic">
+                <div class="col-md-5 mypage-top-text">
+                  <p class="mypage-top-name" style="font-weight: bold;"><?php echo $feeds[0]['account_name']; ?></p>
+                  <?php if(!empty($poems)){ ?>
+                    <p class="mypage-top-poem"><i class="fa fa-comment-o" aria-hidden="true"></i><?php echo $poems[0]['content']; ?></p>
+                  <?php }else{ ?>
+                    <p>ポエムの投稿がありません</p>
+                  <?php } ?>
                 </div>
+                <div class="col-md-1"></div>
               </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <!-- <p>写真が入る</p> -->
-                  <img src="assets/img/hibi.jpg" class="hibi explain_pic">
 
-                </div>
-                <div class="col-md-6 hibi explain_text">
-                  <p>言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 today_hibi">
-              <h5 class="today_hibi_title">
-              今週の「日々」
-              </h5>
-              <div class="row">
-              <?php if(!empty($feeds)){ ?>
-                <?php foreach($feeds as $feed){ ?>
-                  <div class="col-md-4">
-                    <a href="my_page.php?user_id=<?php echo $feed["user_id"]; ?>"><img src="assets/img/<?php echo $feed['picture']; ?>" class="hibi_pic"></a>
-                  </div>
-                <?php } ?>
-              <?php }else{ ?>
+              <div class="row mypage-content">
+                <?php if(!empty($feeds[0]['picture'])){ ?>
+                  <?php foreach($feeds as $feed){  ?>
                     <div class="col-md-4">
-                       <p>まだ投稿がありません</p>
-                    </div>
-                <?php } ?>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 topic_hibi">
-              <h5>
-              今週のお題
-              </h5>
-              <div class="row">
-                <?php if(!empty($poems)){ ?>
-                  <?php foreach($poems as $poem){ ?>
-                    <div class="col-md-4">
-                       <a href="my_page.php?user_id=<?php echo $poem["user_id"]; ?>"><p><?php echo $poem['content']; ?></p></a>
+                      <img class="mypage-content-pic" src="assets/img/<?php echo $feed['picture']; ?>">
                     </div>
                   <?php } ?>
                 <?php }else{ ?>
-                    <div class="col-md-4">
-                       <p>まだ投稿がありません</p>
-                    </div>
+                  <div style="text-align: center;">
+                    <p>まだ日々の投稿がありません</p>
+                  </div>
                 <?php } ?>
               </div>
-            </div>
+            <div class="col-md-1"></div>
+          <div aria-label="Page navigation">
+            <ul class="pager">
+              <?php if ($page == 1){ ?>
+                <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前へ</a></li>
+              <?php }else{ ?>
+                <li class="previous"><a href="my_page.php?user_id=<?php echo $user_id; ?>?page=<?php echo $page-1; ?>"><span aria-hidden="true">&larr;</span>前へ</a></li>
+              <?php } ?>
+              <?php if ($page == $all_page_number){ ?>
+                <li class="next disabled"><a href="#">次へ<span aria-hidden="true">&rarr;</span></a></li>
+              <?php }else{ ?>
+                <li class="next"><a href="my_page.php?user_id=<?php echo $user_id; ?>?page=<?php echo $page+1; ?>">次へ<span aria-hidden="true">&rarr;</span></a></li>
+              <?php } ?>
+            </ul>
+          </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
