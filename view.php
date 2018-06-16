@@ -174,21 +174,24 @@
               <h3 class="today_hibi_title">
               みんなの「日々」
               </h3>
+
               <div class="row">
                 <?php foreach($feeds as $feed){ ?>
                   <div class="col-md-4">
-                    <a href="my_page.php?user_id=<?php echo $feed["user_id"]; ?>"><img src="assets/img/<?php echo $feed['picture']; ?>" class="hibi_pic"></a>
+                    <a href="my_page.php?user_id=<?php echo $feed["user_id"]; ?>"><img src="assets/img/<?php echo $feed['picture']; ?>" class="hibi_pic inner"></a>
                   </div>
                 <?php } ?>
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 topic_hibi">
               <h3>
               今週のお題
               </h3>
+
               <h5 style="font-weight: bold;">「<?php echo $theme['title']; ?>」</h5>
               <div class="row">
                 <?php foreach($theme_feeds as $theme_feed){ ?>
@@ -212,5 +215,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="assets/js/common.js"></script>
   </body>
 </html>
