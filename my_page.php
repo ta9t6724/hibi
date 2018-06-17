@@ -4,13 +4,18 @@
     require('dbconnect.php');
     require('function.php');
 
-    // ログインチェック
-    check_signin($_SESSION['id']);
-
-    // サインインしているユーザーの情報を取得
-    $signin_user = get_signin_user($dbh, $_SESSION['id']);
-
     $user_id = $_GET['user_id'];
+
+    $feed_user = get_feed_user($dbh, $user_id);
+
+    // 卒業生だったらalbum.phpに飛ばす処理
+    $today = date("Y-m-d");
+    $target_day = $feed_user['graduation_date'];
+
+    if (strtotime($target_day) < strtotime($today)) {
+        header("Location: album.php?user_id=".$user_id);
+        exit();
+    }
 
     // ページネーション
     $page = ''; //ページ番号が入る変数
@@ -80,6 +85,22 @@
       $poems[] = $rec;
     }
 
+    // プロフィール画像の取得
+    $sql = "SELECT * FROM `feeds` WHERE `user_id` = ? ORDER BY `id` DESC LIMIT 1";
+    $data = array($user_id);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+
+    $last_picture = array();
+
+    while (true) {
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($rec == false) {
+            break;
+        }
+      $last_picture[] = $rec;
+    }
+
  ?>
 
 
@@ -123,7 +144,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-5">
                   <?php if(!empty($feeds[0]['picture'])){ ?>
-                    <img class="mypage-top-pic" src="assets/img/<?php echo $feeds[0]['picture']; ?>">
+                    <img class="mypage-top-pic" src="assets/img/<?php echo $last_picture[0]['picture']; ?>">
                   <?php }else{ ?>
                     <img src="assets/img/hibilog.png" class="mypage-top-pic">
                   <?php } ?>
@@ -158,12 +179,12 @@
               <?php if ($page == 1){ ?>
                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span>前へ</a></li>
               <?php }else{ ?>
-                <li class="previous"><a href="my_page.php?user_id=<?php echo $user_id; ?>?page=<?php echo $page-1; ?>"><span aria-hidden="true">&larr;</span>前へ</a></li>
+                <li class="previous"><a href="my_page.php?user_id=<?php echo $user_id; ?>&page=<?php echo $page-1; ?>"><span aria-hidden="true">&larr;</span>前へ</a></li>
               <?php } ?>
               <?php if ($page == $all_page_number){ ?>
                 <li class="next disabled"><a href="#">次へ<span aria-hidden="true">&rarr;</span></a></li>
               <?php }else{ ?>
-                <li class="next"><a href="my_page.php?user_id=<?php echo $user_id; ?>?page=<?php echo $page+1; ?>">次へ<span aria-hidden="true">&rarr;</span></a></li>
+                <li class="next"><a href="my_page.php?user_id=<?php echo $user_id; ?>&page=<?php echo $page+1; ?>">次へ<span aria-hidden="true">&rarr;</span></a></li>
               <?php } ?>
             </ul>
           </div>
