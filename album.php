@@ -177,7 +177,11 @@
                   <div class="row album-top">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
+                      <?php if (!empty($users[0]["picture"])) { ?>
                       <img class="album-top-pic" src="assets/img/<?php echo $user["picture"]; ?>" class="hibi_pic" style="width: 250px; height: auto; margin: 60px 0 20px 0">
+                      <?php } else{ ?>
+                        <img src="assets/img/hibilog.png" class="mypage-top-pic" style="width: 250px; height: auto; margin: 60px 0 20px 0">
+                      <?php } ?>
                     </div>
                     <div class="col-md-5 album-top-text">
                       <p class="album-top-picnumber"><span><?php echo $date_gap; ?></span>日間で <span><?php echo $feeds_count; ?></span>枚の写真が投稿されました。</p>
