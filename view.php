@@ -178,7 +178,7 @@
               <div class="row">
                 <?php foreach($feeds as $feed){ ?>
                   <div class="col-md-4">
-                    <a href="my_page.php?user_id=<?php echo $feed["user_id"]; ?>"><img src="assets/img/<?php echo $feed['picture']; ?>" class="hibi_pic inner"></a>
+                    <a href="my_page.php?user_id=<?php echo $feed["user_id"]; ?>"><img src="assets/img/<?php echo $feed['picture']; ?>" class="hibi_pic"></a>
                   </div>
                 <?php } ?>
               </div>

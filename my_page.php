@@ -86,7 +86,7 @@
     }
 
     // プロフィール画像の取得
-    $sql = "SELECT * FROM `feeds` WHERE `user_id` = ? ORDER BY `id` DESC LIMIT 1";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id` = ? ORDER BY `id` ASC LIMIT 1";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);

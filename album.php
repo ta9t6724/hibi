@@ -1,8 +1,21 @@
 <?php
 
     require("dbconnect.php");
+    require('function.php');
 
-    $user_id = $_GET["user_id"];
+    $user_id = $_GET['user_id'];
+
+    $feed_user = get_feed_user($dbh, $user_id);
+
+    // 在校生だったらmy_page.phpに飛ばす処理
+    $today = date("Y-m-d");
+    $target_day = $feed_user['graduation_date'];
+
+    if (strtotime($target_day) > strtotime($today)) {
+        header("Location: my_page.php?user_id=".$user_id);
+        exit();
+    }
+
     $users = array();
 
     // 卒業生情報取得
@@ -130,8 +143,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/album.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
+
     <title>日々</title>
   </head>
   <body>
@@ -146,7 +163,7 @@
               <?php foreach ($users as $user) { ?>
                 <div class="col-md-12 album">
                   <p class="album-top-name"><?php echo $user["name"]; ?>さんの日々</p>
-                  <p class="album-top-time">〜ネクシードでの <?php echo $date_gap; ?>日間〜</p>
+                  <p class="album-top-time">〜ネクシードでの <span><?php echo $date_gap; ?></span>日間〜</p>
                 </div>
               <?php } ?>
             <?php } ?>
@@ -162,11 +179,11 @@
                       <img class="album-top-pic" src="assets/img/<?php echo $user["picture"]; ?>" class="hibi_pic" style="width: 250px; height: auto; margin: 60px 0 20px 0">
                     </div>
                     <div class="col-md-5 album-top-text">
-                      <p class="album-top-picnumber"><?php echo $date_gap; ?>日間で <?php echo $feeds_count; ?>枚の写真が投稿されました。</p>
-                      <p class="album-top-category">「#食」の写真 <?php echo $foods_count; ?>枚</p>
-                      <p class="album-top-category">「#人」の写真 <?php echo $roads_count; ?>枚</p>
-                      <p class="album-top-category">「#道」の写真 <?php echo $persons_count; ?>枚</p>
-                      <p class="album-top-category">「#お題」の写真 <?php echo $themes_count; ?>枚</p>
+                      <p class="album-top-picnumber"><span><?php echo $date_gap; ?></span>日間で <span><?php echo $feeds_count; ?></span>枚の写真が投稿されました。</p>
+                      <p class="album-top-category">「#食」の写真 <span><?php echo $foods_count; ?></span>枚</p>
+                      <p class="album-top-category">「#人」の写真 <span><?php echo $roads_count; ?></span>枚</p>
+                      <p class="album-top-category">「#道」の写真 <span><?php echo $persons_count; ?></span>枚</p>
+                      <p class="album-top-category">「#お題」の写真 <span><?php echo $themes_count; ?></span>枚</p>
                     </div>
                   </div>
                 </div>
@@ -177,7 +194,7 @@
           <!-- 「食」カテゴリーの出力 -->
           <div class="row album-main">
             <div class="col-md-12">
-              <p class="album-main-category">セブ留学の「#食」</p>
+              <h5 class="album-main-category">セブ留学の「#食」</h5>
             </div>
             
             <?php if (!empty($foods[0]["picture"])) { ?>
@@ -187,8 +204,8 @@
                 </div>
               <?php } ?>
             <?php }else{ ?>
-              <div align="center">
-                <h2>投稿がありません</h2>
+              <div align="center" class="empty_notice">
+                <h6>投稿がありません</h6>
               </div>
             <?php } ?>
           </div>
@@ -196,7 +213,7 @@
           <!-- 「道」カテゴリーの出力 -->
           <div class="row album-main">
             <div class="col-md-12">
-              <p class="album-main-category">セブ留学の「#道」</p>
+              <h5 class="album-main-category">セブ留学の「#道」</h5>
             </div>
             <?php if (!empty($roads[0]["picture"])) { ?>
               <?php foreach ($roads as $road) { ?>
@@ -205,8 +222,8 @@
                 </div>
               <?php } ?>
             <?php }else{ ?>
-              <div align="center">
-                <h2>投稿がありません</h2>
+              <div align="center" class="empty_notice">
+                <h6>投稿がありません</h6>
               </div>
             <?php } ?>
           </div>
@@ -214,7 +231,7 @@
           <!-- 「人」カテゴリーの出力 -->
           <div class="row album-main">
             <div class="col-md-12">
-              <p class="album-main-category">セブ留学の「#人」</p>
+              <h5 class="album-main-category">セブ留学の「#人」</h5>
             </div>
             <?php if (!empty($persons[0]["picture"])) { ?>
               <?php foreach ($persons as $person) { ?>
@@ -223,8 +240,8 @@
                 </div>
               <?php } ?>
             <?php }else{ ?>
-              <div align="center">
-                <h2>投稿がありません</h2>
+              <div align="center" class="empty_notice">
+                <h6>投稿がありません</h6>
               </div>
             <?php } ?>
           </div>
@@ -232,7 +249,7 @@
           <!-- 「お題」カテゴリーの出力 -->
           <div class="row album-main">
             <div class="col-md-12">
-              <p class="album-main-category">セブ留学の「#お題」</p>
+              <h5 class="album-main-category">セブ留学の「#お題」</h5>
             </div>
             <?php if (!empty($themes[0]["picture"])) { ?>
               <?php foreach ($themes as $theme) { ?>
@@ -241,14 +258,16 @@
             </div>
               <?php } ?>
             <?php }else{ ?>
-              <div align="center">
-                <h2>投稿がありません</h2>
+              <div align="center" class="empty_notice">
+                <h6>投稿がありません</h6>
               </div>
             <?php } ?>
           </div>
         </div>
       </div>
     </div>
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
