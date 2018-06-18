@@ -65,7 +65,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
@@ -87,7 +86,7 @@
           <div class="row"></div>
           <h1 class="h1 hibi_title" style="text-align: center; font-weight: bold;">在校生の日々をのぞいてみよう</h1>
           <div class="col-md-12" style="display: block; margin: auto;">
-          <div style="width: 1000px; margin-left: 7%; display: flex; flex-wrap: wrap;">
+          <div style="width: 1000px; display: flex; flex-wrap: wrap;">
             <?php foreach ($cur_students as $cur_student) { ?>
               <?php if(!empty($cur_student['picture'])){ ?>
                 <div class="hibi_flame">
