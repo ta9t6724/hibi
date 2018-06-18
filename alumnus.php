@@ -89,8 +89,9 @@
         <div class="col-md-10 main-content">
           <div class="row"></div>
             <h1 class="h1 hibi_title" style="text-align: center; font-weight: bold;">卒業生の日々をのぞいてみよう</h1>
-          <div class="row">
-            <?php foreach($alumnus as $alumnu){ ?>
+            <div class="col-md-12" style="display: block; margin: auto;">
+            <div style="width: 1000px; margin-left: 7%; display: flex; flex-wrap: wrap;">
+              <?php foreach($alumnus as $alumnu){ ?>
               <?php if(!empty($alumnu['picture'])){ ?>
                 <div class="hibi_flame">
                   <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/<?php echo $alumnu["picture"]; ?>" class="hibi_pic"></a>
@@ -103,7 +104,7 @@
               </div>
             <?php } ?>
           <?php } ?>
-
+        </div>
           </div>
           <div aria-label="Page navigation">
            <ul class="pager">

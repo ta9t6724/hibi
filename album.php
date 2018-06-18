@@ -27,7 +27,7 @@
     $users[] = $rec;
 
     // 登録日と卒業日の差分計算
-    $sql = "SELECT DATEDIFF(`graduation_date`,`created`) AS `date_gap` FROM `users` WHERE `id`=?";
+    $sql = "SELECT DATEDIFF(`created`,`graduation_date`) AS `date_gap` FROM `users` WHERE `id`=?";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
