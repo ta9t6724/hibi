@@ -62,12 +62,22 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
     margin: auto;
 }
 
+.mypage-content-pic{
+    width: 180px;
+    height: 180px;
+    margin: 10px auto 30px;
+}
+
+.main-content{
+text-align:center;
+
+}
+
  .hibi_flame{
-    border: 1px solid black;
-    margin: 15px 15px 15px 15px;
-    padding: 20px 0 10px 0;
-    width: 295px;
-    height: 350px;
+    width: 250px;
+    border: solid 1px #333;
+    padding: 10px;
+    margin: 20px auto;    
  }
 
  .hibi_username{
