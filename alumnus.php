@@ -1,20 +1,20 @@
 <?php
 
-    require("dbconnect.php");
+require("dbconnect.php");
 
-    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` < CURRENT_DATE()";
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
+$sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` < CURRENT_DATE()";
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
 
-    $alumnus = array();
+$alumnus = array();
 
-    while (true) {
-        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($rec == false) {
-            break;
-        }
-      $alumnus[] = $rec;
-    }
+while (true) {
+  $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+  if ($rec == false) {
+    break;
+  }
+  $alumnus[] = $rec;
+}
     // echo "<pre>";
     // var_dump($cur_students);
     // echo "</pre>";
@@ -57,79 +57,85 @@
     $start = ($page -1)*$page_row_number;
     // ページネーション処理終了
 
-?>
-<!doctype html>
-<html lang="ja">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    ?>
+    <!doctype html>
+    <html lang="ja">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+      <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
- -->
-    <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
-    <link rel="stylesheet" type="text/css" href="assets/css/page.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
-    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
+-->
+<link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
+<link rel="stylesheet" type="text/css" href="assets/css/hibi.css">
+<link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
+<link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
+<link rel="stylesheet" type="text/css" href="assets/css/page.css">
+<link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+<link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
-    <title>卒業生の日々</title>
-  </head>
-  <body>
-    <div class="container-fluid">
+<title>卒業生の日々</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+     <?php include("navbar.php"); ?>
+     <div class="col-md-2"></div>
+
+     <div class="col-md-10 main-content">
       <div class="row">
-       <?php include("navbar.php"); ?>
-        <div class="col-md-2"></div>
-
-        <div class="col-md-10 main-content">
-          <div class="row"></div>
-            <h1 class="h1 hibi_title" style="text-align: center; font-weight: bold;">卒業生の日々をのぞいてみよう</h1>
-            <div class="col-md-12" style="display: block; margin: auto;">
-            <div style="width: 1000px; margin-left: 7%; display: flex; flex-wrap: wrap;">
-              <?php foreach($alumnus as $alumnu){ ?>
-              <?php if(!empty($alumnu['picture'])){ ?>
-                <div class="hibi_flame">
-                  <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/<?php echo $alumnu["picture"]; ?>" class="hibi_pic"></a>
-                  <p class="hibi_username"><?php echo $alumnu["name"]; ?></p>
-                </div>
-            <?php }else{ ?>
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <h1 class="h1 hibi_title" style="text-align: center; font-weight: bold;">卒業生の日々をのぞいてみよう</h1>
+          <div class="row mypage-content">
+            <?php foreach($alumnus as $alumnu){ ?>
+            <?php if(!empty($alumnu['picture'])){ ?>
+            <div class="col-md-4">
               <div class="hibi_flame">
-                <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/hibilog.png" class="hibi_pic"></a>
+                <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/<?php echo $alumnu["picture"]; ?>" class="mypage-content-pic"></a>
                 <p class="hibi_username"><?php echo $alumnu["name"]; ?></p>
               </div>
+            </div>
+            <?php }else{ ?>
+            <div class="col-md-4">
+              <div class="hibi_flame">
+                <a href="my_page.php?user_id=<?php echo $alumnu["user_id"]; ?>"><img src="assets/img/hibilog.png" class="mypage-content-pic"></a>
+                <p class="hibi_username"><?php echo $alumnu["name"]; ?></p>
+              </div>
+            </div>
             <?php } ?>
-          <?php } ?>
-        </div>
+            <?php } ?>
           </div>
           <div aria-label="Page navigation">
            <ul class="pager">
-              <?php if ($page == 1){ ?>
-                 <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次へ</a></li>
-             <?php }else{ ?>
-                <li class="previous"><a href="private.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次へ</a></li>
-             <?php } ?>
-              <?php if ($page == $all_page_number){ ?>
-                <li class="next disabled"><a href="#">前へ <span aria-hidden="true">&rarr;</span></a></li>
-              <?php }else{ ?>
-                <li class="next"><a href="alumnus.php?page=<?php echo $page + 1; ?>">前へ <span aria-hidden="true">&rarr;</span></a></li>
-              <?php } ?>
-            </ul>
-          </div>
+            <?php if ($page == 1){ ?>
+            <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> 次へ</a></li>
+            <?php }else{ ?>
+            <li class="previous"><a href="alumnus.php?page=<?php echo $page - 1; ?>"><span aria-hidden="true">&larr;</span> 次へ</a></li>
+            <?php } ?>
+            <?php if ($page == $all_page_number){ ?>
+            <li class="next disabled"><a href="#">前へ <span aria-hidden="true">&rarr;</span></a></li>
+            <?php }else{ ?>
+            <li class="next"><a href="alumnus.php?page=<?php echo $page + 1; ?>">前へ <span aria-hidden="true">&rarr;</span></a></li>
+            <?php } ?>
+          </ul>
         </div>
       </div>
     </div>
-    <!-- footer -->
-    <?php include("footer.php"); ?>
+  </div>
+</div>
+</div>
+<!-- footer -->
+<?php include("footer.php"); ?>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  </body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
 </html>
