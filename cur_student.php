@@ -1,6 +1,8 @@
 <?php  
+    session_start();
 
-require("dbconnect.php");
+    require("dbconnect.php");
+
 
     // ページネーション処理
     $page = ''; //ページ番号が入る変数
