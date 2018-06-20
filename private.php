@@ -255,7 +255,7 @@
             <div class="col-md-10 mypage">
               <div class="row">
                 <div class="col-md-12">
-                  <p class="graduation-name">🎉<?php echo $signin_user["name"]; ?>、卒業おめでとう🎉</p>
+                  <p class="graduation-name">🎉<?php echo $signin_user["name"]; ?>さん、卒業おめでとう🎉</p>
                   <p class="graduation-date">~<?php echo date('Y年n月j日', strtotime($target_day)); ?>~<!-- <span class="team-tyrk">by スイカと塩</span> --></p>
                   <!-- <p class="team-tyrk">by スイカと塩</p> -->
                   <p class="graduation-share">NEXSEEDでの「日々」を共有しよう</p>
@@ -268,7 +268,7 @@
                   <div>
                   <p class="graduation-yazi">↓↓↓↓↓↓↓↓↓↓</p>
                   <!-- <p>↓↓↓↓↓↓↓↓↓↓</p> -->
-                  <a href="album.php?user_id=<?php echo $signin_user["id"]; ?>" class="square_btn5">卒業ページへ</a>
+                  <a href="album.php?user_id=<?php echo $signin_user["id"]; ?>" class="square_btn5" style="margin-bottom: 20px;">卒業ページへ</a>
                   </div>
                 </div>
               </div>
@@ -279,7 +279,7 @@
           <!-- ここまで -->
 
           <!-- ここから在校生のページ -->
-          <div class="row">
+<!--           <div class="row">
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
@@ -287,14 +287,16 @@
             </div>
             <div class="col-md-1">
             </div>
-          </div>
+          </div> -->
 
           <div class="row">
             <div class="col-md-1">
             </div>
             <div class="col-md-10">
               <?php if ($date_gap == 1) { ?>
-                <h1 class="hibi_title" style="font-weight: bold; color: red;">明日で卒業！<br>最後に記念の１枚を撮ろう！</h1>
+                <h1 class="hibi_titile"><?php echo $signin_user["name"] ?>さん、明日で卒業ですね<br>最後に<span style="font-weight: bold;">記念の１枚</span>を撮ろう！</h1>
+              <?php }else{ ?>
+                <h1 class="hibi_titile" style="font-weight: bold;"><?php echo $signin_user["name"] ?>さんの日々を投稿しよう！</h1>
               <?php } ?>
             </div>
             <div class="col-md-1">
