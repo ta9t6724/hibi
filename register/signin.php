@@ -54,12 +54,15 @@
   <title>日々</title>
   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/footer.css">
+  <link href="../assets/img/hibilogo.ico" rel="shortcut icon">
+
 </head>
-<body  style="background-color:gainsboro" style="margin-top: 60px">
+<body  style="background-color:ivory" style="margin-top: 60px">
   <div class="container" style="margin: 110px;">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
-        <img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;">
+        <a href="../view.php"><img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;"></a>
         <h2 class="text-center content_header">サインイン</h2>
         <form method="POST" action="signin.php" enctype="multipart/form-data">
           <div class="form-group">
@@ -85,6 +88,8 @@
       </div>
     </div>
   </div>
+
+
   <script src="assets/js/jquery-3.1.1.js"></script>
   <script src="assets/js/jquery-migrate-1.4.1.js"></script>
   <script src="assets/js/bootstrap.js"></script>

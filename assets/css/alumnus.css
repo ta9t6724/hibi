@@ -42,6 +42,7 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
 }
 
 .h1 {
+  margin: 30px 200px 30px 200px;
   border-bottom: 1px solid black;
 
 /*線の種類（実線） 太さ 色*/
@@ -54,14 +55,44 @@ font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothi
 
 
 .hibi_pic {
-    border: 2px solid ;
-     margin: 25px;
+    margin: 25px 25px 20px 25px;
     width: 250px;
     height: 250px; 
-   
+    display: block;
+    margin: auto;
 }
 
-.cp_btn {
+.mypage-content-pic{
+    width: 180px;
+    height: 180px;
+    margin: 10px auto 30px;
+}
+
+.main-content{
+text-align:center;
+
+}
+
+ .hibi_flame{
+    width: 250px;
+    border: solid 1px #333;
+    padding: 10px;
+    margin: 20px auto;    
+ }
+
+ .hibi_username{
+  text-align: center;
+  padding-top: 25px;
+  font-weight: bold;
+ }
+
+ .theme_pic{
+  padding: 10px;
+ }
+
+
+
+a.cp_btn {
 display: inline-block;
 position: relative;
 width: 160px;
@@ -73,7 +104,7 @@ text-decoration: none;
 font-weight: bold;
 color: #FBC02D;
 }
-.cp_btn:before, .cp_btn:after {
+a.cp_btn:before, a.cp_btn:after {
 content: '';
 position: absolute;
 top: -7px;
@@ -82,24 +113,22 @@ height: calc(100% + 14px);
 background-color: #FBC02D;
 transition: .3s;
 }
-.cp_btn:before {
+a.cp_btn:before {
 left: 7px;
 }
-.cp_btn:after {
+a.cp_btn:after {
 right: 7px;
 }
-.cp_btn:hover:before{
+a.cp_btn:hover:before{
 top: 0px;
 left:0;
 height: 100%;
 }
-.cp_btn:hover:after{
+a.cp_btn:hover:after{
 top: 0px;
 right: 0;
 height: 100%;
 }
-
-
 
 
 

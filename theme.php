@@ -3,8 +3,7 @@
 session_start();
 require('dbconnect.php');
 require('function.php');
-// ログインチェック
-check_signin($_SESSION['id']);
+
 // サインインしているユーザーの情報を取得
 $signin_user = get_signin_user($dbh, $_SESSION['id']);
 
@@ -74,49 +73,18 @@ while (1) {
     $themes_5[] = $rec;
 }
 
-// echo "<pre>";
-// var_dump($themes_1);
-// echo "</pre>";
-
-// echo "<pre>";
-// var_dump($themes_2);
-// echo "</pre>";
-
-// echo "<pre>";
-// var_dump($themes_3);
-// echo "</pre>";
-
-// echo "<pre>";
-// var_dump($themes_4);
-// echo "</pre>";
-
-// echo "<pre>";
-// var_dump($themes_5);
-// echo "</pre>";
-
  ?>
 
 <!doctype html>
 <html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
 
-<title>Hello, world!</title>
-</head>
-<body>
-<div class="container-fluid">
-<div class="row">
-<div class="col-md-2 sidebar1">
-<div class="logo">
-<img src="assets/img/hibilog.png" class="hibilogo" alt="Logo">
-</div>
-<br>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> 
 <!--     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
@@ -125,6 +93,8 @@ while (1) {
     <link rel="stylesheet" type="text/css" href="assets/css/alumnus.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/footer.css">
+    <link href="assets/img/hibilogo.ico" rel="shortcut icon">
 
     <title>今週のお題</title>
   </head>
@@ -134,59 +104,96 @@ while (1) {
        <?php include("navbar.php"); ?>
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
-          <div class="row">
+<!--           <div class="row">
             <div class="col-md-12 ">
             </div>
-          </div>
+          </div> -->
 
         <div class="col-md-10 main-content">
-          <div class="row">
-          </div>
-          <h1 class="hibi_title h1" align="center" align="center">みんなのお題</h1>
+          <div class="row"></div>
+          <h1 class="hibi_title h1" align="center" align="center" style="font-weight: bold;">みんなのお題</h1>
 
-          <h2 align="left" align="left">＃<?php echo $themes_1[0]['title']?></h2>
+          <h2 align="left" align="left" style="font-weight: bold; margin-top: 40px;">＃<?php echo $themes_1[0]['title']?></h2>
           <div class="row">
-          <?php foreach($themes_1 as $themes_1){ ?>
-            <div class="col-md-4">
-              <img src="assets/img/<?php echo $theme_1["picture"]; ?>" class="hibi_pic">
-            </div>
-          <?php } ?>
-          </div>
-
-           <h2 align="left" align="left">＃<?php echo $themes_2[0]['title']?></h2>
-          <div class="row">
-          <?php foreach($themes_2 as $themes_2){ ?>
-            <div class="col-md-4">
-              <img src="assets/img/<?php echo $theme_2["picture"]; ?>" class="hibi_pic">
-            </div>
-          <?php } ?>
+            <?php if(!empty($themes_1[0]['picture'])){ ?>
+              <?php foreach($themes_1 as $theme_1){ ?>
+                <div class="col-md-4">
+                  <a href="my_page.php?user_id=<?php echo $theme_1["user_id"]; ?>"><img src="assets/img/<?php echo $theme_1["picture"]; ?>" class="hibi_pic theme_pic"></a>
+                </div>
+              <?php } ?>
+            <?php }else{ ?>
+                <div class="col-md-4">
+                  <h5>まだ投稿がありません</h5>
+                </div>
+            <?php } ?>
           </div>
 
-           <h2 align="left" align="left">＃<?php echo $themes_3[0]['title']?></h2>
+          <h2 align="left" align="left" style="font-weight: bold; margin-top: 40px;">＃<?php echo $themes_2[0]['title']?></h2>
           <div class="row">
-          <?php foreach($themes_3 as $themes_3){ ?>
-            <div class="col-md-4">
-              <img src="assets/img/<?php echo $theme_3["picture"]; ?>" class="hibi_pic">
-            </div>
-          <?php } ?>
+            <?php if(!empty($themes_2[0]['picture'])){ ?>
+              <?php foreach($themes_2 as $theme_2){ ?>
+                <div class="col-md-4">
+                  <a href="my_page.php?user_id=<?php echo $theme_2["user_id"]; ?>"><img src="assets/img/<?php echo $theme_2["picture"]; ?>" class="hibi_pic theme_pic"></a>
+                </div>
+              <?php } ?>
+            <?php }else{ ?>
+                <div class="col-md-4">
+                  <h5>まだ投稿がありません</h5>
+                </div>
+            <?php } ?>
           </div>
 
-           <h2 align="left" align="left">＃<?php echo $themes_4[0]['title']?></h2>
+          <h2 align="left" align="left" style="font-weight: bold; margin-top: 40px;">＃<?php echo $themes_3[0]['title']?></h2>
           <div class="row">
-          <?php foreach($themes_4 as $themes_4){ ?>
-            <div class="col-md-4">
-              <img src="assets/img/<?php echo $theme_4["picture"]; ?>" class="hibi_pic">
-            </div>
-          <?php } ?>
+            <?php if(!empty($themes_3[0]['picture'])){ ?>
+              <?php foreach($themes_3 as $theme_3){ ?>
+                <div class="col-md-4">
+                  <a href="my_page.php?user_id=<?php echo $theme_3["user_id"]; ?>"><img src="assets/img/<?php echo $theme_3["picture"]; ?>" class="hibi_pic theme_pic"></a>
+                </div>
+              <?php } ?>
+            <?php }else{ ?>
+                <div class="col-md-4">
+                  <h5>まだ投稿がありません</h5>
+                </div>
+            <?php } ?>
           </div>
-           <h2 align="left" align="left">＃<?php echo $themes_5[0]['title']?></h2>
+
+          <h2 align="left" align="left" style="font-weight: bold; margin-top: 40px;">＃<?php echo $themes_4[0]['title']?></h2>
           <div class="row">
-          <?php foreach($themes_5 as $themes_5){ ?>
-            <div class="col-md-4">
-              <img src="assets/img/<?php echo $theme_5["picture"]; ?>" class="hibi_pic">
-            </div>
-          <?php } ?>
+            <?php if(!empty($themes_4[0]['picture'])){ ?>
+              <?php foreach($themes_4 as $theme_4){ ?>
+                <div class="col-md-4">
+                  <a href="my_page.php?user_id=<?php echo $theme_4["user_id"]; ?>"><img src="assets/img/<?php echo $theme_4["picture"]; ?>" class="hibi_pic theme_pic"></a>
+                </div>
+              <?php } ?>
+            <?php }else{ ?>
+                <div class="col-md-4">
+                  <h5>まだ投稿がありません</h5>
+                </div>
+            <?php } ?>
           </div>
+
+          <h2 align="left" align="left" style="font-weight: bold; margin-top: 40px;">＃<?php echo $themes_5[0]['title']?></h2>
+          <div class="row">
+            <?php if(!empty($themes_5[0]['picture'])){ ?>
+              <?php foreach($themes_5 as $theme_5){ ?>
+                <div class="col-md-4">
+                  <a href="my_page.php?user_id=<?php echo $theme_5["user_id"]; ?>"><img src="assets/img/<?php echo $theme_5["picture"]; ?>" class="hibi_pic theme_pic"></a>
+                </div>
+              <?php } ?>
+            <?php }else{ ?>
+                <div class="col-md-4">
+                  <h5>まだ投稿がありません</h5>
+                </div>
+            <?php } ?>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- footer -->
+    <?php include("footer.php"); ?>
 
 
     <!-- Optional JavaScript -->

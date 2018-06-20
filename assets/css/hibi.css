@@ -39,7 +39,7 @@ text-align:center;
 
 .top{
     height: 500px;
-    background-image: url(img/hibi.jpg);
+    background-image: url(../img/hibi.jpg);
     background-size: cover;
     background-position: center center;
     /*background: rgba(255, 255, 255, 0.3);*/
@@ -88,6 +88,10 @@ text-align:center;
     margin-bottom: 20px;
 }
 
+.mainconcept h1{
+    font-weight: bold;
+}
+
 .subconcept{
     margin-bottom: 30px
 }
@@ -125,6 +129,7 @@ text-align:center;
     margin: 25px;
     width: 250px;
     height: 250px; 
+    display: inline-block;
 
 }
 
@@ -133,3 +138,38 @@ text-align:center;
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+/*.card_content{
+    display: none;
+}
+
+.card_active{
+    display: block;
+    background-color: rgba(0,0,0,0.3);
+    color:white;
+    height:100%;
+    margin: auto;
+}
+
+.card_item {
+  position: relative;
+  margin: 0 auto;
+  background-color: black;
+
+}
+.card_item ul {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  list-style: none;
+}
+.card_img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #fff;
+    filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
+}*/

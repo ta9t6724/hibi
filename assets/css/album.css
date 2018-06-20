@@ -1,0 +1,98 @@
+body {
+font-family: Helvetica Light", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+
+
+.sidebar1 {
+    background-color: #fff;
+    padding: 0px;
+    min-height: 100%;
+    text-align: center;
+    position: fixed;
+    z-index: 100;
+}
+
+.logo {
+    max-height: 130px;
+}
+.logo>img {
+    margin-top: 30px;
+    width: 80%;
+}
+.list {
+    color: #333;
+    list-style: none;
+    padding-left: 0px;
+    margin-top: 80px;
+    font-size: 120%;
+}
+
+.main-content{
+text-align:center;
+
+}
+
+.album{
+    margin-top: 30px;
+}
+
+.album-top-name{
+    font-size: 240%;
+    font-weight: bold;
+}
+
+.album-top-time{
+    font-size: 110%;
+}
+
+.album-top{
+    margin-top: 10px;
+    border-bottom: solid 1.5px #333;
+    padding-bottom: 30px;
+}
+
+.album-top-pic{
+    width: 200px;
+    height: 200px;
+}
+
+.album-top-text{
+    margin: auto;
+}
+
+.album-top-picnumber{
+    /*border-bottom: solid 1px #333;*/
+    font-size: 110%;
+    margin-bottom: 20px;
+}
+
+.album-top-category{
+    font-size: 90%;
+}
+
+.album-main{
+    margin-top:0px;
+}
+
+.album-main-pic{
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+.album-main-category{
+    border-bottom: solid 1px #333;
+    margin: 30px 450px 10px 450px;
+}
+
+.empty_notice{
+    margin-left: 44.5%;
+    margin-top: 20px;
+}
+
+span {
+/*    font-weight: bold;
+*/    font-size: 150%
+}
+

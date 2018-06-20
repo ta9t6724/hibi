@@ -137,8 +137,8 @@
           <div class="row concept">
             <div class="col-md-12">
               <h1 class="hibi mainconcept" style="font-weight: bold;">毎日をちょっとだけ楽しく</h1>
-              <p>ネクシード生がセブ留学の「日々」を写真と言葉に</p>
-              <p class="hibi subconcept">大切な「日々」の思い出を<span style="font-weight: bold;">カタチ</span>にできるサービスです。</p>
+              <p>セブ島での留学生活を写真と言葉に。</p>
+              <p class="hibi subconcept">大切な「日々」の思い出を<span style="font-weight: bold;">カタチ</span>として残しませんか？</p>
             </div>
           </div>
           <div class="row">
@@ -149,7 +149,7 @@
                 
                 <div class="col-md-6 hibi explain_text">
                 <h4>日々とは<hr></h4>
-                <p>ネクシード生たちによるセブ留学の「日々」を写真と言葉にして投稿ができ、卒業日には、今まで投稿してきた写真たちがアルバムとしてプレゼントされます。<br>より日常にフォーカス、セブ留学にネクシード生に特化した、そんなサービスです。</p>
+                <p>セブ留学における日常を記録できる、<br>NexSeed生のためのサービスです。<br>卒業時にはこれまでの投稿がアルバムとしてプレゼント。<br>セブ島での「日々」をより実りあるものにしたい...。<br>そんな想いから始まったサービスです。</p>
                 </div>
                 
                 <div class="col-md-6">
@@ -165,8 +165,8 @@
                 </div>
                 <div class="col-md-6 hibi explain_text"><br>
                 <h4>お題について<hr></h4>
-                <p>「人」「食」「道」そして毎週の「お題」。<br>
-                投稿をする際にはカテゴリーを選択します。毎週のお題はその都度確認することができます</p>
+                <p>定期的に変わる「お題」に沿って日常を投稿しましょう。
+                  <br>いろいろな視点から見たNexSeed生の「日々」を<br>楽しむことができる、そんな機能です。</p>
                 </div>
               </div>
             </div>
