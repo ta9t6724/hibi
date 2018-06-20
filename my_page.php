@@ -164,7 +164,12 @@
                 <?php if(!empty($feeds[0]['picture'])){ ?>
                   <?php foreach($feeds as $feed){  ?>
                     <div class="col-md-4">
-                      <img class="mypage-content-pic" src="assets/img/<?php echo $feed['picture']; ?>">
+                      <div class="sample1">
+                        <img class="mypage-content-pic" src="assets/img/<?php echo $feed['picture']; ?>">
+                        <div class="mask">
+                          <div class="caption"><?php echo $feed['comment']; ?></div>
+                        </div>
+                      </div>
                     </div>
                   <?php } ?>
                 <?php }else{ ?>

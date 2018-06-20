@@ -76,7 +76,7 @@
     $feeds_count = $rec["feeds_count"];
 
     // 「食」情報取得
-    $sql = "SELECT `picture` FROM `feeds` WHERE `user_id`=? AND `category`=1 ORDER BY `feeds`.`created` ASC";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`=? AND `category`=1 ORDER BY `feeds`.`created` ASC";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -91,7 +91,7 @@
     }
 
     // 「道」情報取得
-    $sql = "SELECT `picture` FROM `feeds` WHERE `user_id`=? AND `category`=2 ORDER BY `feeds`.`created` ASC";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`=? AND `category`=2 ORDER BY `feeds`.`created` ASC";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -106,7 +106,7 @@
     }
 
     // 「人」情報取得
-    $sql = "SELECT `picture` FROM `feeds` WHERE `user_id`=? AND `category`=0 ORDER BY `feeds`.`created` ASC";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`=? AND `category`=0 ORDER BY `feeds`.`created` ASC";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -121,7 +121,7 @@
     }
 
     // 「お題」情報取得
-    $sql = "SELECT `picture` FROM `feeds` WHERE `user_id`=? AND `category`=4 ORDER BY `feeds`.`created` ASC";
+    $sql = "SELECT * FROM `feeds` WHERE `user_id`=? AND `category`=4 ORDER BY `feeds`.`created` ASC";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
@@ -134,6 +134,7 @@
         }
         $themes[] = $rec;
     }
+
 ?>
 
 <!doctype html>
@@ -201,18 +202,29 @@
             <div class="col-md-12">
               <h5 class="album-main-category">セブ留学の「#食」</h5>
             </div>
-            
-            <?php if (!empty($foods[0]["picture"])) { ?>
-              <?php foreach ($foods as $food) { ?>
-                <div class="col-md-3">
-                  <img class="album-main-pic" src="assets/img/<?php echo $food["picture"]; ?>">
-                </div>
-              <?php } ?>
-            <?php }else{ ?>
-              <div align="center" class="empty_notice">
-                <h6>投稿がありません</h6>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="row">  
+                <?php if (!empty($foods[0]["picture"])) { ?>
+                  <?php foreach ($foods as $food) { ?>
+                    <div class="col-md-3">
+                      <div class="sample2">
+                        <img class="album-main-pic" src="assets/img/<?php echo $food["picture"]; ?>">
+                        <div class="mask2">
+                          <div class="caption2"><?php echo $food["comment"]; ?></div>
+                        </div>
+                      </div>
+                    </div>
+                  <?php } ?>
+                <?php }else{ ?>
+                  <div align="center" class="empty_notice">
+                    <h6>投稿がありません</h6>
+                  </div>
+                <?php } ?>
               </div>
-            <?php } ?>
+            </div>
           </div>
           
           <!-- 「道」カテゴリーの出力 -->
@@ -220,53 +232,91 @@
             <div class="col-md-12">
               <h5 class="album-main-category">セブ留学の「#道」</h5>
             </div>
-            <?php if (!empty($roads[0]["picture"])) { ?>
-              <?php foreach ($roads as $road) { ?>
-                <div class="col-md-3">
-                  <img class="album-main-pic" src="assets/img/<?php echo $road["picture"]; ?>">
-                </div>
-              <?php } ?>
-            <?php }else{ ?>
-              <div align="center" class="empty_notice">
-                <h6>投稿がありません</h6>
-              </div>
-            <?php } ?>
           </div>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <div class="row">
+                  <?php if (!empty($roads[0]["picture"])) { ?>
+                    <?php foreach ($roads as $road) { ?>
+                      <div class="col-md-3">
+                        <div class="sample2">
+                          <img class="album-main-pic" src="assets/img/<?php echo $road["picture"]; ?>">
+                          <div class="mask2">
+                            <div class="caption2"><?php echo $road["comment"]; ?></div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php } ?>
+                  <?php }else{ ?>
+                    <div align="center" class="empty_notice">
+                      <h6>投稿がありません</h6>
+                    </div>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
 
           <!-- 「人」カテゴリーの出力 -->
           <div class="row album-main">
             <div class="col-md-12">
               <h5 class="album-main-category">セブ留学の「#人」</h5>
             </div>
-            <?php if (!empty($persons[0]["picture"])) { ?>
-              <?php foreach ($persons as $person) { ?>
-                <div class="col-md-3">
-                  <img class="album-main-pic" src="assets/img/<?php echo $person["picture"]; ?>">
-                </div>
-              <?php } ?>
-            <?php }else{ ?>
-              <div align="center" class="empty_notice">
-                <h6>投稿がありません</h6>
-              </div>
-            <?php } ?>
           </div>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10">
+                <div class="row">
+                  <?php if (!empty($persons[0]["picture"])) { ?>
+                    <?php foreach ($persons as $person) { ?>
+                      <div class="col-md-3">
+                        <div class="sample2">
+                          <img class="album-main-pic" src="assets/img/<?php echo $person["picture"]; ?>">
+                          <div class="mask2">
+                            <div class="caption2"><?php echo $person["comment"]; ?></div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php } ?>
+                  <?php }else{ ?>
+                    <div align="center" class="empty_notice">
+                      <h6>投稿がありません</h6>
+                    </div>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
 
           <!-- 「お題」カテゴリーの出力 -->
           <div class="row album-main">
             <div class="col-md-12">
               <h5 class="album-main-category">セブ留学の「#お題」</h5>
             </div>
-            <?php if (!empty($themes[0]["picture"])) { ?>
-              <?php foreach ($themes as $theme) { ?>
-            <div class="col-md-3">
-              <img class="album-main-pic" src="assets/img/<?php echo $theme["picture"]; ?>">
-            </div>
-              <?php } ?>
-            <?php }else{ ?>
-              <div align="center" class="empty_notice">
-                <h6>投稿がありません</h6>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="row">
+                <?php if (!empty($themes[0]["picture"])) { ?>
+                  <?php foreach ($themes as $theme) { ?>
+                <div class="col-md-3">
+                  <div class="sample2">
+                    <img class="album-main-pic" src="assets/img/<?php echo $theme["picture"]; ?>">
+                    <div class="mask2">
+                      <div class="caption2"><?php echo $theme["comment"]; ?></div>
+                    </div>
+                  </div>
+                </div>
+                  <?php } ?>
+                <?php }else{ ?>
+                  <div align="center" class="empty_notice">
+                    <h6>投稿がありません</h6>
+                  </div>
+                <?php } ?>
               </div>
-            <?php } ?>
+            </div>
+          </div>
+
           </div>
         </div>
       </div>
