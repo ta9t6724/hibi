@@ -55,8 +55,8 @@
   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="../assets/font-awesome/css/font-awesome.css">
 </head>
-<body  style="background-color:ivory" style="margin-top: 60px">
-  <div class="container">
+<body  style="background-color:gainsboro" style="margin-top: 60px">
+  <div class="container" style="margin: 110px;">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
         <img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;">
@@ -79,7 +79,7 @@
               <p class="text-danger">サインインに失敗しました</p>
             <?php } ?>
           </div>
-          <input type="submit" class="btn btn-info" value="サインイン">
+         <input type="submit" class="btn btn-default" value="サインイン">
           <a href="signup.php" class="btn btn-secondary" style="float:right;">登録されていない方はこちら</a>
         </form>
       </div>
