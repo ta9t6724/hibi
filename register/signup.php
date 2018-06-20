@@ -104,7 +104,7 @@
 
 </head>
 <body style="background-color:ivory" style="margin-top: 60px">
-  <div class="container">
+  <div class="container" style="margin: 110px;">
     <div class="row">
       <div class="col-xs-8 col-xs-offset-2 thumbnail">
         <a href="../view.php"><img src="../assets/img/hibilog.png" style="max-width: 100px; max-height: auto;"></a>
