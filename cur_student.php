@@ -92,14 +92,14 @@ require("dbconnect.php");
             <?php if(!empty($cur_student['picture'])){ ?>
             <div class="col-md-4">
               <div class="hibi_flame">
-                <a href="album.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/<?php echo $cur_student["picture"]; ?>" class="mypage-content-pic"></a>
+                <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/<?php echo $cur_student["picture"]; ?>" class="mypage-content-pic"></a>
                 <p class="hibi_username"><?php echo $cur_student["account_name"]; ?></p>
               </div>
             </div>
             <?php }else{ ?>
             <div class="col-md-4">
               <div class="hibi_flame">
-                <a href="album.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/hibilog.png" class="mypage-content-pic"></a>
+                <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/hibilog.png" class="mypage-content-pic"></a>
                 <p class="hibi_username"><?php echo $cur_student["account_name"]; ?></p>
               </div>
             </div>

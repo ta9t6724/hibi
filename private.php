@@ -11,6 +11,10 @@
     // サインインしているユーザーの情報を取得
     $signin_user = get_signin_user($dbh, $_SESSION['id']);
 
+    // サインインしているユーザーの卒業日を取得する処理
+    $thisday = date("Y-m-d");
+    $target_day = $signin_user['graduation_date'];
+
     // お題の取得処理
     // 今日の日付の取得
     $day = date('j');
@@ -59,6 +63,14 @@
       $theme_id = 5;
     }
     // お題の取得処理終了
+
+    // 卒業日と現在日の差分取得（リマインド用）
+    $sql = "SELECT DATEDIFF(`graduation_date`,NOW()) AS `date_gap` FROM `users` WHERE `id`=?";
+    $data = array($_SESSION["id"]);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    $date_gap = $rec["date_gap"];
 
     // 日々のINSERT処理
     $photo = '';
@@ -193,6 +205,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/private.css"> 
     <link rel="stylesheet" type="text/css" href="assets/css/page.css">
@@ -207,6 +220,9 @@
     <div class="container-fluid">
       <div class="row">
         <?php include("navbar.php"); ?>
+        <?php if ($date_gap == 1) {
+            include("assets/remind/remind.php");
+        } ?>
         <!-- ここを消してinclude -->
 <!--         <div class="col-md-2 sidebar1">
           <div class="logo">
@@ -228,6 +244,41 @@
          -->
         <div class="col-md-2"></div>
         <div class="col-md-10 main-content">
+
+          <!-- ここから卒業生のページ -->
+
+
+    <?php if (strtotime($target_day) < strtotime($thisday)) { ?>
+        <div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 mypage">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="graduation-name">🎉<?php echo $signin_user["name"]; ?>、卒業おめでとう🎉</p>
+                  <p class="graduation-date">~<?php echo date('Y年n月j日', strtotime($target_day)); ?>~<!-- <span class="team-tyrk">by スイカと塩</span> --></p>
+                  <!-- <p class="team-tyrk">by スイカと塩</p> -->
+                  <p class="graduation-share">NEXSEEDでの「日々」を共有しよう</p>
+                  <a href="http://twitter.com/share?url=http://album.php?user_id=<?php echo $signin_user["id"]; ?>" class="isometric">
+                  <span class="iconback istw"><i class="fab fa-twitter"></i></span><span class="btnttl">TWEET</span>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=album.php?user_id=<?php echo $signin_user["id"]; ?>" class="isometric">
+                  <span class="iconback isfb"><i class="fab fa-facebook-f"></i></span><span class="btnttl">SHARE</span>
+                  </a>
+                  <div>
+                  <p class="graduation-yazi">↓↓↓↓↓↓↓↓↓↓</p>
+                  <!-- <p>↓↓↓↓↓↓↓↓↓↓</p> -->
+                  <a href="album.php?user_id=<?php echo $signin_user["id"]; ?>" class="square_btn5">卒業ページへ</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php }else{?>
+          <!-- ここまで -->
+
+          <!-- ここから在校生のページ -->
           <div class="row">
             <div class="col-md-1">
             </div>
@@ -237,37 +288,27 @@
             <div class="col-md-1">
             </div>
           </div>
-          <div class="row" style="margin-bottom: 20px;">
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-              <a href="my_page.php?user_id=<?php echo $signin_user["id"]; ?>" class="cross_line">
-              マイページ
-              </a>
+
+          <div class="row">
+            <div class="col-md-1">
             </div>
-            <div class="col-md-5">
-              <a href="signout.php" class="cross_line">
-              サインアウト
-              </a>
+            <div class="col-md-10">
+              <?php if ($date_gap == 1) { ?>
+                <h1 class="hibi_title" style="font-weight: bold; color: red;">明日で卒業！<br>最後に記念の１枚を撮ろう！</h1>
+              <?php } ?>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-md-1">
+            </div>
           </div>
+
           <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-5">
-              <a href="#hibipic" class="cross_line">
-              日々を投稿する
-              </a>
-            </div>
-            <div class="col-md-5">
-              <a href="#hibipoem" class="cross_line">
-              ポエムを投稿する
-              </a>
-            </div>
+
             <div class="col-md-1"></div>
           </div>
           <div class="row" id="hibipic">
             <div class="col-md-1"></div>
-            <div class="col-md-10 box17">
+            <div class="col-md-10 box3">
               <div class="row">
                 <div class="col-md-4">
                   <p class="hibi_setumei">写真</p>
@@ -321,7 +362,13 @@
               <div class="row">
                 <div class="col-md-9"></div>
                 <div class="col-md-3">
-                <a href="edit.php"><p class="hibi_delate">過去の投稿を削除する→</p></a>
+                <a href="my_page.php?user_id=<?php echo $signin_user["id"]; ?>.php"><p class="hibi_delate" style="margin-bottom: 10px;">マイページへいく<i class="fas fa-child"></i></p></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3">
+                <a href="edit.php"><p class="hibi_delate">過去の投稿を削除する<i class="fas fa-eraser"></i></p></a>
                 </div>
               </div>
             </div>
@@ -331,7 +378,7 @@
 
           <div class="row" id="hibipoem">
             <div class="col-md-1"></div>
-            <div class="col-md-10 box17">
+            <div class="col-md-10 box3">
               <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8"><p class="hibi_setumei">ポエムを投稿しよう！</p></div>
@@ -369,8 +416,9 @@
             </div>
             <div class="col-md-1"></div>
            </div>
+      <?php } ?>
           <!-- <div class="row"> -->
-        <h3 class="hibi_titile" style="font-weight: bold;">過去のポエム</h3>
+        <h3 class="hibi_titile" style="font-weight: bold; margin:0 100px 0 100px;">過去のポエム</h3>
         <?php if (isset($errors["poem"])) { ?>
           <p>まだポエムが投稿されていません</p>
         <?php }else{ ?>
