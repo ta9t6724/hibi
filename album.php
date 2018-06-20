@@ -20,7 +20,7 @@
     $users = array();
 
     // 卒業生情報取得
-    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`u`.`created`,`f`.`picture`,`f`.`created` FROM `users` AS `u` LEFT OUTER JOIN `feeds` AS `f` ON `u`.`id`=`f`.`user_id` WHERE `user_id`=? ORDER BY `f`.`created` ASC LIMIT 1";
+    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`u`.`created`,`f`.`picture`,`f`.`created` FROM `users` AS `u` LEFT OUTER JOIN `feeds` AS `f` ON `u`.`id`=`f`.`user_id` WHERE `user_id`=? ORDER BY `f`.`created` DESC LIMIT 1";
     $data = array($user_id);
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);

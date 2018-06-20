@@ -1,4 +1,4 @@
-        <div class="col-md-2 sidebar1">
+        <div class="col-md-2 sidebar1" style="margin: 0 30px 0 30px;">
           <div class="logo">
             <img src="assets/img/hibi3.png" class="hibilogo" alt="Logo">
           </div>
