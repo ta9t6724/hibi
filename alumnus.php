@@ -1,24 +1,7 @@
 <?php
     session_start();
 
-require("dbconnect.php");
-
-$sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` < CURRENT_DATE()";
-$stmt = $dbh->prepare($sql);
-$stmt->execute();
-
-$alumnus = array();
-
-while (true) {
-  $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-  if ($rec == false) {
-    break;
-  }
-  $alumnus[] = $rec;
-}
-    // echo "<pre>";
-    // var_dump($cur_students);
-    // echo "</pre>";
+    require("dbconnect.php");
 
     // ページネーション処理
     $page = ''; //ページ番号が入る変数
@@ -57,6 +40,20 @@ while (true) {
     // データを取得する開始番号を計算
     $start = ($page -1)*$page_row_number;
     // ページネーション処理終了
+
+    $sql = "SELECT `u`.`name`,`u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created`) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` < CURRENT_DATE() ORDER BY `id` DESC LIMIT $start, $page_row_number";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+
+    $alumnus = array();
+
+    while (true) {
+      $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+      if ($rec == false) {
+        break;
+      }
+    $alumnus[] = $rec;
+    }
 
     ?>
     <!doctype html>
