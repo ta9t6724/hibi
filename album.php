@@ -165,7 +165,7 @@
               <?php foreach ($users as $user) { ?>
                 <div class="col-md-12 album">
                   <p class="album-top-name"><?php echo $user["name"]; ?>さんの日々</p>
-                  <p class="album-top-time">〜ネクシードでの <span><?php echo $date_gap; ?></span>日間〜</p>
+                  <p class="album-top-time">〜NexSeedでの <span><?php echo $date_gap; ?></span>日間〜</p>
                 </div>
               <?php } ?>
             <?php } ?>
