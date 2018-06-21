@@ -1,7 +1,48 @@
 <?php
+    session_start();
+
+    require("dbconnect.php");
+
+
+    // ページネーション処理
+    $page = ''; //ページ番号が入る変数
+    $page_row_number = 12; //1ページあたりに表示するデータの数
+
+    if (isset($_GET['page'])){
+      $page = $_GET['page'];
+    }else{
+      //get送信されてるページ数がない場合、1ページめとみなす
+      $page = 1;
+    }
+
+    if ($page < 0) {
+      $page = 1;
+    }
+
+    // max:カンマ区切りで羅列された数字の中から最大の数を返す
+    $page = max($page,1);
+
+    // データの件数から、最大ページ数を計算する
+    $sql_count = "SELECT COUNT(*) AS `cnt` FROM `users` WHERE `graduation_date` > CURRENT_DATE()";
+
+    //SQL実行
+    $stmt_count = $dbh->prepare($sql_count);
+    $stmt_count->execute();
+    $record_cnt = $stmt_count->fetch(PDO::FETCH_ASSOC);
+
+    //ページ数計算
+    // ceil 小数点の切り上げができる関数 2.1 -> 3に変換できる
+    $all_page_number = ceil($record_cnt['cnt'] / $page_row_number);
+    
+
+    // min:カンマ区切りの数字の中から最小の数値を取得する関数
+    $page = min($page,$all_page_number);
+
+    // データを取得する開始番号を計算
+    $start = ($page -1)*$page_row_number;
+    // ページネーション処理終了
 
     $sql = "SELECT `u`.`account_name`, `u`.`id` AS `id`, `u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created` DESC) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` > CURRENT_DATE() ORDER BY `id` DESC LIMIT $start, $page_row_number";
-
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
@@ -79,18 +120,11 @@
             <?php }else{ ?>
             <li class="next"><a href="cur_student.php?page=<?php echo $page + 1; ?>">前へ <span aria-hidden="true">&rarr;</span></a></li>
             <?php } ?>
-
           </ul>
         </div>
       </div>
     </div>
   </div>
-
-         
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </div>
 </div>
       <!-- footer -->
@@ -101,4 +135,3 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     </body>
     </html>
-
