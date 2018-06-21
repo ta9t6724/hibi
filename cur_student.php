@@ -1,4 +1,4 @@
-<?php  
+<?php
     session_start();
 
     require("dbconnect.php");
@@ -42,7 +42,7 @@
     $start = ($page -1)*$page_row_number;
     // ページネーション処理終了
 
-    $sql = "SELECT `u`.`account_name`, `u`.`id` AS `id`, `u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created` DESC) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` > CURRENT_DATE() LIMIT $start, $page_row_number";
+    $sql = "SELECT `u`.`account_name`, `u`.`id` AS `id`, `u`.`graduation_date`,`f`.`user_id`,`f`.`picture`,`f`.`created` FROM `users` `u` LEFT JOIN (SELECT `f`.`user_id`,`f`.`picture`,`f`.`created` FROM `feeds` `f` GROUP BY `f`.`user_id` ORDER BY `created` DESC) AS `f` ON `u`.`id` = `f`.`user_id` WHERE `graduation_date` > CURRENT_DATE() ORDER BY `id` DESC LIMIT $start, $page_row_number";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
@@ -94,14 +94,14 @@
             <?php if(!empty($cur_student['picture'])){ ?>
             <div class="col-md-4">
               <div class="hibi_flame">
-                <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/<?php echo $cur_student["picture"]; ?>" class="mypage-content-pic"></a>
+                <a href="my_page.php?user_id=<?php echo $cur_student["id"]; ?>"><img src="assets/img/<?php echo $cur_student["picture"]; ?>" class="mypage-content-pic"></a>
                 <p class="hibi_username"><?php echo $cur_student["account_name"]; ?></p>
               </div>
             </div>
             <?php }else{ ?>
             <div class="col-md-4">
               <div class="hibi_flame">
-                <a href="my_page.php?user_id=<?php echo $cur_student["user_id"]; ?>"><img src="assets/img/hibilog.png" class="mypage-content-pic"></a>
+                <a href="my_page.php?user_id=<?php echo $cur_student["id"]; ?>"><img src="assets/img/hibilog.png" class="mypage-content-pic"></a>
                 <p class="hibi_username"><?php echo $cur_student["account_name"]; ?></p>
               </div>
             </div>

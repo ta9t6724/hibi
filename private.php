@@ -294,7 +294,7 @@
             </div>
             <div class="col-md-10">
               <?php if ($date_gap == 1) { ?>
-                <h1 class="hibi_titile"><?php echo $signin_user["name"] ?>さん、明日で卒業ですね<br>最後に<span style="font-weight: bold;">記念の１枚</span>を撮ろう！</h1>
+                <h1 class="hibi_titile"><?php echo $signin_user["name"] ?>さん、明日で卒業ですね<br>最後に<span style="font-weight: bold;">記念の１枚</span>を投稿しよう！</h1>
               <?php }else{ ?>
                 <h1 class="hibi_titile" style="font-weight: bold;"><?php echo $signin_user["name"] ?>さんの日々を投稿しよう！</h1>
               <?php } ?>

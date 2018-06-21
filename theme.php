@@ -4,9 +4,6 @@ session_start();
 require('dbconnect.php');
 require('function.php');
 
-// サインインしているユーザーの情報を取得
-$signin_user = get_signin_user($dbh, $_SESSION['id']);
-
 $sql = 'SELECT `f`.*,`t`.* FROM `themes` AS `t` LEFT OUTER JOIN `feeds` AS `f` ON `f`.`theme_id`=`t`.`id` WHERE `t`.`id` = 1 ORDER BY `f`.`id` DESC';
 $data = array();
 $stmt = $dbh->prepare($sql);

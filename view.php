@@ -137,8 +137,8 @@
           <div class="row concept">
             <div class="col-md-12">
               <h1 class="hibi mainconcept" style="font-weight: bold;">毎日をちょっとだけ楽しく</h1>
-              <p>ネクシード生がセブ留学の「日々」を写真と言葉に</p>
-              <p class="hibi subconcept">大切な「日々」の思い出を<span style="font-weight: bold;">カタチ</span>にできるサービスです。</p>
+              <p>セブ島での留学生活を写真と言葉に。</p>
+              <p class="hibi subconcept">大切な「日々」の思い出を<span style="font-weight: bold;">カタチ</span>として残しませんか？</p>
             </div>
           </div>
           <div class="row">
@@ -146,24 +146,27 @@
               <div class="col-md-1"></div>
               <div class="col-md-10 explain">
               <div class="row">
-                
+
                 <div class="col-md-6 hibi explain_text">
-                <p>言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉Z</p>
+                <h4>日々とは<hr></h4>
+                <p>セブ留学における日常を記録できる、<br>NexSeed生のためのサービスです。<br>卒業時にはこれまでの投稿がアルバムとしてプレゼント。<br>セブ島での「日々」をより実りあるものにしたい...。<br>そんな想いから始まったサービスです。</p>
                 </div>
-                
+
                 <div class="col-md-6">
                 <!-- <p>写真が入る</p> -->
-                <img src="assets/img/hibi.jpg" class="hibi explain_pic">
+                <img src="assets/img/LRG_DSC04991.jpg" class="hibi explain_pic">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <!-- <p>写真が入る</p> -->
-                  <img src="assets/img/hibi.jpg" class="hibi explain_pic">
+                  <img src="assets/img/LRG_DSC04987.jpg" class="hibi explain_pic">
 
                 </div>
-                <div class="col-md-6 hibi explain_text">
-                  <p>言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉が入る。言葉</p>
+                <div class="col-md-6 hibi explain_text"><br>
+                <h4>お題について<hr></h4>
+                <p>定期的に変わる「お題」に沿って日常を投稿しましょう。
+                  <br>いろいろな視点から見たNexSeed生の「日々」を<br>楽しむことができる、そんな機能です。</p>
                 </div>
               </div>
             </div>
@@ -171,7 +174,7 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 today_hibi">
-              <h3 class="today_hibi_title">
+              <h3 class="today_hibi_title" style="margin-bottom: 30px;">
               みんなの「日々」
               </h3>
 
@@ -192,7 +195,7 @@
               今週のお題
               </h3>
 
-              <h5 style="font-weight: bold;">「<?php echo $theme['title']; ?>」</h5>
+              <h5 style="font-weight: bold; margin-bottom: 30px;">「<?php echo $theme['title']; ?>」</h5>
               <div class="row">
                 <?php foreach($theme_feeds as $theme_feed){ ?>
                   <div class="col-md-4">
