@@ -258,7 +258,7 @@
                   <p class="graduation-name">🎉<?php echo $signin_user["name"]; ?>さん、卒業おめでとう🎉</p>
                   <p class="graduation-date">~<?php echo date('Y年n月j日', strtotime($target_day)); ?>~<!-- <span class="team-tyrk">by スイカと塩</span> --></p>
                   <!-- <p class="team-tyrk">by スイカと塩</p> -->
-                  <p class="graduation-share">NEXSEEDでの「日々」を共有しよう</p>
+                  <p class="graduation-share">NexSeedでの「日々」を共有しよう</p>
                   <a href="http://twitter.com/share?url=http://album.php?user_id=<?php echo $signin_user["id"]; ?>" class="isometric">
                   <span class="iconback istw"><i class="fab fa-twitter"></i></span><span class="btnttl">TWEET</span>
                   </a>
